@@ -1,7 +1,7 @@
 import React from 'react';
 import img from '../img/logo_no_text.png';
 import { Navbar, Offcanvas, Nav, Container, NavDropdown, Form, FormControl, Button } from 'react-bootstrap';
-import ShoppingCart from './ShoppingCart'
+import ShoppingCart from './ShoppingCart';
 
 const NavBar = () => {
     return (
@@ -24,12 +24,13 @@ const NavBar = () => {
                                 </NavDropdown>
                                 <Nav.Link href="#action2">About Us</Nav.Link>
                                 <Nav.Link href="#action1">Contact</Nav.Link>
+                                <Form className="d-flex">
+                                    <FormControl type="search" placeholder="Search" className="me-2" aria-label="Search"/>
+                                    <Button variant="outline-success">Search...</Button>
+                                </Form>
                                 <ShoppingCart/>
+                                <Button>Sign Up!</Button>
                             </Nav>
-                            <Form className="d-flex">
-                                <FormControl type="search" placeholder="Search" className="me-2" aria-label="Search"/>
-                                <Button variant="outline-success">Search</Button>
-                            </Form>
                         </Offcanvas.Body>
                     </Navbar.Offcanvas>
                 </Container>
