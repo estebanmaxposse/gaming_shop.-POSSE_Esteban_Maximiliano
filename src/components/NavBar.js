@@ -6,7 +6,7 @@ import ShoppingCart from './ShoppingCart';
 const NavBar = () => {
     return (
         <header>
-            <Navbar bg='dark' variant='light' expand='lg' fixed='top' className='mb-3'>
+            <Navbar variant='dark' expand='lg' fixed='top' className='mb-3'>
                 <Container fluid>
                     <Navbar.Brand href="#">
                         <img src={img} alt='logo' width="30" height="30"/>

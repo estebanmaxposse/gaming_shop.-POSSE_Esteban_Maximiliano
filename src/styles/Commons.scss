@@ -1,0 +1,30 @@
+//Global Colors
+$color-main: #4bc3b5;
+$color-secondary: #d175b7;
+$color-key: #1c2c54;
+
+//Typography
+@font-face {
+    font-family: 'vcr_osd_monoregular';
+    src: url('../typography/vcr_osd_mono_1.001-webfont.woff2') format('woff2'),
+         url('../typography/vcr_osd_mono_1.001-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+$font-main: 'vcr_osd_monoregular', sans-serif;
+$font-secundary: 'Roboto Mono', sans-serif;
+
+@mixin text($font-typo, $font-size, $font-weight) {
+    font-family: $font-typo;
+    font-size: $font-size;
+    font-weight: $font-weight;
+};
+  
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
