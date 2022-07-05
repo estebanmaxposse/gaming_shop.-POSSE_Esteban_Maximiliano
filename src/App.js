@@ -7,6 +7,10 @@ function App() {
   return (
     <div className="App">
        <NavBar/>
+       <div>
+        <h1>Slider Coming Soon!</h1>
+        <h2>You can sneak a peek in the wireframe on the GitHub repository here: https://github.com/estebanmaxposse/gaming_shop.-POSSE_Esteban_Maximiliano.git</h2>
+       </div>
     </div>
   );
 }

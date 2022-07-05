@@ -7,4 +7,74 @@ body {
 .navbar {
     background-color: $color-key;
     text-transform: uppercase;
+    &-brand {
+        display: flex;
+        margin: 0;
+        img, span {
+            padding: 4px;
+        }
+    }
 }
+
+.navbar-dark .navbar-nav .nav-link {
+    &:hover {
+        color: white;
+    }
+}
+
+.dropdown-item:focus, .dropdown-item:hover {
+    background-color: $color-hover;
+}
+
+#search-bar {
+    padding: 0 8px;
+    &-button {
+        background-color: $color-main;
+    }
+    &-input {
+        margin: 0;
+        border-radius: 0;
+        border: 3px solid $color-main;
+    }
+}
+
+#cart-widget {
+    margin: 0 8px;
+    border: 0;
+    color: white;
+}
+
+#sign-up-button {
+    background-color: $color-main;
+    margin: 0 8px;
+}
+
+.btn {
+    border-radius: 0%;
+    border: 3px solid white;
+    &:hover {
+        border-color: $color-secondary;
+    }
+}
+
+.offcanvas {
+    background-color: $color-key;
+    text-transform: uppercase;
+    &-header {
+        justify-items: end;
+        border-bottom: 3px solid white;
+    }
+    &-body {
+        .navbar-nav {
+            justify-content: end;
+        }
+        .nav-link {
+            color: white;
+        }
+    }
+}
+
+#offcanvasNavbarDropdown-expand-lg {
+    text-align: end;
+}
+
