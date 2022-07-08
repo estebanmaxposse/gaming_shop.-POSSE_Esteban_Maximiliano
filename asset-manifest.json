@@ -1,18 +1,21 @@
 {
   "files": {
-    "main.css": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/css/main.b94bb724.css",
-    "main.js": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/js/main.8efb07cf.js",
+    "main.css": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/css/main.e8f00489.css",
+    "main.js": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/js/main.fe81ec9d.js",
+    "static/media/slide_skullgirls.png": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/media/slide_skullgirls.40be9a9ff1e1172519b4.png",
+    "static/media/slide_mario.png": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/media/slide_mario.6a308b7745d58f0b6f69.png",
+    "static/media/slide_ff7.png": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/media/slide_ff7.d1232e5658c989a7541f.png",
     "static/media/logo_no_text.png": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/media/logo_no_text.925a1f1602c80843e7a5.png",
     "static/media/bootstrap-icons.woff?": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/media/bootstrap-icons.7ff3ca6fa798de3f8ac2.woff",
     "static/media/bootstrap-icons.woff2?": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/media/bootstrap-icons.f2539a501be3a673de05.woff2",
     "static/media/vcr_osd_mono_1.001-webfont.woff": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/media/vcr_osd_mono_1.001-webfont.ac48cb40f97a07eac714.woff",
     "static/media/vcr_osd_mono_1.001-webfont.woff2": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/media/vcr_osd_mono_1.001-webfont.0f763f59b13ceb9a2562.woff2",
     "index.html": "/gaming_shop.-POSSE_Esteban_Maximiliano/index.html",
-    "main.b94bb724.css.map": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/css/main.b94bb724.css.map",
-    "main.8efb07cf.js.map": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/js/main.8efb07cf.js.map"
+    "main.e8f00489.css.map": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/css/main.e8f00489.css.map",
+    "main.fe81ec9d.js.map": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/js/main.fe81ec9d.js.map"
   },
   "entrypoints": [
-    "static/css/main.b94bb724.css",
-    "static/js/main.8efb07cf.js"
+    "static/css/main.e8f00489.css",
+    "static/js/main.fe81ec9d.js"
   ]
 }
