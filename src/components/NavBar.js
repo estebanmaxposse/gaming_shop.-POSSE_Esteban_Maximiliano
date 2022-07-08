@@ -7,7 +7,7 @@ import SearchBar from './SearchBar';
 const NavBar = () => {
     return (
         <header>
-            <Navbar variant='dark' expand='lg' sticky='top' className='mb-3'>
+            <Navbar variant='dark' expand='lg' sticky='top'>
                 <Container fluid>
                     <Navbar.Brand href='#'>
                         <img src={img} alt='logo' width='35' height='35'/>
