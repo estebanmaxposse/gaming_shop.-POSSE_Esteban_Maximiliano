@@ -3,6 +3,10 @@ import { Button, InputGroup, Form, FormControl } from 'react-bootstrap';
 
 const ItemCount = ({initial, stock, onAdd}) => {
 
+    onAdd = () => {
+        alert("Product added to cart!");
+    }
+
     const [count, setCount] = useState(initial);
 
     const inc = () => {
