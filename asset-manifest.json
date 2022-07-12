@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/css/main.b7bc2db5.css",
-    "main.js": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/js/main.bbecf58f.js",
+    "main.js": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/js/main.18a1df17.js",
     "static/media/game_mario_kart_8_box.png": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/media/game_mario_kart_8_box.2a94872a1a1dbd528453.png",
     "static/media/slide_ff7_web.png": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/media/slide_ff7_web.e240f9ceb0bceb52e310.png",
     "static/media/slide_skullgirls_carousel.png": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/media/slide_skullgirls_carousel.c72a47db814fee9f4688.png",
@@ -13,10 +13,10 @@
     "static/media/vcr_osd_mono_1.001-webfont.woff2": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/media/vcr_osd_mono_1.001-webfont.0f763f59b13ceb9a2562.woff2",
     "index.html": "/gaming_shop.-POSSE_Esteban_Maximiliano/index.html",
     "main.b7bc2db5.css.map": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/css/main.b7bc2db5.css.map",
-    "main.bbecf58f.js.map": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/js/main.bbecf58f.js.map"
+    "main.18a1df17.js.map": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/js/main.18a1df17.js.map"
   },
   "entrypoints": [
     "static/css/main.b7bc2db5.css",
-    "static/js/main.bbecf58f.js"
+    "static/js/main.18a1df17.js"
   ]
 }
