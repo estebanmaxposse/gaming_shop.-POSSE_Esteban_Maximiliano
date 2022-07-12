@@ -1,21 +1,22 @@
 {
   "files": {
-    "main.css": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/css/main.e8f00489.css",
-    "main.js": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/js/main.fe81ec9d.js",
-    "static/media/slide_skullgirls.png": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/media/slide_skullgirls.40be9a9ff1e1172519b4.png",
-    "static/media/slide_mario.png": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/media/slide_mario.6a308b7745d58f0b6f69.png",
-    "static/media/slide_ff7.png": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/media/slide_ff7.d1232e5658c989a7541f.png",
+    "main.css": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/css/main.b7bc2db5.css",
+    "main.js": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/js/main.bbecf58f.js",
+    "static/media/game_mario_kart_8_box.png": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/media/game_mario_kart_8_box.2a94872a1a1dbd528453.png",
+    "static/media/slide_ff7_web.png": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/media/slide_ff7_web.e240f9ceb0bceb52e310.png",
+    "static/media/slide_skullgirls_carousel.png": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/media/slide_skullgirls_carousel.c72a47db814fee9f4688.png",
+    "static/media/slide_mario_web.png": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/media/slide_mario_web.1f0552e06ecfeaf97978.png",
     "static/media/logo_no_text.png": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/media/logo_no_text.925a1f1602c80843e7a5.png",
     "static/media/bootstrap-icons.woff?": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/media/bootstrap-icons.7ff3ca6fa798de3f8ac2.woff",
     "static/media/bootstrap-icons.woff2?": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/media/bootstrap-icons.f2539a501be3a673de05.woff2",
     "static/media/vcr_osd_mono_1.001-webfont.woff": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/media/vcr_osd_mono_1.001-webfont.ac48cb40f97a07eac714.woff",
     "static/media/vcr_osd_mono_1.001-webfont.woff2": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/media/vcr_osd_mono_1.001-webfont.0f763f59b13ceb9a2562.woff2",
     "index.html": "/gaming_shop.-POSSE_Esteban_Maximiliano/index.html",
-    "main.e8f00489.css.map": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/css/main.e8f00489.css.map",
-    "main.fe81ec9d.js.map": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/js/main.fe81ec9d.js.map"
+    "main.b7bc2db5.css.map": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/css/main.b7bc2db5.css.map",
+    "main.bbecf58f.js.map": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/js/main.bbecf58f.js.map"
   },
   "entrypoints": [
-    "static/css/main.e8f00489.css",
-    "static/js/main.fe81ec9d.js"
+    "static/css/main.b7bc2db5.css",
+    "static/js/main.bbecf58f.js"
   ]
 }
