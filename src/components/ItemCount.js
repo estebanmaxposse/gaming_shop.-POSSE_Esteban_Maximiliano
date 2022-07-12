@@ -4,7 +4,7 @@ import { Button, InputGroup, Form, FormControl } from 'react-bootstrap';
 const ItemCount = ({initial, stock, onAdd}) => {
 
     onAdd = () => {
-        alert("Product added to cart!");
+        alert(count + " items added to cart!");
     }
 
     const [count, setCount] = useState(initial);
@@ -35,7 +35,7 @@ const ItemCount = ({initial, stock, onAdd}) => {
                     <Button onClick={inc} disabled={count >= stock}><i className="bi bi-plus"></i></Button>
                 </span>
             </InputGroup>
-            <Button onClick={onAdd}>Add to Cart</Button>
+            <Button onClick={onAdd} disabled={stock <= 0 || count <= 0 }>Add to Cart</Button>
         </div>
     );
 };
