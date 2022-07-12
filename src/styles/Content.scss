@@ -7,6 +7,7 @@ body {
 .navbar {
     background-color: $color-key;
     text-transform: uppercase;
+    border-bottom: 2px solid white;
     &-brand {
         display: flex;
         margin: 0;
@@ -78,3 +79,87 @@ body {
     text-align: end;
 }
 
+.carousel {
+    &-caption {
+        bottom: 6rem;
+        text-align: left;
+    }
+    &-inner {
+        max-width: 100%;
+        height: auto;
+        max-height: 600px;
+    }
+    &-item {
+        height: auto;
+        max-height: 600px;
+        &-img {
+            width: 100%;
+            max-width: 100%;
+	        max-height: 100%;
+        }
+        &-title {
+            color: white;
+            text-transform: uppercase;
+            font-size: 3rem;
+        }
+        &-heading, &-description {
+            font-family: $font-secundary;
+        }
+        &-heading {
+            text-transform: uppercase;
+        }
+        &-button {
+            text-align: center;
+            text-transform: uppercase;
+        }
+    }
+}
+
+#carousel-item-1 {
+    background-color: $color-main;
+}
+
+#carousel-item-2 {
+    background-color: $color-secondary;
+}
+
+#carousel-item-3 {
+    background-color: $color-key;
+}
+
+#carousel-item-caption-1 {
+    .carousel-item {
+        &-description {
+            background-color: $color-main;
+        }
+    }
+}
+
+#carousel-item-caption-2 {
+    flex-direction: row-reverse;
+    text-align: right;
+    .carousel-item {
+        &-title {
+            color: white;
+            text-transform: uppercase;
+        }
+        &-description {
+            background-color: $color-secondary;
+        }
+    }
+}
+
+#carousel-item-caption-3 {
+    .carousel-item {
+        &-title {
+            background-color: $color-key;
+        }
+        &-description {
+            background-color: $color-key;
+            color: white;
+        }
+        &-heading {
+            color: white;
+        }
+    }
+}
