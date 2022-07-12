@@ -9,7 +9,7 @@ This is a React project made to learn the ins and outs of this specific library.
 ```javascript
 function nowWorkingOn() {
   let currentDevelopments = [
-    "Slider",
+    "Catalogue",
   ];
   return currentDevelopments[0];
 };
