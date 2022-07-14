@@ -1,9 +1,20 @@
 {
   "files": {
-    "main.css": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/css/main.b7bc2db5.css",
-    "main.js": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/js/main.18a1df17.js",
-    "static/media/game_mario_kart_8_box.png": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/media/game_mario_kart_8_box.2a94872a1a1dbd528453.png",
+    "main.css": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/css/main.7668539a.css",
+    "main.js": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/js/main.a3fbfdd0.js",
+    "static/media/game_skullgirls_boxart.png": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/media/game_skullgirls_boxart.9283af6a935a53f06f4d.png",
+    "static/media/game_p5r_boxart.png": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/media/game_p5r_boxart.847758144ce86b9b059d.png",
+    "static/media/game_smash_bros_ultimate_boxart.png": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/media/game_smash_bros_ultimate_boxart.ef38a42eb0eebf2ef7fa.png",
+    "static/media/game_elden_ring_boxart.png": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/media/game_elden_ring_boxart.fb1aeaadbbd66aad01db.png",
+    "static/media/game_gtav_boxart.png": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/media/game_gtav_boxart.a5e823e62ed7c053f782.png",
+    "static/media/game_miles_morales_boxart.png": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/media/game_miles_morales_boxart.0ca46a121a6998584b2f.png",
+    "static/media/game_dying_light_boxart.png": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/media/game_dying_light_boxart.6630ae1c457fad9a0d8d.png",
+    "static/media/game_mario_kart_8_boxart.png": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/media/game_mario_kart_8_boxart.885d5618b6a97e8c3348.png",
+    "static/media/game_mario_3d_allstars_boxart.png": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/media/game_mario_3d_allstars_boxart.54a94bf51f98d48043a9.png",
+    "static/media/game_mario_deluxe_boxart.png": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/media/game_mario_deluxe_boxart.f6da8f67b2aa10debe23.png",
+    "static/media/game_mario_3d_world_boxart.png": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/media/game_mario_3d_world_boxart.027bb4e14803beb0fd6c.png",
     "static/media/slide_ff7_web.png": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/media/slide_ff7_web.e240f9ceb0bceb52e310.png",
+    "static/media/game_mario_maker_boxart.png": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/media/game_mario_maker_boxart.394df5af9c2672249849.png",
     "static/media/slide_skullgirls_carousel.png": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/media/slide_skullgirls_carousel.c72a47db814fee9f4688.png",
     "static/media/slide_mario_web.png": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/media/slide_mario_web.1f0552e06ecfeaf97978.png",
     "static/media/logo_no_text.png": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/media/logo_no_text.925a1f1602c80843e7a5.png",
@@ -12,11 +23,11 @@
     "static/media/vcr_osd_mono_1.001-webfont.woff": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/media/vcr_osd_mono_1.001-webfont.ac48cb40f97a07eac714.woff",
     "static/media/vcr_osd_mono_1.001-webfont.woff2": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/media/vcr_osd_mono_1.001-webfont.0f763f59b13ceb9a2562.woff2",
     "index.html": "/gaming_shop.-POSSE_Esteban_Maximiliano/index.html",
-    "main.b7bc2db5.css.map": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/css/main.b7bc2db5.css.map",
-    "main.18a1df17.js.map": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/js/main.18a1df17.js.map"
+    "main.7668539a.css.map": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/css/main.7668539a.css.map",
+    "main.a3fbfdd0.js.map": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/js/main.a3fbfdd0.js.map"
   },
   "entrypoints": [
-    "static/css/main.b7bc2db5.css",
-    "static/js/main.18a1df17.js"
+    "static/css/main.7668539a.css",
+    "static/js/main.a3fbfdd0.js"
   ]
 }
