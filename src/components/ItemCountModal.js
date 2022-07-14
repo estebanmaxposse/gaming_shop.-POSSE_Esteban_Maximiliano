@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { Button, Modal, Container, Row, Col, Image } from 'react-bootstrap';
-import testGame from '../img/game_mario_kart_8_box.png';
+import testGame from '../img/game_mario_kart_8_boxart.png';
 import ItemCount from './ItemCount'
 
 const ItemCountModal = () => {
