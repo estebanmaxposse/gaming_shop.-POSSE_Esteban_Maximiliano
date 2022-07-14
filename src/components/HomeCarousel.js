@@ -1,7 +1,7 @@
 import React from "react";
 import { Carousel, Button } from "react-bootstrap";
 
-const gamesCollection = [
+const gamesHomepage = [
   {
     "title": "New Super Mario Bros. U Deluxe",
     "heading": "On sale!",
@@ -27,7 +27,7 @@ const HomeCarousel = () => {
     <div>
       <Carousel>
         {
-          gamesCollection.map(
+          gamesHomepage.map(
             (game, index) => (
               <Carousel.Item key={index} id={"carousel-item-" + (index+1)}>
                   <img

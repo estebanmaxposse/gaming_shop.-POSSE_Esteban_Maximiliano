@@ -1,0 +1,54 @@
+#best-sellers {
+    width: 85%;
+    margin: 32px auto;
+    p {
+        font-family: $font-secundary;
+    }
+    h1 {
+        text-transform: uppercase;
+        padding-bottom: 8px;
+    }
+    .row {
+        padding: 32px;
+    }
+}
+
+.homepage-card {
+    height: 100%;
+    margin: auto;
+    border: 0;
+    background-color: #4bc3b56c;
+    &-img {
+        height: 390px;
+        display: flex;
+        align-items: center;
+        img {
+            max-width: 250px;
+            padding: 16px;
+        }
+    }
+    &:hover {
+        background-color: #4BC3B5;
+    }
+    
+    .card-body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        .card-title {
+            text-transform: uppercase;
+        }
+        .card-text {
+            font-size: .8rem;
+        }
+        .price-stock {
+            padding: 0 16px;
+            justify-content: space-between;
+        }
+    }
+}
+
+.card {
+    align-items: center;
+}
