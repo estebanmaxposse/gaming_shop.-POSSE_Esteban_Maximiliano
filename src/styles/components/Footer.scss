@@ -1,0 +1,85 @@
+.footer {
+    margin: auto;
+    background-color: #B1C2EC;
+    margin-top: calc(-1 * var(--bs-gutter-y));
+    .row {
+        padding: 3rem 0;
+        justify-content: center;
+        margin: auto;
+    }
+    &-aboutus {
+        flex-direction: column;
+        height: 60%;
+        justify-content: space-evenly;
+        &-logo {
+            align-items: center;
+            text-transform: uppercase;
+            &-img {
+                max-width: 86px;
+            }
+            &-caption {
+                flex-direction: column;
+                align-items: flex-start;
+                p {
+                    margin: 0;
+                    font-size: 1.25rem;
+                    color: white;
+                }
+            }
+        }
+        &-slogan {
+            font-family: $font-secundary;
+            font-size: .75rem;
+            text-align: start;
+            padding: 0 16px;
+        }
+        &-socialmedia {
+            justify-content: space-evenly;
+            &-icon {
+                font-size: 1.5rem;
+            }
+        }
+    }
+    &-links, &-contact {
+        padding: 2rem 0;
+        text-align: left;
+        h6 {
+            text-transform: uppercase;
+        }
+        ul {
+            list-style: none;
+            padding: 1rem 0; 
+            font-family: $font-secundary;
+            font-size: .75rem;
+            li {
+                padding: .5rem 0;
+                a {
+                    color: black;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+    &-feed {
+        padding: 2rem 0;
+        h6 {
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+        }
+    }
+}
+
+.bi {
+    &-facebook {
+        color: #3B5999;
+    }
+    &-youtube {
+        color: #FF0000;
+    }
+    &-twitter {
+        color: #03A9F4;
+    }
+    &-instagram {
+        color: #E1306C;
+    }
+}
