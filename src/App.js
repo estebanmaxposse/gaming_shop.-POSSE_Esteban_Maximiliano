@@ -4,6 +4,7 @@ import NavBar from './components/NavBar';
 import HomeCarousel from './components/HomeCarousel';
 import ItemListContainer from './components/ItemListContainer';
 import ItemCountModal from './components/ItemCountModal';
+import Footer from './components/Footer';
 import './App.scss';
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
        <HomeCarousel/>
        <ItemListContainer/>
        <ItemCountModal/>
+       <Footer/>
     </div>
   );
 }
