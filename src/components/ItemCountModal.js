@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { Button, Modal, Container, Row, Col, Image } from 'react-bootstrap';
 import testGame from '../img/game_mario_kart_8_boxart.png';
-import ItemCount from './ItemCount'
+import ItemCount from './ItemCount';
 
 const ItemCountModal = () => {
     const [show, setShow] = useState(false);
@@ -32,11 +32,8 @@ const ItemCountModal = () => {
                     </Container>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
-                        Close
-                    </Button>
                     <Button variant="primary" onClick={handleClose}>
-                        Save Changes
+                        Done
                     </Button>
                 </Modal.Footer>
             </Modal>

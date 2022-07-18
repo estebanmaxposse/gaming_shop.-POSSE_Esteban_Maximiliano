@@ -25,17 +25,17 @@ const ItemCount = ({initial, stock, onAdd}) => {
 
     return (
         <div>
-            <p>Stock Available: {stock}</p>
+            <p className='text-muted item-detail-info-stock'>Stock Available: {stock}</p>
             <InputGroup>
                 <span>
-                    <Button onClick={dec} disabled={count <= 0}><i className="bi bi-dash"></i></Button>
+                    <Button onClick={dec} disabled={count <= 0} className='item-detail-info-button'><i className="bi bi-dash"></i></Button>
                 </span>
                 <FormControl type='text' value={count}></FormControl>
                 <span>
-                    <Button onClick={inc} disabled={count >= stock}><i className="bi bi-plus"></i></Button>
+                    <Button onClick={inc} disabled={count >= stock} className='item-detail-info-button'><i className="bi bi-plus"></i></Button>
                 </span>
+                <Button onClick={onAdd} disabled={stock <= 0 || count <= 0 } className='item-detail-info-button'>Add to Cart</Button>
             </InputGroup>
-            <Button onClick={onAdd} disabled={stock <= 0 || count <= 0 }>Add to Cart</Button>
         </div>
     );
 };

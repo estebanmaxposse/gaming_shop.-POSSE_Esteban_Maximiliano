@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Products } from "../data/Products";
-import  Item from "./Item";
+import Item from "./Item";
 
 export const ItemList = () => {
   const [products, setData] = useState([]);
@@ -12,7 +12,7 @@ export const ItemList = () => {
       }, 2000);
     });
     getProducts.then((resolve) => setData(resolve));
-  });
+  }, []);
 
   return (
     products.map(product => <Item key={product.id} product={product}/>)

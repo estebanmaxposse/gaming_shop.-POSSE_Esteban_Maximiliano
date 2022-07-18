@@ -14,10 +14,13 @@
 }
 
 .homepage-card {
+    position: relative;
+    cursor: pointer;
     height: 100%;
     margin: auto;
     border: 0;
     background-color: #4bc3b56c;
+    transition: 0.3s;
     &-img {
         height: 390px;
         display: flex;
@@ -29,8 +32,20 @@
     }
     &:hover {
         background-color: #4BC3B5;
+        .homepage-card-button {
+            opacity: 1;
+        }
     }
-    
+    &-button {
+        text-transform: uppercase;
+        background-color: $color-secondary;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+        transition: 0.3s;
+    }
     .card-body {
         display: flex;
         flex-direction: column;
