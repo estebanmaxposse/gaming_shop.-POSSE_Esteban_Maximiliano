@@ -15,6 +15,6 @@ export const ItemList = () => {
   }, []);
 
   return (
-    products.map(product => <Item key={product.id} product={product}/>)
+    products.map((product, index) => <Item key={product.id} product={product} index={index}/>)
   );
 };

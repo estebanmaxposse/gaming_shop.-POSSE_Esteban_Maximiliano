@@ -2,25 +2,26 @@ import React, { useState, useEffect } from 'react';
 import ItemDetail from "./ItemDetail";
 import { Products } from "../data/Products";
 
-const ItemDetailContainer = () => {
-    const [product, setData] = useState({});
+const ItemDetailContainer = ({showModal, closeModal, index}) => {
+    const [product, setData] = useState([]);
     
     useEffect(() => {
-      const getData = new Promise(resolve => {
-        setTimeout(() => {
-            resolve(Products[0]);
-        }, 2000);
-      });
-    
-      getData.then((res) => {
-        setData(res)
-        console.log(res)
-      });
-    }, [{}])
+      if (showModal) {
+        const getData = new Promise(resolve => {
+          setTimeout(() => {
+              resolve(Products[index]);
+          }, 2000);
+        });
+      
+        getData.then((res) => {
+          setData(res);
+        });
+      }
+    }, [showModal]);
     
 
   return (
-    <ItemDetail product={product}/>
+    <ItemDetail product={product} showModal={showModal} closeModal={closeModal}/>
   )
 };
 

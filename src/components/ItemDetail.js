@@ -3,10 +3,6 @@ import { Button, Modal, Container, Row, Col, Image } from 'react-bootstrap';
 import ItemCount from './ItemCount';
 
 export const ItemDetail = ({product, showModal, closeModal}) => {
-  const [show, setShow] = useState(false);
-
-  console.log(product);
-
   return (
     <div>
       <Modal show={showModal} centered size="lg" onHide={closeModal} className="item-detail">

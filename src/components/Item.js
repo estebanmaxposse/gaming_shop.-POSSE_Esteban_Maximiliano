@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Button, Col, Card } from "react-bootstrap";
-import ItemDetail from "./ItemDetail";
+import ItemDetailContainer from "./ItemDetailContainer";
 
-const Item = ({ product }) => {
+const Item = ({ product, index }) => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -24,7 +24,7 @@ const Item = ({ product }) => {
           <Button className="homepage-card-button">Add to cart</Button>
         </Card.Body>
       </Card>
-      <ItemDetail showModal={show} closeModal={handleClose} product={product}/>
+      <ItemDetailContainer showModal={show} closeModal={handleClose} index={index}/>
     </Col>
   );
 };
