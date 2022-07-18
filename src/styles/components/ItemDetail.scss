@@ -33,7 +33,7 @@
             text-transform: uppercase;
             background-color: $color-secondary;
             color: black;
-            &:hover {
+            &:hover, &:active, &:focus {
                 background-color: $color-main;
             }
             &:disabled {
@@ -45,6 +45,10 @@
         background-color: #B1C2EC;
         &-button {
             background-color: $color-secondary;
+            text-transform: uppercase;
+            &:hover, &:active, &:focus {
+                background-color: $color-main;
+            }
         }
     }
 }
