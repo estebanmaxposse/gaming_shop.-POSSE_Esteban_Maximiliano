@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/css/main.7668539a.css",
-    "main.js": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/js/main.a3fbfdd0.js",
+    "main.css": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/css/main.a1f76117.css",
+    "main.js": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/js/main.66e20138.js",
     "static/media/game_skullgirls_boxart.png": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/media/game_skullgirls_boxart.9283af6a935a53f06f4d.png",
     "static/media/game_p5r_boxart.png": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/media/game_p5r_boxart.847758144ce86b9b059d.png",
     "static/media/game_smash_bros_ultimate_boxart.png": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/media/game_smash_bros_ultimate_boxart.ef38a42eb0eebf2ef7fa.png",
@@ -23,11 +23,11 @@
     "static/media/vcr_osd_mono_1.001-webfont.woff": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/media/vcr_osd_mono_1.001-webfont.ac48cb40f97a07eac714.woff",
     "static/media/vcr_osd_mono_1.001-webfont.woff2": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/media/vcr_osd_mono_1.001-webfont.0f763f59b13ceb9a2562.woff2",
     "index.html": "/gaming_shop.-POSSE_Esteban_Maximiliano/index.html",
-    "main.7668539a.css.map": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/css/main.7668539a.css.map",
-    "main.a3fbfdd0.js.map": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/js/main.a3fbfdd0.js.map"
+    "main.a1f76117.css.map": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/css/main.a1f76117.css.map",
+    "main.66e20138.js.map": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/js/main.66e20138.js.map"
   },
   "entrypoints": [
-    "static/css/main.7668539a.css",
-    "static/js/main.a3fbfdd0.js"
+    "static/css/main.a1f76117.css",
+    "static/js/main.66e20138.js"
   ]
 }
