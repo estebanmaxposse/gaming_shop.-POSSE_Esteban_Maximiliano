@@ -8,7 +8,7 @@ const ItemListContainer = () => {
         <p>Why not try out some of our</p>
         <h1>Best sellers!</h1>
         <Row>
-            <ItemList></ItemList>
+            <ItemList/>
         </Row>
     </div>  
     )
