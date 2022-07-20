@@ -1,20 +1,25 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap-icons/font/bootstrap-icons.css';
-import NavBar from './components/NavBar';
-import HomeCarousel from './components/HomeCarousel';
-import ItemListContainer from './components/ItemListContainer';
-import ItemCountModal from './components/ItemCountModal';
-import Footer from './components/Footer';
-import './App.scss';
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap-icons/font/bootstrap-icons.css";
+import NavBar from "./components/NavBar";
+import Footer from "./components/Footer";
+import Homepage from "./components/Homepage";
+import Categories from "./components/Categories";
+import ItemDetailContainer from "./components/ItemDetailContainer";
+import "./App.scss";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
-       <NavBar/>
-       <HomeCarousel/>
-       <ItemListContainer/>
-       <ItemCountModal/>
-       <Footer/>
+      <BrowserRouter>
+        <NavBar />
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/category/:categoryID" element={<Categories />} />
+          <Route path="/detail/:itemDetailID" element={<ItemDetailContainer />} />
+        </Routes>
+        <Footer />
+      </BrowserRouter>
     </div>
   );
 }
