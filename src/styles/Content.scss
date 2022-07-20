@@ -7,4 +7,21 @@ body {
 a {
     color: black;
     text-decoration: none;
+    &:hover {
+        color: black;
+        text-decoration: none; 
+    }
+}
+
+button, .btn {
+    text-transform: uppercase;
+    background-color: $color-secondary;
+    color: black;
+    &:hover, &:active, &:focus {
+        background-color: $color-main;
+    }
+    &:disabled {
+        background-color: $color-hover;
+        border-color: $color-main;
+    }
 }
