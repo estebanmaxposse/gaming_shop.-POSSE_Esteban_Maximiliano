@@ -10,9 +10,11 @@ const Categories = () => {
     
     if (categoryID === "games") {
         return <GamesPage categoryID={categoryID} />
-    } else if (categoryID === "consoles") {
+    } 
+    else if (categoryID === "consoles") {
         return <ConsolesPage categoryID={categoryID} />
-    } else if (categoryID === "accessories") {
+    } 
+    else if (categoryID === "accessories") {
         return <AccessoriesPage categoryID={categoryID} />
     }
 }

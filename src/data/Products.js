@@ -248,10 +248,18 @@ export const Products = [{
     "pictureUrl": require("../img/console_xbox_seriesS.png")
   }, {
     "id": "32",
-    "title": "Xbox Series x",
-    "description": "Introducing Xbox Series X, the fastest, most powerful Xbox ever. Play thousands of titles from four generations of consoles—all games look and play best on Xbox Series X. ",
+    "title": "Xbox Series X",
+    "description": "Introducing Xbox Series X, the fastest, most powerful Xbox ever. Play thousands of titles from four generations of consoles—all games look and play best on Xbox Series X.",
     "price": 500,
     "stock": "3",
     "category": "consoles",
     "pictureUrl": require("../img/console_xbox_seriesX.png")
+  }, {
+    "id": "33",
+    "title": "Final Fantasy 7 Remake Intergrade",
+    "description": "Cloud Strife, an ex-SOLDIER operative, descends on the mako-powered city of Midgar. The world of the timeless classic FINAL FANTASY VII is reborn, using cutting-edge graphics technology, a new battle system and an additional adventure featuring Yuffie Kisaragi.",
+    "price": 70,
+    "stock": "6",
+    "category": "games",
+    "pictureUrl": require("../img/game_ff7ri_boxart.png")
   }]

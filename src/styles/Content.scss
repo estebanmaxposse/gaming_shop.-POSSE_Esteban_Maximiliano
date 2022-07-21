@@ -25,3 +25,10 @@ button, .btn {
         border-color: $color-main;
     }
 }
+
+.loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url("../img/bg_pink.png") no-repeat left top, url("../img/bg_green.png") no-repeat right top,  #ededed top;
+}

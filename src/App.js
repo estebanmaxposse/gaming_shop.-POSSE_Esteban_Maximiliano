@@ -5,6 +5,7 @@ import Footer from "./components/Footer";
 import Homepage from "./components/Homepage";
 import Categories from "./components/Categories";
 import ItemDetailContainer from "./components/ItemDetailContainer";
+import LoadingGif from "./components/LoadingGif";
 import "./App.scss";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NoMatch from "./components/NoMatch";

@@ -1,6 +1,6 @@
 import React from 'react';
 import img from '../img/logo_no_text.png';
-import { Navbar, Offcanvas, Nav, Container, NavDropdown, Form, FormControl, Button } from 'react-bootstrap';
+import { Navbar, Offcanvas, Nav, Container, NavDropdown, Button } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import CartWidget from './CartWidget';
 import SearchBar from './SearchBar';

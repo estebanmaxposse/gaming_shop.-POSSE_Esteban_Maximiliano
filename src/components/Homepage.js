@@ -7,8 +7,8 @@ const Homepage = () => {
     <>
         <HomeCarousel />
         <div id="best-sellers" className='card-container'>
-          <p>Why not try out some of our</p>
-          <h1>Best sellers!</h1>
+          <p>Check out our</p>
+          <h1>Entire Catalogue!</h1>
           <ItemListContainer />
         </div>
     </>
