@@ -2,7 +2,7 @@ import React from "react";
 import { Container, Row, Col, Image } from 'react-bootstrap';
 import ItemCount from './ItemCount';
 
-export const ItemDetail = ({product}) => {
+const ItemDetail = ({product}) => {
   return (
     <div className="item-detail-bg">
       <div className="item-detail">

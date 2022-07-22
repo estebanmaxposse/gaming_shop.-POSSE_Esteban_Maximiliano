@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button, Col, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-const Item = ({ product, index }) => {
+const Item = ({ product }) => {
   return (
     <Col md={4} className="mb-4">
       <Link to={`/detail/${product.id}`}>

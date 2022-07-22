@@ -32,3 +32,25 @@ button, .btn {
     align-items: center;
     background: url("../img/bg_pink.png") no-repeat left top, url("../img/bg_green.png") no-repeat right top,  #ededed top;
 }
+
+.category-headline {
+    margin: 1.5rem 0;
+    padding: 0 5rem;
+    text-align: left;
+    color: white;
+}
+
+#games-headline {
+    background: url("../img/headline_green.png") no-repeat;
+    background-size: contain;
+}
+
+#consoles-headline {
+    background: url("../img/headline_blue.png") no-repeat;
+    background-size: contain;
+}
+
+#accessories-headline {
+    background: url("../img/headline_pink.png") no-repeat;
+    background-size: contain;
+}

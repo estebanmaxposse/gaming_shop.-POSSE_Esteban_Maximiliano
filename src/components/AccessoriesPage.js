@@ -1,13 +1,15 @@
-import React from 'react';
+import React from "react";
 import ItemListContainer from "./ItemListContainer";
 
-function AccessoriesPage({categoryID}) {
+const AccessoriesPage = ({ categoryID }) => {
   return (
-    <div className='card-container'>
-        <h1>ACCESSORIES</h1>
-        <ItemListContainer categoryID={categoryID}/>
+    <div>
+      <h1 className="category-headline" id="accessories-headline">ACCESSORIES</h1>
+      <div className="card-container">
+        <ItemListContainer categoryID={categoryID} />
+      </div>
     </div>
-  )
+  );
 }
 
-export default AccessoriesPage
+export default AccessoriesPage;

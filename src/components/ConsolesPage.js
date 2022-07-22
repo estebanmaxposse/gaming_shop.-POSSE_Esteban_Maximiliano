@@ -1,13 +1,15 @@
-import React from 'react';
+import React from "react";
 import ItemListContainer from "./ItemListContainer";
 
-function ConsolesPage({categoryID}) {
+const ConsolesPage = ({ categoryID }) => {
   return (
-    <div className='card-container'>
-        <h1>CONSOLES</h1>
-        <ItemListContainer categoryID={categoryID}/>
+    <div>
+      <h1 className="category-headline" id="consoles-headline">CONSOLES</h1>
+      <div className="card-container">
+        <ItemListContainer categoryID={categoryID} />
+      </div>
     </div>
-  )
+  );
 }
 
-export default ConsolesPage
+export default ConsolesPage;

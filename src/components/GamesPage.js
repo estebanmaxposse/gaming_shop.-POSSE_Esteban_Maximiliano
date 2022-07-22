@@ -1,13 +1,15 @@
-import React from 'react';
+import React from "react";
 import ItemListContainer from "./ItemListContainer";
 
-function GamesPage({categoryID}) {
+const GamesPage = ({ categoryID }) => {
   return (
-    <div className='card-container'>
-        <h1>GAMES</h1>
-        <ItemListContainer categoryID={categoryID}/>
+    <div>
+      <h1 className="category-headline" id="games-headline">GAMES</h1>
+      <div className="card-container">
+        <ItemListContainer categoryID={categoryID} />
+      </div>
     </div>
-  )
+  );
 }
 
-export default GamesPage
+export default GamesPage;

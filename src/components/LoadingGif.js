@@ -2,7 +2,7 @@ import React from 'react';
 import { Image } from 'react-bootstrap';
 import gif from '../img/loading.gif';
 
-function LoadingGif() {
+const LoadingGif = () => {
   return (
     <div className='loading-container'>
         <div className='loading-gif'>
@@ -13,4 +13,4 @@ function LoadingGif() {
   )
 }
 
-export default LoadingGif
+export default LoadingGif;

@@ -3,7 +3,7 @@ import { Products } from "../data/Products";
 import Item from "./Item";
 import LoadingGif from "./LoadingGif";
 
-export const ItemList = ({ categoryID }) => {
+const ItemList = ({ categoryID }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [products, setData] = useState([]);
 
@@ -33,3 +33,5 @@ export const ItemList = ({ categoryID }) => {
     </>
   )
 };
+
+export default ItemList;

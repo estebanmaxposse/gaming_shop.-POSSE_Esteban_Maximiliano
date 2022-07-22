@@ -1,6 +1,6 @@
 import React from "react";
 import { Row } from "react-bootstrap";
-import { ItemList } from "./ItemList";
+import ItemList from "./ItemList";
 
 const ItemListContainer = ({categoryID}) => {
     return (

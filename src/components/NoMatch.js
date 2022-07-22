@@ -2,7 +2,7 @@ import React from "react";
 import { Row, Col, Image, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-function NoMatch() {
+const NoMatch = () => {
   return (
     <div className="not-found">
       <Row>
