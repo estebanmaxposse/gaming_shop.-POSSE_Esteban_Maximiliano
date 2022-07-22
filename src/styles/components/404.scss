@@ -1,0 +1,32 @@
+.not-found {
+    padding: 32px;
+    height: 80vh;
+    background: url("../../img/bg_pink.png") no-repeat left top, url("../../img/bg_green.png") no-repeat right top;
+    .row {
+        height: 100%;
+    }
+    &-text {
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: flex-end;
+        h1, h3 {
+            text-transform: uppercase;
+        }
+        p {
+            font-family: $font-secundary;
+            width: inherit;
+            text-align: end;
+        }
+    }
+    &-image {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+    &-button {
+        padding: 16px;
+    }
+}

@@ -1,11 +1,12 @@
 import React from "react";
-import { Col, Row, Button } from "react-bootstrap";
+import { Col, Row, Buthrefn } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
-  /* curator-feed-default-feed-layout */
+  /* curahrefr-feed-default-feed-layout */
   (function(){
     var i,e,d=document,s="script";i=d.createElement("script");i.async=1;i.charset="UTF-8";
-    i.src="https://cdn.curator.io/published/8597cfc5-ed40-4528-bb81-df18f85e351a.js";
+    i.src="https://cdn.curahrefr.io/published/8597cfc5-ed40-4528-bb81-df18f85e351a.js";
     e=d.getElementsByTagName(s)[0];e.parentNode.insertBefore(i, e);
     })();
 
@@ -23,10 +24,18 @@ const Footer = () => {
             </div>
             <p className="footer-aboutus-slogan">Playing alongside you since the 90s</p>
             <div className="footer-aboutus-socialmedia d-flex">
+              <a href='https://www.facebook.com/esteban.posse.1/' target="_blank" >
                 <i className="bi bi-facebook footer-aboutus-socialmedia-icon"></i>
+              </a>
+              <a href='https://www.youtube.com/channel/UCsqgQCkRAhrxSVe78ogab_Q' target="_blank">
                 <i className="bi bi-youtube footer-aboutus-socialmedia-icon"></i>
-                <i className="bi bi-twitter footer-aboutus-socialmedia-icon"></i>
+              </a>
+              <a href='https://twitter.com/estebanFmlLmao' target="_blank">
+                <i className="bi bi-twitter footer-aboutus-socialmedia-icon" target="_blank"></i>
+              </a>
+              <a href='https://www.instagram.com/esteban.posse98/' target="_blank">
                 <i className="bi bi-instagram footer-aboutus-socialmedia-icon"></i>
+              </a>
             </div>
           </div>
         </Col>
@@ -36,19 +45,19 @@ const Footer = () => {
             <h6>Links</h6>
             <ul>
               <li>
-                <a href="#">About us</a>
+                <Link to={"/aboutus"}>About us</Link>
               </li>
               <li>
-                <a href="#">Games</a>
+                <Link to={'/category/games'}>Games</Link>
               </li>
               <li>
-                <a href="#">Consoles</a>
+                <Link to={'/category/consoles'}>Consoles</Link>
               </li>
               <li>
-                <a href="#">Accessories</a>
+                <Link to={'/category/accessories'}>Accessories</Link>
               </li>
               <li>
-                <a href="#">Contact</a>
+                <Link to={"/contact"}>Contact</Link>
               </li>
             </ul>
           </div>
@@ -58,16 +67,16 @@ const Footer = () => {
             <h6>Contact</h6>
             <ul>
               <li>
-                <a href="#">Support</a>
+                <Link to={"/support"}>Support</Link>
               </li>
               <li>
-                <a href="#">FAQs</a>
+                <Link to={"/faqs"}>FAQs</Link>
               </li>
               <li>
-                <a href="#">About-me</a>
+                <Link to={"/aboutme"}>About-me</Link>
               </li>
               <li>
-                <a href="#">Privacy Policy</a>
+                <Link to={"/privacy-policy"}>Privacy Policy</Link>
               </li>
             </ul>
           </div>
@@ -76,7 +85,7 @@ const Footer = () => {
         <Col xs={12} md={4}>
           <div className="footer-feed">
             <h6>Follow us on YouTube!</h6>
-            <div id="curator-feed-default-feed-layout"><a href="https://curator.io" target="_blank" className="crt-logo crt-tag">Powered by Curator.io</a></div>
+            <div id="curahrefr-feed-default-feed-layout"><a href="https://curahrefr.io" target="_blank" className="crt-logo crt-tag">Powered by Curahrefr.io</a></div>
           </div>
         </Col>
       </Row>

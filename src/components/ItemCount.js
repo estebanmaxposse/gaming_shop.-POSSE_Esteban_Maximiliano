@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { Button, InputGroup, Form, FormControl } from 'react-bootstrap';
+import { Button, InputGroup, FormControl } from 'react-bootstrap';
 
 const ItemCount = ({initial, stock, onAdd}) => {
 

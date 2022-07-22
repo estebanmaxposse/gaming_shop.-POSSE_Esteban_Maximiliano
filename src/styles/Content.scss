@@ -4,3 +4,53 @@ body {
     background-color: white;
 }
 
+a {
+    color: black;
+    text-decoration: none;
+    &:hover {
+        color: black;
+        text-decoration: none; 
+    }
+}
+
+button, .btn {
+    text-transform: uppercase;
+    background-color: $color-secondary;
+    color: black;
+    &:hover, &:active, &:focus {
+        background-color: $color-main;
+    }
+    &:disabled {
+        background-color: $color-hover;
+        border-color: $color-main;
+    }
+}
+
+.loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url("../img/bg_pink.png") no-repeat left top, url("../img/bg_green.png") no-repeat right top,  #ededed top;
+}
+
+.category-headline {
+    margin: 1.5rem 0;
+    padding: 0 5rem;
+    text-align: left;
+    color: white;
+}
+
+#games-headline {
+    background: url("../img/headline_green.png") no-repeat;
+    background-size: contain;
+}
+
+#consoles-headline {
+    background: url("../img/headline_blue.png") no-repeat;
+    background-size: contain;
+}
+
+#accessories-headline {
+    background: url("../img/headline_pink.png") no-repeat;
+    background-size: contain;
+}

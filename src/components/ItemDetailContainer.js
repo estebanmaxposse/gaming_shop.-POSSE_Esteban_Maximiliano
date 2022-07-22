@@ -1,27 +1,33 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
+import LoadingGif from "./LoadingGif";
 import ItemDetail from "./ItemDetail";
 import { Products } from "../data/Products";
+import { useParams } from "react-router-dom";
 
-const ItemDetailContainer = ({showModal, closeModal, index}) => {
-    const [product, setData] = useState([]);
-    
-    useEffect(() => {
-      if (showModal) {
-        const getData = new Promise(resolve => {
-          setTimeout(() => {
-              resolve(Products[index]);
-          }, 2000);
-        });
-      
-        getData.then((res) => {
-          setData(res);
-        });
-      }
-    }, [showModal]);
-    
+const ItemDetailContainer = () => {
+  const [isLoading, setIsLoading] = useState(false);
+
+  const [product, setData] = useState({});
+  const { itemDetailID } = useParams();
+
+  useEffect(() => {
+    setIsLoading(true);
+    const getData = new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(Products);
+      }, 2000);
+    });
+
+    getData.then((res) => {
+      setIsLoading(false);
+      setData(res.find((product) => product.id === itemDetailID));
+    });
+  }, []);
 
   return (
-    <ItemDetail product={product} showModal={showModal} closeModal={closeModal}/>
+    <div>
+      {isLoading ? <LoadingGif /> : <ItemDetail product={product} />}
+    </div>
   )
 };
 

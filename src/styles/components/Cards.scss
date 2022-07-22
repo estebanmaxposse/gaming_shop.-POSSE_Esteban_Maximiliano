@@ -1,4 +1,4 @@
-#best-sellers {
+.card-container {
     width: 85%;
     margin: 32px auto;
     p {
@@ -13,7 +13,7 @@
     }
 }
 
-.homepage-card {
+.product-card {
     position: relative;
     cursor: pointer;
     height: 100%;
@@ -32,7 +32,7 @@
     }
     &:hover {
         background-color: #4BC3B5;
-        .homepage-card-button {
+        .product-card-button {
             opacity: 1;
         }
     }
