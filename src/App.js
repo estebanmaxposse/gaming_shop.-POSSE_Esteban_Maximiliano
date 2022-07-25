@@ -5,6 +5,7 @@ import Footer from "./components/Footer";
 import Homepage from "./components/Homepage";
 import Categories from "./components/Categories";
 import ItemDetailContainer from "./components/ItemDetailContainer";
+import Cart from "./components/Cart";
 import Favicon from "react-favicon";
 import "./App.scss";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -18,6 +19,7 @@ function App() {
         <NavBar />
         <Routes>
           <Route path="/" element={<Homepage />} />
+          <Route path="/cart" element={<Cart />} />
           <Route path="/category/:categoryID" element={<Categories />} />
           <Route path="/detail/:itemDetailID" element={<ItemDetailContainer />} />
           <Route path="*" element={<NoMatch />} />
