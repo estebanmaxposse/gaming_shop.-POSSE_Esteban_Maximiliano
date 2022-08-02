@@ -1,7 +1,11 @@
 body {
     font-family: $font-main;
     color: black;
-    background-color: white;
+    background-color: #ededed;
+}
+
+h1, h2, h3, h4, h5 {
+    text-transform: uppercase;
 }
 
 a {
@@ -38,6 +42,9 @@ button, .btn {
     padding: 0 5rem;
     text-align: left;
     color: white;
+    background: url("../img/headline_blue.png") no-repeat;
+    background-size: contain;
+    text-transform: uppercase;
 }
 
 #games-headline {
