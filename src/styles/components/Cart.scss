@@ -1,0 +1,68 @@
+.item-cart {
+    padding: 32px;
+    border-bottom: 1px solid $color-key;
+    justify-content: space-between;
+    img {
+        padding: 4px;
+        max-width: 200px;
+        background-color: #9bddd698;
+    }
+    &-text {
+        text-align: end;
+        p {
+            font-family: $font-secundary;
+        }
+    }
+}
+
+.summary {
+    align-self: start;
+    flex-direction: column;
+    justify-content: center;
+    margin: 8px;
+    padding: 8px;
+    background-color: #ffcef198;
+    &-list {
+        margin: auto;
+        width: 100%;
+        &-title {
+            padding: 8px;
+        }
+        &-value, &-subtitle {
+            padding: 4px 0px;
+            font-family: $font-secundary;
+            border-bottom: 1px solid gray;
+        }
+        &-subtitle {
+            text-align: left;
+        }
+        &-value {
+            text-align: right;
+        }
+    }
+}
+
+.cart-list {
+    margin: 0;
+    max-height: 72vh;
+    overflow: auto;
+    width: 80%;
+    &-container {
+        justify-content: center;
+        overflow-x: hidden;
+        margin: 32px;
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
+        border-radius: 4px;
+    }
+    &-box {
+        background-color: white;
+    }
+    &-bg {
+        background: url(http://localhost:3000/gaming_shop.-POSSE_Esteban_Maximiliano/static/media/bg_pink.0f43fc51fa197fc1129d.png) no-repeat left top, url(http://localhost:3000/gaming_shop.-POSSE_Esteban_Maximiliano/static/media/bg_green.3c68b97e55d38a7b379e.png) no-repeat right top;
+    }
+}
+
+.total-value {
+    font-weight: bold;
+    border: none;
+}

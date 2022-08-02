@@ -22,14 +22,35 @@ const CartProvider = ({children}) => {
         }
     }
 
+    const totalProducts = () => {
+        return cart.reduce((accumulatedProducts, addedProduct) => accumulatedProducts + addedProduct.quantity, 0);
+    }
+
+    const totalPrice = () => {
+         return cart.reduce((accumulatedValue, addedValue) => accumulatedValue + addedValue.quantity * addedValue.price, 0);
+    }
     console.log('cart:', cart);
+
+    const localTax = 21;
+
+    const calcTaxes = (price) => {
+      const taxResult = price * localTax / 100;
+      return taxResult;
+    }
+
+    const addTaxes = (subtotal, tax) => subtotal + tax;
 
   return (
     <CartContext.Provider value={{
         clearCart,
         isInCart,
         removeProduct,
-        addItem
+        addItem,
+        totalProducts,
+        totalPrice,
+        calcTaxes,
+        addTaxes,
+        cart
     }}>
         {children}
     </CartContext.Provider>
