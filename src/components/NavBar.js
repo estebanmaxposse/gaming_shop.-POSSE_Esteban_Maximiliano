@@ -1,5 +1,4 @@
 import React from 'react';
-import img from '../img/logo_no_text.png';
 import { Navbar, Offcanvas, Nav, Container, NavDropdown, Button } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import CartWidget from './CartWidget';
@@ -11,7 +10,7 @@ const NavBar = () => {
             <Navbar variant='dark' expand='lg' sticky='top'>
                 <Container fluid>
                     <NavLink className='navbar-brand' to={'/'}>
-                        <img src={img} alt='logo' width='35' height='35'/>
+                        <img src="https://i.imgur.com/y61iWez.png" alt='logo' width='35' height='35'/>
                         <span>Cartridge Valley</span>
                     </NavLink>
                     <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-lg`} />

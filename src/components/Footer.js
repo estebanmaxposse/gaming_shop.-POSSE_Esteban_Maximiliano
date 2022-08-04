@@ -16,7 +16,7 @@ const Footer = () => {
         <Col xs={12} md={2}>
           <div className="footer-aboutus d-flex">
             <div className="footer-aboutus-logo d-flex">
-              <img className="footer-aboutus-logo-img" src={require('../img/logo_no_text.png')}></img>
+              <img className="footer-aboutus-logo-img" src="https://i.imgur.com/ZD8hhwo.png"></img>
               <div className="footer-aboutus-logo-caption d-flex">
                 <p>Cartridge</p>
                 <p>Valley</p>
