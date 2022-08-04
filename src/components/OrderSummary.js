@@ -3,7 +3,7 @@ import { Col, Row } from "react-bootstrap";
 import { useCartContext } from "../contexts/CartContext";
 
 const OrderSummary = () => {
-  const { totalPrice, calcTaxes, addTaxes } = useCartContext();
+  const { totalPrice, calcTaxes, addTaxes, clearCart } = useCartContext();
 
   return (
     <div className="summary d-flex">
@@ -35,6 +35,7 @@ const OrderSummary = () => {
         </Col>
       </Row>
       <button>Go to checkout!</button>
+      <button onClick={() => clearCart()}>Clear Cart</button>
     </div>
   );
 };

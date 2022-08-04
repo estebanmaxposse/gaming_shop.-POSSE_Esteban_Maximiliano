@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Products } from "../data/Products";
 import Item from "./Item";
 import LoadingGif from "./LoadingGif";
 import { getFirestore, collection, getDocs, query, where } from "firebase/firestore";
