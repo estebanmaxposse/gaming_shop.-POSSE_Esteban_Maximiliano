@@ -3,6 +3,7 @@ import LoadingGif from "./LoadingGif";
 import ItemDetail from "./ItemDetail";
 import { Products } from "../data/Products";
 import { useParams } from "react-router-dom";
+import { getFirestore, doc, getDoc } from "firebase/firestore"
 
 const ItemDetailContainer = () => {
   const [isLoading, setIsLoading] = useState(false);

@@ -26,3 +26,6 @@ yarn-error.log*
 
 .psd*
 .ai*
+
+config.js
+serviceAccount.json
