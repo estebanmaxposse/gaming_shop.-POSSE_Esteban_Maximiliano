@@ -5,21 +5,21 @@ import { Link } from "react-router-dom";
 const gamesHomepage = [
   {
     "title": "New Super Mario Bros. U Deluxe",
-    "id": "6",
+    "id": "N147JbSCN9omcVvyHfDn",
     "heading": "On sale!",
     "src": "https://i.imgur.com/APbUAAK.png",
     "description": "Join Mario, Luigi, and pals for single-player or multiplayer fun anytime, anywhere! Take on two family-friendly, side-scrolling adventures with up to three friends as you try to save the Mushroom Kingdom!",
   },
   {
     "title": "Final Fantasy 7 Remake Intergrade",
-    "id": "33",
+    "id": "YXrVz4IrWHM8GxUZ4rof",
     "heading": "New arrival",
     "src": "https://i.imgur.com/75yrbQU.png",
     "description": "The world of the timeless classic FINAL FANTASY VII is reborn, using cutting-edge graphics technology, a new battle system and an additional adventure featuring Yuffie Kisaragi.",
   },
   {
     "title": "Skullgirls 2nd Encore: Umbrella is here!",
-    "id": "12",
+    "id": "rHZIqL0VJLmKuB8CYwCZ",
     "heading": "New DLC Available!",
     "src": "https://i.imgur.com/VKNrVNt.png",
     "description": "Excuuuse me, Princess! Introducing the one and only UMBRELLA! As part of the Season Pass 1, the saltiest sibling in the Canopy Kingdom (and her insatiable monstrosity Hungern) have at long last joined the Skullgirls roster!"
