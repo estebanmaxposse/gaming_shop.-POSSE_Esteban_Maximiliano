@@ -1,6 +1,6 @@
 import React from "react";
 import { useCartContext } from "../contexts/CartContext";
-import { Col, Row } from "react-bootstrap";
+import { Col } from "react-bootstrap";
 
 const ItemCart = ({ product }) => {
   const { removeProduct } = useCartContext();

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Products } from "../data/Products";
 import Item from "./Item";
 import LoadingGif from "./LoadingGif";
+import { getFirestore, collection, getDocs, query, where } from "firebase/firestore";
 
 const ItemList = ({ categoryID }) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -9,21 +9,22 @@ const ItemList = ({ categoryID }) => {
 
   useEffect(() => {
     setIsLoading(true);
-    const getProducts = new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(Products);
-      }, 2000);
-    });
+
+    const queryDatabase = getFirestore();
+    const queryCollection = collection(queryDatabase, 'product');
     if (categoryID) {
-      getProducts.then((resolve) => {
-        setIsLoading(false);
-        setData(resolve.filter((product) => product.category === categoryID));
-      });
+      const queryFilter = query(queryCollection, where('category', '==', categoryID))
+      getDocs(queryFilter)
+        .then(res => {
+          setIsLoading(false);
+          setData(res.docs.map(product => ({ id: product.id, ...product.data() })))
+        });
     } else {
-      getProducts.then((resolve) => {
+      getDocs(queryCollection)
+      .then(res => {
         setIsLoading(false);
-        setData(resolve);
-      });
+        setData(res.docs.map(product => ({ id: product.id, ...product.data() })))
+      })
     }
   }, [categoryID]);
 

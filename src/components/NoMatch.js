@@ -15,7 +15,7 @@ const NoMatch = () => {
           </p>
         </Col>
         <Col xs={12} md={4} className="not-found-image">
-          <Image src={require("../img/404.gif")} />
+          <Image src="https://i.imgur.com/kNhWHx2.gif" />
           <Link to={"/"}>
             <Button>Go home!</Button>
           </Link>

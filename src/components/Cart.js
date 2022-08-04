@@ -25,7 +25,7 @@ const Cart = () => {
             </p>
           </Col>
           <Col xs={12} md={4} className="not-found-image">
-            <Image src={require("../img/waiting.gif")} />
+            <Image src="https://i.imgur.com/WCYp687.gif" />
             <Link to={"/"}>
               <Button>Go home!</Button>
             </Link>

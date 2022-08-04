@@ -5,7 +5,7 @@ export const Products = [{
     "price": 80,
     "stock": "5",
     "category": "games",
-    "pictureUrl": require("../img/game_dying_light_boxart.png")
+    "pictureUrl": "https://i.imgur.com/zbjM3Ni.png"
   }, {
     "id": "2",
     "title": "Elden Ring",
@@ -13,7 +13,7 @@ export const Products = [{
     "price": 60,
     "stock": "7",
     "category": "games",
-    "pictureUrl": require("../img/game_elden_ring_boxart.png")
+    "pictureUrl": "https://i.imgur.com/5tY20pw.png"
   }, {
     "id": "3",
     "title": "Grand Theft Auto V",
@@ -21,7 +21,7 @@ export const Products = [{
     "price": 60,
     "stock": "5",
     "category": "games",
-    "pictureUrl": require("../img/game_gtav_boxart.png")
+    "pictureUrl": "https://i.imgur.com/wHiX52a.png"
   }, {
     "id": "4",
     "title": "Super Mario 3D All Stars",
@@ -29,7 +29,7 @@ export const Products = [{
     "price": 70,
     "stock": "2",
     "category": "games",
-    "pictureUrl": require("../img/game_mario_3d_allstars_boxart.png")
+    "pictureUrl": "https://i.imgur.com/WT7ahEp.png"
   }, {
     "id": "5",
     "title": "Super Mario 3D World + Bowser's Fury",
@@ -37,7 +37,7 @@ export const Products = [{
     "price": 50,
     "stock": "9",
     "category": "games",
-    "pictureUrl": require("../img/game_mario_3d_world_boxart.png")
+    "pictureUrl": "https://i.imgur.com/6r9fYzL.png"
   }, {
     "id": "6",
     "title": "New Super Mario Bros. U Deluxe",
@@ -45,7 +45,7 @@ export const Products = [{
     "price": 40,
     "stock": "8",
     "category": "games",
-    "pictureUrl": require("../img/game_mario_deluxe_boxart.png")
+    "pictureUrl": "https://i.imgur.com/eUIVDSH.png"
   }, {
     "id": "7",
     "title": "Mario Kart 8 Deluxe",
@@ -53,7 +53,7 @@ export const Products = [{
     "price": 60,
     "stock": "6",
     "category": "games",
-    "pictureUrl": require("../img/game_mario_kart_8_boxart.png")
+    "pictureUrl": "https://i.imgur.com/gI3kPh3.png"
   }, {
     "id": "8",
     "title": "Super Mario Maker 2",
@@ -61,7 +61,7 @@ export const Products = [{
     "price": 60,
     "stock": "11",
     "category": "games",
-    "pictureUrl": require("../img/game_mario_maker_boxart.png")
+    "pictureUrl": "https://i.imgur.com/4Q4PAuq.png"
   }, {
     "id": "9",
     "title": "Marvel's Spider-Man: Miles Morales",
@@ -69,7 +69,7 @@ export const Products = [{
     "price": 60,
     "stock": "9",
     "category": "games",
-    "pictureUrl": require("../img/game_miles_morales_boxart.png")
+    "pictureUrl": "https://i.imgur.com/PX93nFr.png"
   }, {
     "id": "10",
     "title": "Persona 5 Royal",
@@ -77,7 +77,7 @@ export const Products = [{
     "price": 60,
     "stock": "7",
     "category": "games",
-    "pictureUrl": require("../img/game_p5r_boxart.png")
+    "pictureUrl": "https://i.imgur.com/22TVchi.png"
   }, {
     "id": "11",
     "title": "Super Smash Bros. Ultimate",
@@ -85,7 +85,7 @@ export const Products = [{
     "price": 70,
     "stock": "12",
     "category": "games",
-    "pictureUrl": require("../img/game_smash_bros_ultimate_boxart.png")
+    "pictureUrl": "https://i.imgur.com/BGzwnV7.png"
   }, {
     "id": "12",
     "title": "Skullgirls 2nd Encore",
@@ -93,7 +93,7 @@ export const Products = [{
     "price": 30,
     "stock": "12",
     "category": "games",
-    "pictureUrl": require("../img/game_skullgirls_boxart.png")
+    "pictureUrl": "https://i.imgur.com/DjqzS56.png"
   }, {
     "id": "13",
     "title": "PS5 HD Camera",
@@ -101,7 +101,7 @@ export const Products = [{
     "price": 25,
     "stock": "16",
     "category": "accessories",
-    "pictureUrl": require("../img/accessory_ps_camera.png")
+    "pictureUrl": "https://i.imgur.com/GtdsFQE.png"
   }, {
     "id": "14",
     "title": "PULSE 3D Wireless Headset",
@@ -109,7 +109,7 @@ export const Products = [{
     "price": 50,
     "stock": "11",
     "category": "accessories",
-    "pictureUrl": require("../img/accessory_ps_headset.png")
+    "pictureUrl": "https://i.imgur.com/tisXNIH.png"
   }, {
     "id": "15",
     "title": "PS5 Dualsense Controller",
@@ -117,7 +117,7 @@ export const Products = [{
     "price": 70,
     "stock": "15",
     "category": "accessories",
-    "pictureUrl": require("../img/accessory_ps_ps5controller.png")
+    "pictureUrl": "https://i.imgur.com/TXD8xOU.png"
   }, {
     "id": "16",
     "title": "PS4 Dualshock Controller",
@@ -125,7 +125,7 @@ export const Products = [{
     "price": 60,
     "stock": "12",
     "category": "accessories",
-    "pictureUrl": require("../img/accessory_ps_ps4controller.png")
+    "pictureUrl": "https://i.imgur.com/PQDH8Sp.png"
   }, {
     "id": "17",
     "title": "GameCube Controller Adapter",
@@ -133,7 +133,7 @@ export const Products = [{
     "price": 70,
     "stock": "8",
     "category": "accessories",
-    "pictureUrl": require("../img/accessory_switch_gcadapter.png")
+    "pictureUrl": "https://i.imgur.com/4JH804n.png"
   }, {
     "id": "18",
     "title": "GameCube Controller Smash Edition",
@@ -141,15 +141,7 @@ export const Products = [{
     "price": 20,
     "stock": "16",
     "category": "accessories",
-    "pictureUrl": require("../img/accessory_switch_gcsmash.png")
-  }, {
-    "id": "19",
-    "title": "GameCube Controller Smash Edition",
-    "description": "Keep the memories alive with the Super Smash Bros. Ultimate Edition GameCube Controller. The nostalgic design will remind many Nintendo fans of the good old days. Show off your loyalty and play your favorite titles the way you know how!",
-    "price": 20,
-    "stock": "8",
-    "category": "accessories",
-    "pictureUrl": require("../img/accessory_switch_gcsmash.png")
+    "pictureUrl": "https://i.imgur.com/VLCN6xs.png"
   }, {
     "id": "20",
     "title": "Joy-Con Charging Grip",
@@ -157,7 +149,7 @@ export const Products = [{
     "price": 20,
     "stock": "14",
     "category": "accessories",
-    "pictureUrl": require("../img/accessory_switch_grip.png")
+    "pictureUrl": "https://i.imgur.com/N64rooq.png"
   }, {
     "id": "21",
     "title": "Nintendo Switch Pro Controller",
@@ -165,7 +157,7 @@ export const Products = [{
     "price": 60,
     "stock": "20",
     "category": "accessories",
-    "pictureUrl": require("../img/accessory_switch_joycon.png")
+    "pictureUrl": "https://i.imgur.com/wZUkpR9.png"
   }, {
     "id": "22",
     "title": "Microsoft Kinect for Xbox",
@@ -173,7 +165,7 @@ export const Products = [{
     "price": 20,
     "stock": "20",
     "category": "accessories",
-    "pictureUrl": require("../img/accessory_xbox_kinect.png")
+    "pictureUrl": "https://i.imgur.com/GtdsFQE.png"
   }, {
     "id": "23",
     "title": "Xbox One Wireless Controller",
@@ -181,7 +173,7 @@ export const Products = [{
     "price": 60,
     "stock": "20",
     "category": "accessories",
-    "pictureUrl": require("../img/accessory_xbox_onecontroller.png")
+    "pictureUrl": "https://i.imgur.com/Qp53dTB.png"
   }, {
     "id": "24",
     "title": "Xbox series X Wireless Controller",
@@ -189,7 +181,7 @@ export const Products = [{
     "price": 70,
     "stock": "20",
     "category": "accessories",
-    "pictureUrl": require("../img/accessory_xbox_xcontroller.png")
+    "pictureUrl": "https://i.imgur.com/64ks5O0.png"
   }, {
     "id": "25",
     "title": "PlayStation 4",
@@ -197,7 +189,7 @@ export const Products = [{
     "price": 300,
     "stock": "5",
     "category": "consoles",
-    "pictureUrl": require("../img/console_ps4_classic.png")
+    "pictureUrl": "https://i.imgur.com/Y3mQ3XB.png"
   }, {
     "id": "26",
     "title": "PlayStation 4 Pro",
@@ -205,7 +197,7 @@ export const Products = [{
     "price": 400,
     "stock": "6",
     "category": "consoles",
-    "pictureUrl": require("../img/console_ps4_pro.png")
+    "pictureUrl": "https://i.imgur.com/n0eoCfM.png"
   }, {
     "id": "27",
     "title": "PlayStation 5",
@@ -213,7 +205,7 @@ export const Products = [{
     "price": 500,
     "stock": "0",
     "category": "consoles",
-    "pictureUrl": require("../img/console_ps5.png")
+    "pictureUrl": "https://i.imgur.com/o1ry0kz.png"
   }, {
     "id": "28",
     "title": "Nintendo Switch",
@@ -221,7 +213,7 @@ export const Products = [{
     "price": 300,
     "stock": "9",
     "category": "consoles",
-    "pictureUrl": require("../img/console_switch_classic.png")
+    "pictureUrl": "https://i.imgur.com/HykVFyJ.png"
   }, {
     "id": "29",
     "title": "Nintendo Switch Lite",
@@ -229,7 +221,7 @@ export const Products = [{
     "price": 220,
     "stock": "6",
     "category": "consoles",
-    "pictureUrl": require("../img/console_switch_lite.png")
+    "pictureUrl": "https://i.imgur.com/eJnvUGM.png"
   }, {
     "id": "30",
     "title": "Nintendo Switch OLED Model",
@@ -237,7 +229,7 @@ export const Products = [{
     "price": 400,
     "stock": "9",
     "category": "consoles",
-    "pictureUrl": require("../img/console_switch_oled.png")
+    "pictureUrl": "https://i.imgur.com/Vz3pBBw.png"
   }, {
     "id": "31",
     "title": "Xbox Series S",
@@ -245,7 +237,7 @@ export const Products = [{
     "price": 300,
     "stock": "5",
     "category": "consoles",
-    "pictureUrl": require("../img/console_xbox_seriesS.png")
+    "pictureUrl": "https://i.imgur.com/mblNWdF.png"
   }, {
     "id": "32",
     "title": "Xbox Series X",
@@ -253,7 +245,7 @@ export const Products = [{
     "price": 500,
     "stock": "3",
     "category": "consoles",
-    "pictureUrl": require("../img/console_xbox_seriesX.png")
+    "pictureUrl": "https://i.imgur.com/nXR98LU.png"
   }, {
     "id": "33",
     "title": "Final Fantasy 7 Remake Intergrade",
@@ -261,5 +253,5 @@ export const Products = [{
     "price": 70,
     "stock": "6",
     "category": "games",
-    "pictureUrl": require("../img/game_ff7ri_boxart.png")
+    "pictureUrl": "https://i.imgur.com/HVIdggZ.png"
   }]
