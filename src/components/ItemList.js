@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Item from "./Item";
 import LoadingGif from "./LoadingGif";
-import { getFirestore, collection, getDocs, query, where } from "firebase/firestore";
+import { collection, getDocs, query, where } from "firebase/firestore";
+import { db } from "../firebase/config";
 
 const ItemList = ({ categoryID }) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -10,7 +11,7 @@ const ItemList = ({ categoryID }) => {
   useEffect(() => {
     setIsLoading(true);
 
-    const queryDatabase = getFirestore();
+    const queryDatabase = db;
     const queryCollection = collection(queryDatabase, 'product');
     if (categoryID) {
       const queryFilter = query(queryCollection, where('category', '==', categoryID))
