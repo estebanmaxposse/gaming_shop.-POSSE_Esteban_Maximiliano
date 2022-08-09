@@ -15,6 +15,7 @@ import SignUp from "./components/SignUp";
 import Account from "./components/Account";
 import "./App.scss";
 import { AuthContextProvider } from "./contexts/AuthContext";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   return (
@@ -28,7 +29,14 @@ function App() {
               <Route path="/" element={<Homepage />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signUp" element={<SignUp />} />
-              <Route path="/account" element={<Account />} />
+              <Route
+                path="/account"
+                element={
+                  <ProtectedRoute>
+                    <Account />
+                  </ProtectedRoute>
+                }
+              />
               <Route path="/cart" element={<Cart />} />
               <Route path="/category/:categoryID" element={<Categories />} />
               <Route

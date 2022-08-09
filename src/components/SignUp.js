@@ -8,7 +8,7 @@ const SignUp = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   const { createUser } = UserAuth();
 
   const handleSignUp = async (e) => {
@@ -16,7 +16,7 @@ const SignUp = () => {
     setError("");
     try {
       await createUser(email, password);
-      navigate('/account');
+      navigate("/account");
     } catch (e) {
       setError(e.message);
       console.log(e.message);
