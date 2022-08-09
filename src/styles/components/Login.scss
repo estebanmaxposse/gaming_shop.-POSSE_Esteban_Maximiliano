@@ -1,0 +1,16 @@
+.sign-in {
+    width: 40vw;
+    margin: 32px;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.25);
+    border-radius: 4px;
+    background-color: white;
+    &-bg {
+        display: flex;
+        justify-content: center;
+        background: url("https://i.imgur.com/vn6tICW.png") no-repeat left top, url("https://i.imgur.com/Twylj4y.png") no-repeat right top,  #ededed top;
+    }
+    &-form {
+        width: 80%;
+        margin: auto;
+    }
+}

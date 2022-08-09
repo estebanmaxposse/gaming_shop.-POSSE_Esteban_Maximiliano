@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navbar, Offcanvas, Nav, Container, NavDropdown, Button } from 'react-bootstrap';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import CartWidget from './CartWidget';
 import SearchBar from './SearchBar';
 
@@ -27,7 +27,9 @@ const NavBar = () => {
                                 <li className='nav-item'><NavLink className='nav-link' to={'/contact'}>Contact</NavLink></li>
                                 <SearchBar/>
                                 <CartWidget/>
-                                <Button id='sign-up-button'>Sign Up!</Button>
+                                <Link to={'/login'}>
+                                    <Button className='position-relative' id='sign-up-button'>Sign Up!</Button>
+                                </Link>
                             </Nav>
                         </Offcanvas.Body>
                     </Navbar.Offcanvas>
