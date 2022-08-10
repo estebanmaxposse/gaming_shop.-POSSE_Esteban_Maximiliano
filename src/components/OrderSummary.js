@@ -1,18 +1,19 @@
 import React from "react";
 import { Col, Row } from "react-bootstrap";
 import { useCartContext } from "../contexts/CartContext";
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, Timestamp } from "firebase/firestore";
 import { db } from "../firebase/config";
 
 const OrderSummary = () => {
   const { totalPrice, calcTaxes, addTaxes, clearCart, cart } = useCartContext();
   
   const order = {
+    date: Timestamp.now(),
     buyer: {
       name: 'Esteban',
       email: 'Posse',
       phone: '3874106249',
-      address: 'my home'
+      address: 'my home',
     },
     items: cart.map(product => ({id: product.id, title: product.title, price: product.price, quantity: product.quantity})),
     total: totalPrice(),
