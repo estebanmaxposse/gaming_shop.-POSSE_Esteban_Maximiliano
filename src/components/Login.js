@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { UserAuth } from "../contexts/AuthContext";
-import { Formik, Form, Field, ErrorMessage } from "formik";
 
 const Login = () => {
   const [email, setEmail] = useState("");
