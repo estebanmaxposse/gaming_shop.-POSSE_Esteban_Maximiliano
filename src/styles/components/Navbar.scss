@@ -21,6 +21,13 @@
     background-color: $color-hover;
 }
 
+.caret-off::before {
+    display: none;
+}
+.caret-off::after {
+    display: none;
+}
+
 #search-bar {
     padding: 0 8px;
     &-button {
@@ -71,4 +78,20 @@
 
 #offcanvasNavbarDropdown-expand-lg {
     text-align: end;
+}
+
+.avatar {
+    &-toggle {
+        border-radius: 50%;
+        max-width: 42px;
+        max-height: 42px;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+    }
+    &-img {
+        width: auto;
+        height: 50px;
+        vertical-align: middle;
+    }
 }

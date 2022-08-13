@@ -30,6 +30,24 @@ button, .btn {
     }
 }
 
+label {
+    display: block;
+    text-align: start;
+    font-family: $font-secundary;
+}
+
+input {
+    font-family: $font-secundary;
+}
+
+p {
+    font-family: $font-secundary;
+}
+
+.fullwidth-button {
+    width: 100%;
+}
+
 .loading-container {
     display: flex;
     justify-content: center;

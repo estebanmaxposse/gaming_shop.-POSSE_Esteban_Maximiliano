@@ -10,24 +10,39 @@ import Cart from "./components/Cart";
 import Favicon from "react-favicon";
 import NoMatch from "./components/NoMatch";
 import CartProvider from "./contexts/CartContext";
+import Login from "./components/Login";
+import SignUp from "./components/SignUp";
+import Account from "./components/Account";
 import "./App.scss";
+import AuthContext from "./contexts/AuthContext";
+import NotifContext from "./contexts/NotifContext";
 
 function App() {
   return (
     <div className="App">
       <Favicon url="https://i.imgur.com/y61iWez.png" />
       <BrowserRouter>
-        <CartProvider>
-          <NavBar />
-          <Routes>
-            <Route path="/" element={<Homepage />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/category/:categoryID" element={<Categories />} />
-            <Route path="/detail/:itemDetailID" element={<ItemDetailContainer />} />
-            <Route path="*" element={<NoMatch />} />
-          </Routes>
-          <Footer />
-        </CartProvider>
+        <AuthContext>
+          <NotifContext>
+            <CartProvider>
+              <NavBar />
+              <Routes>
+                <Route path="/" element={<Homepage />} />
+                <Route path="/cart" element={<Cart />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/signUp" element={<SignUp />} />
+                <Route path="/account" element={<Account />} />
+                <Route path="/category/:categoryID" element={<Categories />} />
+                <Route
+                  path="/detail/:itemDetailID"
+                  element={<ItemDetailContainer />}
+                />
+                <Route path="/*" element={<NoMatch />} />
+              </Routes>
+              <Footer />
+            </CartProvider>
+          </NotifContext>
+        </AuthContext>
       </BrowserRouter>
     </div>
   );
