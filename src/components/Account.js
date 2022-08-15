@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 
 const Account = () => {
     const {currentUser, logout} = useAuth();
+    const [name, setName] = useState(currentUser?.displayName);
+    const [file, setFile] = useState(null);
+    const [photoURL, setPhotoURL] = useState(currentUser?.displayPhotoURL);
 
     const navigate = useNavigate();
     const handleLogout = async () => {
@@ -15,6 +18,7 @@ const Account = () => {
             console.log(e.message);
         };
     };
+
   return (
     <div>
       <h1>Your Account</h1>
