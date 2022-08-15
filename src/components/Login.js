@@ -1,9 +1,7 @@
-import { async } from "@firebase/util";
 import React, { useState } from "react";
 import { Button, Form, InputGroup } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
-import { useNotif } from "../contexts/NotifContext";
 import Alerts from "./Alerts";
 
 const Login = () => {
@@ -13,7 +11,7 @@ const Login = () => {
 
   const navigate = useNavigate();
 
-  const { setAlert, alert: {isAlert} } = useNotif();
+  const [isAlert, setIsAlert] = useState(false);
 
   const [showPassword, setShowPassword] = useState(false);
 
@@ -33,7 +31,8 @@ const Login = () => {
       await login(email, password);
       navigate("/account");
     } catch (e) {
-      setAlert({ isAlert: true, variant:'danger', message:e.message });
+      setIsAlert(true);
+      setError(e.message);
       console.log(e.message);
     }
   };
@@ -44,7 +43,8 @@ const Login = () => {
       await loginGoogle();
       navigate("/account");
     } catch (e) {
-      setAlert({ isAlert: true, variant:'danger', message:e.message });
+      setIsAlert(true);
+      setError(e.message);
       console.log(e.message);
     }
   }
@@ -53,7 +53,7 @@ const Login = () => {
     <div className="sign-in-bg">
       <div className="sign-in">
         <h1>Welcome back!</h1>
-        {isAlert && <Alerts /> }
+        {isAlert && <Alerts variant='danger' message={error} /> }
         <Form className="sign-in-form mb-3" onSubmit={handleLogin}>
           <Form.Label>Email address</Form.Label>
           <InputGroup className="mb-3 sign-in-input" controlId="formBasicEmail">

@@ -15,7 +15,6 @@ import SignUp from "./components/SignUp";
 import Account from "./components/Account";
 import "./App.scss";
 import AuthContext from "./contexts/AuthContext";
-import NotifContext from "./contexts/NotifContext";
 
 function App() {
   return (
@@ -23,7 +22,6 @@ function App() {
       <Favicon url="https://i.imgur.com/y61iWez.png" />
       <BrowserRouter>
         <AuthContext>
-          <NotifContext>
             <CartProvider>
               <NavBar />
               <Routes>
@@ -41,7 +39,6 @@ function App() {
               </Routes>
               <Footer />
             </CartProvider>
-          </NotifContext>
         </AuthContext>
       </BrowserRouter>
     </div>
