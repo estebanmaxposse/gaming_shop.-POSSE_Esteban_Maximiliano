@@ -3,28 +3,16 @@ import { Form, InputGroup, Button } from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
 import { updateProfile } from "firebase/auth";
 import { ToastContainer, toast } from "react-toastify";
+import { useUser } from "../contexts/UserContext";
 
 const UpdateProfileForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmedPassword, setShowConfirmedPassword] = useState(false);
 
-  const { currentUser, setLoading } = useAuth();
+  const { setLoading } = useAuth();
+  const { user, setPhoneNumber, setShippingAddress } = useUser();
 
-  const [name, setName] = useState(currentUser?.displayName);
-  const [shippingAddress, setShippingAddress] = useState(
-    currentUser?.shippingAddress || ""
-  );
-  const [phoneNumber, setPhoneNumber] = useState(
-    currentUser?.phoneNumber || undefined
-  );
-  //   const [ file, setFile ] = useState(null);
-  //   const [ photoURL, setPhotoURL ] = useState(currenUser?.photoURL);
-
-  //   const handleChange = (e) => {
-  //     const file = e.target.files[0];
-  //     setFile(file);
-  //     setPhotoURL(URL.createObjectURL(file));
-  //   }
+  const [name, setName] = useState(user?.displayName);
 
   const handleMouseDown = (e) => {
     e.preventDefault();
@@ -41,9 +29,9 @@ const UpdateProfileForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    let userObj = { displayName: name, phoneNumber: phoneNumber, shippingAddress: shippingAddress };
+    let userObj = { displayName: name };
     try {
-      await updateProfile(currentUser, userObj);
+      await updateProfile(user, userObj);
       toast.success("Profile successfully updated!", {
         position: toast.POSITION.TOP_CENTER,
       });
@@ -54,7 +42,7 @@ const UpdateProfileForm = () => {
       console.log(error);
     }
     setLoading(false);
-    console.table(currentUser)
+    console.table(user)
   };
 
   return (

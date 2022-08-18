@@ -16,6 +16,7 @@ import SignUp from "./components/SignUp";
 import Account from "./components/Account";
 import "./App.scss";
 import AuthContext from "./contexts/AuthContext";
+import UserContext from "./contexts/UserContext";
 import { ToastContainer } from "react-bootstrap";
 import LoadingBackdrop from "./components/LoadingBackdrop";
 
@@ -25,25 +26,27 @@ function App() {
       <Favicon url="https://i.imgur.com/y61iWez.png" />
       <BrowserRouter>
         <AuthContext>
-          <CartProvider>
-            <ToastContainer />
-            <LoadingBackdrop />
-            <NavBar />
-            <Routes>
-              <Route path="/" element={<Homepage />} />
-              <Route path="/cart" element={<Cart />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/signUp" element={<SignUp />} />
-              <Route path="/account" element={<Account />} />
-              <Route path="/category/:categoryID" element={<Categories />} />
-              <Route
-                path="/detail/:itemDetailID"
-                element={<ItemDetailContainer />}
-              />
-              <Route path="/*" element={<NoMatch />} />
-            </Routes>
-            <Footer />
-          </CartProvider>
+          <UserContext>
+            <CartProvider>
+              <ToastContainer />
+              <LoadingBackdrop />
+              <NavBar />
+              <Routes>
+                <Route path="/" element={<Homepage />} />
+                <Route path="/cart" element={<Cart />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/signUp" element={<SignUp />} />
+                <Route path="/account" element={<Account />} />
+                <Route path="/category/:categoryID" element={<Categories />} />
+                <Route
+                  path="/detail/:itemDetailID"
+                  element={<ItemDetailContainer />}
+                />
+                <Route path="/*" element={<NoMatch />} />
+              </Routes>
+              <Footer />
+            </CartProvider>
+          </UserContext>
         </AuthContext>
       </BrowserRouter>
     </div>

@@ -8,19 +8,18 @@ import {
 } from "firebase/auth";
 import React, { useState, useContext, createContext, useEffect } from "react";
 import { auth, db } from "../firebase/config";
-import { collection, setDoc, doc } from "firebase/firestore";
+import { setDoc, doc } from "firebase/firestore";
 
 const authContext = createContext();
 
 export const useAuth = () => {
-    return useContext(authContext);
+  return useContext(authContext);
 };
 
-
 const AuthContext = ({ children }) => {
-    const [currentUser, setCurrentUser] = useState(null);
-    
-    const [loading, setLoading] = useState(false);
+  const [currentUser, setCurrentUser] = useState(null);
+
+  const [loading, setLoading] = useState(false);
 
   const signUp = async (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password).then(
@@ -31,7 +30,7 @@ const AuthContext = ({ children }) => {
           displayName: userCredential.user.displayName,
           email: userCredential.user.email,
           phoneNumber: "",
-          shippingAddress: ""
+          shippingAddress: "",
         });
       }
     );
@@ -54,16 +53,10 @@ const AuthContext = ({ children }) => {
         displayName: userCredential.user.displayName,
         email: userCredential.user.email,
         phoneNumber: "",
-        shippingAddress: ""
+        shippingAddress: "",
       });
     });
   };
-
-  let user = currentUser;
-  if (!currentUser) {
-    user = null;
-  };
-  console.table(user);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -74,7 +67,6 @@ const AuthContext = ({ children }) => {
     };
   }, []);
 
-
   const value = {
     currentUser,
     signUp,
@@ -83,7 +75,6 @@ const AuthContext = ({ children }) => {
     loginGoogle,
     loading,
     setLoading,
-    user,
   };
   return <authContext.Provider {...{ value }}>{children}</authContext.Provider>;
 };

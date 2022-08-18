@@ -1,12 +1,14 @@
 import React, { useState } from "react";
-import { Button } from "react-bootstrap";
+import { doc, getDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
+import { useUser } from "../contexts/UserContext"
 import AccountModal from "./AccountModal";
 import { ToastContainer, toast } from "react-toastify";
 
 const Account = () => {
-  const { currentUser, logout } = useAuth();
+  const { logout } = useAuth();
+  const { user } = useUser();
 
   const navigate = useNavigate();
   const handleLogout = async () => {
@@ -32,30 +34,30 @@ const Account = () => {
           <h2 className="profile-header">My details</h2>
           <div className="profile-details-pic">
             <img
-              src={currentUser?.photoURL || "https://i.imgur.com/3oHh4La.png"}
+              src={user?.photoURL || "https://i.imgur.com/3oHh4La.png"}
               className="profile-details-pic-img"
             />
           </div>
           <div>
             <p className="profile-details-header">Username</p>
             <p className="profile-details-data">
-              {currentUser?.displayName || currentUser?.email}
+              {user?.displayName || user?.email}
             </p>
           </div>
           <div>
             <p className="profile-details-header">Email</p>
-            <p className="profile-details-data">{currentUser?.email}</p>
+            <p className="profile-details-data">{user?.email}</p>
           </div>
           <div>
             <p className="profile-details-header">Shipping Address</p>
             <p className="profile-details-data text-muted">
-              {currentUser?.shippingAddress || "Add a shipping address"}
+              {user?.shippingAddress || "Add a shipping address"}
             </p>
           </div>
           <div>
             <p className="profile-details-header">Phone Number</p>
             <p className="profile-details-data text-muted">
-              {currentUser?.phoneNumber || "Add a phone number"}
+              {user?.phoneNumber || "Add a phone number"}
             </p>
           </div>
           <div>

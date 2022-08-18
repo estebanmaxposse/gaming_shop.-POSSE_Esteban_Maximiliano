@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useAuth } from "../contexts/AuthContext";
 import { Modal, Button } from "react-bootstrap";
 import UpdateProfileForm from "./UpdateProfileForm";
 
@@ -8,8 +7,6 @@ const AccountModal = () => {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
-  const { currentUser, setLoading } = useAuth();
 
   return (
     <>

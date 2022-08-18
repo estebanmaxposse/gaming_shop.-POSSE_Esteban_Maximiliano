@@ -4,20 +4,20 @@ import { useCartContext } from "../contexts/CartContext";
 import { addDoc, collection, Timestamp } from "firebase/firestore";
 import { db } from "../firebase/config";
 import { toast, ToastContainer, ToastItem } from "react-toastify";
-import { useAuth } from "../contexts/AuthContext";
+import { useUser } from "../contexts/UserContext";
 
 const OrderSummary = () => {
   const { totalPrice, calcTaxes, addTaxes, clearCart, cart } = useCartContext();
 
-  const { currentUser } = useAuth();
+  const { user } = useUser();
 
   const order = {
     date: Timestamp.now(),
     buyer: {
-      name: currentUser?.displayName || currentUser?.email,
-      email: currentUser.email,
-      phone: currentUser?.phoneNumber || "No phone number added",
-      address: currentUser?.shippingAddress || "No address added",
+      name: user?.displayName || user?.email,
+      email: user.email,
+      phone: user?.phoneNumber,
+      address: user?.shippingAddress,
     },
     items: cart.map((product) => ({
       id: product.id,

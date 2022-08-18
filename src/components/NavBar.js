@@ -11,10 +11,12 @@ import { NavLink, Link } from "react-router-dom";
 import CartWidget from "./CartWidget";
 import SearchBar from "./SearchBar";
 import AvatarDropdown from "./AvatarDropdown";
-import { useAuth } from "../contexts/AuthContext";
+import { useUser } from "../contexts/UserContext";
 
 const NavBar = () => {
-  const { currentUser } = useAuth();
+  const { user } = useUser();
+
+  console.log(user);
 
   return (
     <header>
@@ -76,7 +78,7 @@ const NavBar = () => {
                 </li>
                 <SearchBar />
                 <CartWidget />
-                {currentUser ? (
+                {user ? (
                   <AvatarDropdown />
                 ) : (
                   <Link to={"/login"}>
