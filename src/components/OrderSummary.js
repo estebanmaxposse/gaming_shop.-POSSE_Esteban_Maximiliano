@@ -3,31 +3,54 @@ import { Col, Row } from "react-bootstrap";
 import { useCartContext } from "../contexts/CartContext";
 import { addDoc, collection, Timestamp } from "firebase/firestore";
 import { db } from "../firebase/config";
+import { toast, ToastContainer, ToastItem } from "react-toastify";
+import { useAuth } from "../contexts/AuthContext";
 
 const OrderSummary = () => {
   const { totalPrice, calcTaxes, addTaxes, clearCart, cart } = useCartContext();
-  
+
+  const { currentUser } = useAuth();
+
   const order = {
     date: Timestamp.now(),
     buyer: {
-      name: 'Esteban',
-      email: 'Posse',
-      phone: '3874106249',
-      address: 'my home',
+      name: currentUser?.displayName || currentUser?.email,
+      email: currentUser.email,
+      phone: currentUser?.phoneNumber || "No phone number added",
+      address: currentUser?.shippingAddress || "No address added",
     },
-    items: cart.map(product => ({id: product.id, title: product.title, price: product.price, quantity: product.quantity})),
+    items: cart.map((product) => ({
+      id: product.id,
+      title: product.title,
+      price: product.price,
+      quantity: product.quantity,
+    })),
     total: totalPrice(),
-  }
+  };
 
   const createOrder = () => {
     const database = db;
-    const orderCollection = collection(database, 'orders');
-    addDoc (orderCollection, order)
-      .then(({ id }) => alert(`The order "${id}" has been created!`))
-  }
+    const orderCollection = collection(database, "orders");
+    const addToCollectionPromise = addDoc(orderCollection, order);  
+    toast.promise(addToCollectionPromise, {
+      pending: 'Placing order...',
+      success: {
+        render({data: {id}}){
+          return `Successfully placed order ${id}`
+        },
+      },
+      error: 'Something went wrong!',
+    });
+    toast.onChange(payload => {
+      if (payload.status === "removed" && payload.type === toast.TYPE.SUCCESS) {
+        clearCart();
+      }
+    })
+  };
 
   return (
     <div className="summary d-flex">
+      <ToastContainer />
       <h2 className="summary-title">Order Summary</h2>
       <Row className="summary-list">
         <Col xs={6} className="summary-list-subtitle">

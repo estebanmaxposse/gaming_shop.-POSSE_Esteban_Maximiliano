@@ -4,6 +4,9 @@
   "homepage": "https://estebanmaxposse.github.io/gaming_shop.-POSSE_Esteban_Maximiliano/",
   "private": true,
   "dependencies": {
+    "@emotion/react": "^11.10.0",
+    "@emotion/styled": "^11.10.0",
+    "@mui/material": "^5.10.0",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
@@ -17,6 +20,7 @@
     "react-favicon": "^1.0.1",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
+    "react-toastify": "^9.0.8",
     "sass": "^1.53.0",
     "web-vitals": "^2.1.4"
   },

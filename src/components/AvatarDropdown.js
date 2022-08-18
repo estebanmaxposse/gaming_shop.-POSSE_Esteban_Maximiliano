@@ -15,18 +15,16 @@ const AvatarDropdown = () => {
             console.log(e.message);
         };
     };
-
-  console.log(currentUser?.photoURL);
     
   return (
     <>
       <Dropdown className="avatar" align='end'>
         <Dropdown.Toggle className="avatar-toggle caret-off">
-          <img src={currentUser?.photoURL || "https://i.imgur.com/3oHh4La.png"} className="avatar-img" referrerpolicy="no-referrer"/>
+          <img src={currentUser?.photoURL || "https://i.imgur.com/3oHh4La.png"} className="avatar-img" referrerPolicy="no-referrer"/>
         </Dropdown.Toggle>
 
         <Dropdown.Menu>
-          <Dropdown.Header>Username</Dropdown.Header>
+          <Dropdown.Header>{currentUser.displayName || currentUser.email}</Dropdown.Header>
           <Dropdown.Item><Link to={'/account'}>Account</Link></Dropdown.Item>
           <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
         </Dropdown.Menu>

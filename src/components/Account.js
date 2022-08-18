@@ -3,6 +3,7 @@ import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 import AccountModal from "./AccountModal";
+import { ToastContainer, toast } from "react-toastify";
 
 const Account = () => {
   const { currentUser, logout } = useAuth();
@@ -11,15 +12,20 @@ const Account = () => {
   const handleLogout = async () => {
     try {
       await logout();
+      toast.success("Logged out!", {
+        position: toast.POSITION.TOP_CENTER
+      });
       navigate("/");
-      console.log("You're logged out");
-    } catch (e) {
-      console.log(e.message);
+    } catch (error) {
+      toast.error(error, {
+        position: toast.POSITION.TOP_CENTER
+      });
     }
   };
 
   return (
     <div className="profile-bg">
+      <ToastContainer />
       <h1 className="category-headline">Account</h1>
       <div className="profile">
         <div className="profile-details">
@@ -44,6 +50,12 @@ const Account = () => {
             <p className="profile-details-header">Shipping Address</p>
             <p className="profile-details-data text-muted">
               {currentUser?.shippingAddress || "Add a shipping address"}
+            </p>
+          </div>
+          <div>
+            <p className="profile-details-header">Phone Number</p>
+            <p className="profile-details-data text-muted">
+              {currentUser?.phoneNumber || "Add a phone number"}
             </p>
           </div>
           <div>

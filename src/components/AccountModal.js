@@ -9,12 +9,12 @@ const AccountModal = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const { currentUser } = useAuth();
+  const { currentUser, setLoading } = useAuth();
 
   return (
     <>
       <Button onClick={handleShow}>Edit profile</Button>
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose} centered>
         <Modal.Header closeButton>
           <Modal.Title>Edit profile</Modal.Title>
         </Modal.Header>

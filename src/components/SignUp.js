@@ -3,6 +3,7 @@ import { Button, Form, InputGroup } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 import Alerts from "../components/Alerts";
+import { ToastContainer, toast } from "react-toastify";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
@@ -14,7 +15,7 @@ const SignUp = () => {
 
   const [isAlert, setIsAlert] = useState(false);
 
-  const { signUp } = useAuth();
+  const { signUp, setLoading } = useAuth();
 
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmedPassword, setShowConfirmedPassword] = useState(false);
@@ -33,22 +34,28 @@ const SignUp = () => {
 
   const handleSignUp = async (e) => {
     e.preventDefault();
+    setLoading(true);
     setError("");
     try {
       if (password !== confirmedPassword) {
         throw new Error("Passwords don't match!");
       }
       await signUp(email, password);
+      toast.success("Signed up!", {
+        position: toast.POSITION.TOP_CENTER
+      });
       navigate("/account");
     } catch (e) {
       setIsAlert(true);
       setError(e.message);
       console.log(e.message);
-    }
+    };
+    setLoading(false);
   };
 
   return (
     <div className="sign-in-bg">
+      <ToastContainer />
       <div className="sign-in">
         <h1>Sign Up!</h1>
         {isAlert && <Alerts variant="danger" message={error} />}

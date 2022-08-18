@@ -3,6 +3,7 @@ import { Button, Form, InputGroup } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 import Alerts from "./Alerts";
+import { ToastContainer, toast } from "react-toastify";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -23,34 +24,55 @@ const Login = () => {
     e.preventDefault();
   };
 
-  const { login, loginGoogle } = useAuth();
+  const { login, loginGoogle, setLoading } = useAuth();
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       await login(email, password);
-      navigate("/account");
+      toast.success("Signed In!", {
+        position: toast.POSITION.TOP_CENTER,
+        autoClose: 3000
+      });
+      toast.onChange(payload => {
+        if (payload.status === "removed" && payload.type === toast.TYPE.SUCCESS) {
+          navigate("/account");
+        }
+      });
     } catch (e) {
       setIsAlert(true);
       setError(e.message);
       console.log(e.message);
-    }
+    };
+    setLoading(false);
   };
 
   const handleGoogleLogin = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       await loginGoogle();
-      navigate("/account");
+      toast.success("Signed In!", {
+        position: toast.POSITION.TOP_CENTER,
+        autoClose: 3000
+      });
+      toast.onChange(payload => {
+        if (payload.status === "removed" && payload.type === toast.TYPE.SUCCESS) {
+          navigate("/account");
+        }
+      });
     } catch (e) {
       setIsAlert(true);
       setError(e.message);
       console.log(e.message);
-    }
+    };
+    setLoading(false);
   }
 
   return (
     <div className="sign-in-bg">
+      <ToastContainer />
       <div className="sign-in">
         <h1>Welcome back!</h1>
         {isAlert && <Alerts variant='danger' message={error} /> }

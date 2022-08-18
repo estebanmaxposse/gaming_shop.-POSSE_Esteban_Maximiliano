@@ -1,6 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "react-toastify/dist/ReactToastify.css";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import Homepage from "./components/Homepage";
@@ -15,6 +16,8 @@ import SignUp from "./components/SignUp";
 import Account from "./components/Account";
 import "./App.scss";
 import AuthContext from "./contexts/AuthContext";
+import { ToastContainer } from "react-bootstrap";
+import LoadingBackdrop from "./components/LoadingBackdrop";
 
 function App() {
   return (
@@ -22,23 +25,25 @@ function App() {
       <Favicon url="https://i.imgur.com/y61iWez.png" />
       <BrowserRouter>
         <AuthContext>
-            <CartProvider>
-              <NavBar />
-              <Routes>
-                <Route path="/" element={<Homepage />} />
-                <Route path="/cart" element={<Cart />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/signUp" element={<SignUp />} />
-                <Route path="/account" element={<Account />} />
-                <Route path="/category/:categoryID" element={<Categories />} />
-                <Route
-                  path="/detail/:itemDetailID"
-                  element={<ItemDetailContainer />}
-                />
-                <Route path="/*" element={<NoMatch />} />
-              </Routes>
-              <Footer />
-            </CartProvider>
+          <CartProvider>
+            <ToastContainer />
+            <LoadingBackdrop />
+            <NavBar />
+            <Routes>
+              <Route path="/" element={<Homepage />} />
+              <Route path="/cart" element={<Cart />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/signUp" element={<SignUp />} />
+              <Route path="/account" element={<Account />} />
+              <Route path="/category/:categoryID" element={<Categories />} />
+              <Route
+                path="/detail/:itemDetailID"
+                element={<ItemDetailContainer />}
+              />
+              <Route path="/*" element={<NoMatch />} />
+            </Routes>
+            <Footer />
+          </CartProvider>
         </AuthContext>
       </BrowserRouter>
     </div>
