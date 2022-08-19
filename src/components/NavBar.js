@@ -15,9 +15,7 @@ import { useUser } from "../contexts/UserContext";
 
 const NavBar = () => {
   const { user } = useUser();
-
-  console.log(user);
-
+  
   return (
     <header>
       <Navbar variant="dark" expand="lg" sticky="top">
@@ -83,7 +81,7 @@ const NavBar = () => {
                 ) : (
                   <Link to={"/login"}>
                     <Button className="position-relative" id="sign-up-button">
-                      Sign Up!
+                      Log in!
                     </Button>
                   </Link>
                 )}

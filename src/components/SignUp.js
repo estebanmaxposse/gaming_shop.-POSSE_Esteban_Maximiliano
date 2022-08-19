@@ -42,9 +42,14 @@ const SignUp = () => {
       }
       await signUp(email, password);
       toast.success("Signed up!", {
-        position: toast.POSITION.TOP_CENTER
+        position: toast.POSITION.TOP_CENTER,
+        autoClose: 3000
       });
-      navigate("/account");
+      toast.onChange(payload => {
+        if (payload.status === "removed" && payload.type === toast.TYPE.SUCCESS) {
+          navigate("/account");
+        }
+      });
     } catch (e) {
       setIsAlert(true);
       setError(e.message);

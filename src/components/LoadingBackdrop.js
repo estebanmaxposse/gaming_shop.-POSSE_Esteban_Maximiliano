@@ -13,7 +13,7 @@ const LoadingBackdrop = () => {
       <div className="d-flex justify-content-center align-content-center">
         <div className="loading-gif">
           <Image src="https://i.imgur.com/doB2Gtc.gif" />
-          <p>Loading...</p>
+          <p className="loading-text">Loading...</p>
         </div>
       </div>
     </Backdrop>

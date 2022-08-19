@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { doc, getDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 import { useUser } from "../contexts/UserContext"
@@ -8,17 +7,19 @@ import { ToastContainer, toast } from "react-toastify";
 
 const Account = () => {
   const { logout } = useAuth();
-  const { user } = useUser();
+  const { user, setUser } = useUser();
 
   const navigate = useNavigate();
   const handleLogout = async () => {
     try {
       await logout();
+      setUser(null);
       toast.success("Logged out!", {
         position: toast.POSITION.TOP_CENTER
       });
       navigate("/");
     } catch (error) {
+      console.log(error);
       toast.error(error, {
         position: toast.POSITION.TOP_CENTER
       });
@@ -50,13 +51,13 @@ const Account = () => {
           </div>
           <div>
             <p className="profile-details-header">Shipping Address</p>
-            <p className="profile-details-data text-muted">
+            <p className={`profile-details-data ${!user?.shippingAddress && "text-muted"}`}>
               {user?.shippingAddress || "Add a shipping address"}
             </p>
           </div>
           <div>
             <p className="profile-details-header">Phone Number</p>
-            <p className="profile-details-data text-muted">
+            <p className={`profile-details-data ${!user?.phoneNumber && "text-muted"}`}>
               {user?.phoneNumber || "Add a phone number"}
             </p>
           </div>

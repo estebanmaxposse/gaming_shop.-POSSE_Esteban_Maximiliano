@@ -8,7 +8,7 @@ import {
 } from "firebase/auth";
 import React, { useState, useContext, createContext, useEffect } from "react";
 import { auth, db } from "../firebase/config";
-import { setDoc, doc } from "firebase/firestore";
+import { setDoc, doc, getDoc } from "firebase/firestore";
 
 const authContext = createContext();
 
@@ -17,7 +17,7 @@ export const useAuth = () => {
 };
 
 const AuthContext = ({ children }) => {
-  const [currentUser, setCurrentUser] = useState(null);
+  const [googleUser, setGoogleUser] = useState(null);
 
   const [loading, setLoading] = useState(false);
 
@@ -27,7 +27,7 @@ const AuthContext = ({ children }) => {
         const database = db;
         setDoc(doc(database, "users", userCredential.user.uid), {
           id: userCredential.user.uid,
-          displayName: userCredential.user.displayName,
+          displayName: userCredential.user.displayName || "",
           email: userCredential.user.email,
           phoneNumber: "",
           shippingAddress: "",
@@ -40,27 +40,43 @@ const AuthContext = ({ children }) => {
     return signOut(auth);
   };
 
-  const login = (email, password) => {
-    return signInWithEmailAndPassword(auth, email, password);
+  const [userDetails, setUserDetails] = useState();
+
+  const postUserDetails = (userInfo) => {
+    const docRef = doc(db, "users", userInfo.uid);
+    getDoc(docRef).then((docSnap) => {
+      if (docSnap.exists()) {
+        setUserDetails(docSnap.data());
+      } else {
+        setUserDetails({
+          id: userInfo.uid,
+          displayName: userInfo.displayName,
+          email: userInfo.email,
+        });
+        const database = db;
+        setDoc(doc(database, "users", userInfo.uid), userDetails);
+      }
+    });
+  };
+
+  const login = async (email, password) => {
+    return signInWithEmailAndPassword(auth, email, password).then(
+      (userCredential) => {
+        postUserDetails(userCredential.user);
+      }
+    );
   };
 
   const loginGoogle = async () => {
     const provider = new GoogleAuthProvider();
     return signInWithPopup(auth, provider).then((userCredential) => {
-      const database = db;
-      setDoc(doc(database, "users", userCredential.user.uid), {
-        id: userCredential.user.uid,
-        displayName: userCredential.user.displayName,
-        email: userCredential.user.email,
-        phoneNumber: "",
-        shippingAddress: "",
-      });
+      postUserDetails(userCredential.user);
     });
   };
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setCurrentUser(currentUser);
+    const unsubscribe = onAuthStateChanged(auth, (googleUser) => {
+      setGoogleUser(googleUser);
     });
     return () => {
       unsubscribe();
@@ -68,7 +84,9 @@ const AuthContext = ({ children }) => {
   }, []);
 
   const value = {
-    currentUser,
+    googleUser,
+    userDetails,
+    setUserDetails,
     signUp,
     logout,
     login,

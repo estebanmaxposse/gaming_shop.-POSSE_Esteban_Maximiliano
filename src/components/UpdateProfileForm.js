@@ -1,18 +1,27 @@
 import React, { useState } from "react";
 import { Form, InputGroup, Button } from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
-import { updateProfile } from "firebase/auth";
 import { ToastContainer, toast } from "react-toastify";
 import { useUser } from "../contexts/UserContext";
 
-const UpdateProfileForm = () => {
+const UpdateProfileForm = ({ setShow }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmedPassword, setShowConfirmedPassword] = useState(false);
 
   const { setLoading } = useAuth();
-  const { user, setPhoneNumber, setShippingAddress } = useUser();
+  const { updateUser, fetchUserData, user } = useUser();
 
-  const [name, setName] = useState(user?.displayName);
+  const [formDisplayName, setFormDisplayName] = useState(
+    user?.displayName || ""
+  );
+  const [formEmail, setFormEmail] = useState(user?.email || "");
+  const [formPassword, setFormPassword] = useState("");
+  const [formPhoneNumber, setFormPhoneNumber] = useState(
+    user?.phoneNumber || ""
+  );
+  const [formShippingAddress, setFormShippingAddress] = useState(
+    user?.shippingAddress || ""
+  );
 
   const handleMouseDown = (e) => {
     e.preventDefault();
@@ -29,20 +38,12 @@ const UpdateProfileForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    let userObj = { displayName: name };
-    try {
-      await updateProfile(user, userObj);
-      toast.success("Profile successfully updated!", {
-        position: toast.POSITION.TOP_CENTER,
-      });
-    } catch (error) {
-      toast.error(error, {
-        position: toast.POSITION.TOP_CENTER,
-      });
-      console.log(error);
-    }
+    await updateUser(formDisplayName, formPhoneNumber, formShippingAddress);
+    fetchUserData(true);
     setLoading(false);
-    console.table(user)
+    toast.success("Profile successfully updated!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
   };
 
   return (
@@ -54,13 +55,19 @@ const UpdateProfileForm = () => {
             type="text"
             placeholder="Enter new username"
             autoFocus
-            onChange={(e) => setName(e.target.value)}
+            value={formDisplayName}
+            onChange={(e) => setFormDisplayName(e.target.value)}
           />
         </Form.Group>
 
         <Form.Group className="mb-3">
           <Form.Label>Email address</Form.Label>
-          <Form.Control type="email" placeholder="Enter new email" />
+          <Form.Control
+            type="email"
+            placeholder="Enter new email"
+            value={formEmail}
+            onChange={(e) => setFormEmail(e.target.value)}
+          />
         </Form.Group>
 
         <Form.Group className="mb-3">
@@ -68,7 +75,8 @@ const UpdateProfileForm = () => {
           <Form.Control
             type="text"
             placeholder="Enter new phone number"
-            onChange={(e) => setPhoneNumber(e.target.value)}
+            value={formPhoneNumber}
+            onChange={(e) => setFormPhoneNumber(e.target.value)}
           />
         </Form.Group>
 
@@ -77,7 +85,8 @@ const UpdateProfileForm = () => {
           <Form.Control
             type="text"
             placeholder="Enter new shipping address"
-            onChange={(e) => setShippingAddress(e.target.value)}
+            value={formShippingAddress}
+            onChange={(e) => setFormShippingAddress(e.target.value)}
           />
         </Form.Group>
 
@@ -127,7 +136,12 @@ const UpdateProfileForm = () => {
           </Button>
         </InputGroup>
 
-        <Button variant="primary" type="submit" onMouseDown={handleMouseDown}>
+        <Button
+          variant="primary"
+          type="submit"
+          onMouseDown={handleMouseDown}
+          onClick={() => setShow(false)}
+        >
           Save changes
         </Button>
       </Form>

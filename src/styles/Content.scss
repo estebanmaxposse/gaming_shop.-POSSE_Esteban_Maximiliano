@@ -55,6 +55,12 @@ p {
     background: url("https://i.imgur.com/vn6tICW.png") no-repeat left top, url("https://i.imgur.com/Twylj4y.png") no-repeat right top,  #ededed top;
 }
 
+.loading-text {
+    font-family: $font-main;
+    color: white;
+    text-transform: uppercase;
+}
+
 .category-headline {
     margin: 1.5rem 0;
     padding: 0 5rem;
