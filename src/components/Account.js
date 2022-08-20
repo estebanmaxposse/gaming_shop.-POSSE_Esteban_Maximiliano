@@ -14,15 +14,9 @@ const Account = () => {
     try {
       await logout();
       setUser(null);
-      toast.success("Logged out!", {
-        position: toast.POSITION.TOP_CENTER
-      });
       navigate("/");
     } catch (error) {
       console.log(error);
-      toast.error(error, {
-        position: toast.POSITION.TOP_CENTER
-      });
     }
   };
 

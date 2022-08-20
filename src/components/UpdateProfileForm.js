@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import { Form, InputGroup, Button } from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import { useUser } from "../contexts/UserContext";
+import WarningModal from "./WarningModal";
 
-const UpdateProfileForm = ({ setShow }) => {
+const UpdateProfileForm = ({setShow}) => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmedPassword, setShowConfirmedPassword] = useState(false);
 
-  const { setLoading } = useAuth();
+  const { setLoading, logout } = useAuth();
   const { updateUser, fetchUserData, user } = useUser();
 
   const [formDisplayName, setFormDisplayName] = useState(
@@ -38,12 +39,9 @@ const UpdateProfileForm = ({ setShow }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    await updateUser(formDisplayName, formPhoneNumber, formShippingAddress);
+    await updateUser(formDisplayName, formPhoneNumber, formShippingAddress, formEmail);
     fetchUserData(true);
     setLoading(false);
-    toast.success("Profile successfully updated!", {
-      position: toast.POSITION.TOP_CENTER,
-    });
   };
 
   return (
@@ -144,6 +142,7 @@ const UpdateProfileForm = ({ setShow }) => {
         >
           Save changes
         </Button>
+        <WarningModal />
       </Form>
       <ToastContainer />
     </>
