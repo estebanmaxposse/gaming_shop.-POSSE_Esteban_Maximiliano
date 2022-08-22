@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Button, Form, InputGroup } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
-import Alerts from "../components/Alerts";
 import { ToastContainer, toast } from "react-toastify";
 
 const SignUp = () => {
@@ -12,8 +11,6 @@ const SignUp = () => {
   const [error, setError] = useState("");
 
   const navigate = useNavigate();
-
-  const [isAlert, setIsAlert] = useState(false);
 
   const { signUp, setLoading } = useAuth();
 
@@ -51,8 +48,11 @@ const SignUp = () => {
         }
       });
     } catch (e) {
-      setIsAlert(true);
       setError(e.message);
+      toast.error(e.message, {
+        position: toast.POSITION.TOP_CENTER,
+        autoClose: 4000
+      });
       console.log(e.message);
     };
     setLoading(false);
@@ -63,7 +63,6 @@ const SignUp = () => {
       <ToastContainer />
       <div className="sign-in">
         <h1>Sign Up!</h1>
-        {isAlert && <Alerts variant="danger" message={error} />}
         <Form className="sign-in-form mb-3" onSubmit={handleSignUp}>
           <Form.Label>Email address</Form.Label>
           <InputGroup className="mb-3 sign-in-input" controlId="formBasicEmail">

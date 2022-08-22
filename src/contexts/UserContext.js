@@ -7,7 +7,7 @@ import React, {
 } from "react";
 import { useAuth } from "./AuthContext";
 import { doc, getDoc, updateDoc, deleteDoc } from "firebase/firestore";
-import { updateEmail, updateProfile, deleteUser } from "firebase/auth";
+import { updateEmail, updateProfile, deleteUser, updatePassword } from "firebase/auth";
 import { db } from "../firebase/config";
 import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
@@ -73,9 +73,10 @@ const UserContext = ({ children }) => {
     }
   };
 
-  const updateUser = async (name, phoneNumber, shippingAddress, email) => {
+  const updateUser = async (name, phoneNumber, shippingAddress, email, password) => {
     let userObj = { displayName: name };
     let userEmail = email;
+    let userPassword = password;
     let userDetails = {};
     if (name) userDetails.displayName = name;
     if (phoneNumber) userDetails.phoneNumber = phoneNumber;
@@ -85,6 +86,7 @@ const UserContext = ({ children }) => {
     try {
       await updateProfile(googleUser, userObj);
       await updateEmail(googleUser, userEmail);
+      await updatePassword(googleUser, userPassword);
       await updateDoc(userRef, userDetails);
       toast.success("Profile successfully updated!", {
         position: toast.POSITION.TOP_CENTER,
@@ -92,7 +94,6 @@ const UserContext = ({ children }) => {
     } catch (error) {
       console.log(error);
       if (error.message === "Firebase: Error (auth/requires-recent-login).") {
-        console.log("caught error!");
         toast.error("Connection timed out!", {
           position: toast.POSITION.TOP_CENTER,
         });
@@ -104,6 +105,11 @@ const UserContext = ({ children }) => {
             logout();
             navigate("/login");
           }
+        });
+      } else {
+        toast.error(error.message, {
+          position: toast.POSITION.TOP_CENTER,
+          autoClose: 3000
         });
       }
     }

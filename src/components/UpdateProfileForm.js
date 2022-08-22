@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Form, InputGroup, Button } from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
-import { ToastContainer } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import { useUser } from "../contexts/UserContext";
 import WarningModal from "./WarningModal";
 
@@ -17,6 +17,7 @@ const UpdateProfileForm = ({setShow}) => {
   );
   const [formEmail, setFormEmail] = useState(user?.email || "");
   const [formPassword, setFormPassword] = useState("");
+  const [formConfirmPassword, setFormConfirmPassword] = useState("");
   const [formPhoneNumber, setFormPhoneNumber] = useState(
     user?.phoneNumber || ""
   );
@@ -32,6 +33,21 @@ const UpdateProfileForm = ({setShow}) => {
     setShowPassword(!showPassword);
   };
 
+  const handlePasswordValidation = () => {
+    if (formPassword && formConfirmPassword) {
+      if (formPassword === formConfirmPassword) {
+        return formPassword;
+      } else {
+        toast.error("Passwords don't match!", {
+          position: toast.POSITION.TOP_CENTER,
+          autoClose: 4000
+        });
+      }
+    } else {
+      return;
+    }
+  }
+
   const handleConfirmPassword = () => {
     setShowConfirmedPassword(!showConfirmedPassword);
   };
@@ -39,7 +55,8 @@ const UpdateProfileForm = ({setShow}) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    await updateUser(formDisplayName, formPhoneNumber, formShippingAddress, formEmail);
+    handlePasswordValidation();
+    await updateUser(formDisplayName, formPhoneNumber, formShippingAddress, formEmail, formPassword);
     fetchUserData(true);
     setLoading(false);
   };
@@ -96,6 +113,8 @@ const UpdateProfileForm = ({setShow}) => {
           <Form.Control
             type={showPassword ? "text" : "password"}
             placeholder="Password"
+            value={formPassword}
+            onChange={(e) => setFormPassword(e.target.value)}
           />
           <Button
             variant="secondary"
@@ -119,6 +138,8 @@ const UpdateProfileForm = ({setShow}) => {
           <Form.Control
             type={showConfirmedPassword ? "text" : "password"}
             placeholder="Confirm Password"
+            value={formConfirmPassword}
+            onChange={(e) => setFormConfirmPassword(e.target.value)}
           />
           <Button
             variant="secondary"
