@@ -3,17 +3,22 @@ import { Col, Row } from "react-bootstrap";
 import { useCartContext } from "../contexts/CartContext";
 import { addDoc, collection, Timestamp } from "firebase/firestore";
 import { db } from "../firebase/config";
-import { toast, ToastContainer, ToastItem } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import { useUser } from "../contexts/UserContext";
+import { useNavigate } from "react-router-dom";
 
 const OrderSummary = () => {
-  const { totalPrice, calcTaxes, addTaxes, clearCart, cart } = useCartContext();
+  const { totalPrice, calcTaxes, addTaxes, clearCart, cart, totalProducts } = useCartContext();
 
   const { user } = useUser();
 
+  const navigate = useNavigate();
+
   const order = {
     date: Timestamp.now(),
+    status: "Ordered",
     buyer: {
+      buyerID: user?.uid,
       name: user?.displayName || user?.email,
       email: user.email,
       phone: user?.phoneNumber,
@@ -24,14 +29,17 @@ const OrderSummary = () => {
       title: product.title,
       price: product.price,
       quantity: product.quantity,
+      pictureURL: product.pictureUrl
     })),
+    totalItems: totalProducts(),
     total: totalPrice(),
   };
 
   const createOrder = () => {
     const database = db;
     const orderCollection = collection(database, "orders");
-    const addToCollectionPromise = addDoc(orderCollection, order);  
+    const addToCollectionPromise = addDoc(orderCollection, order);
+    console.log("Order no. " + order.id); 
     toast.promise(addToCollectionPromise, {
       pending: 'Placing order...',
       success: {
@@ -44,6 +52,7 @@ const OrderSummary = () => {
     toast.onChange(payload => {
       if (payload.status === "removed" && payload.type === toast.TYPE.SUCCESS) {
         clearCart();
+        navigate("/account")
       }
     })
   };

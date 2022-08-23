@@ -2,8 +2,7 @@ import React, {
   useState,
   useContext,
   createContext,
-  useEffect,
-  useRef,
+  useEffect
 } from "react";
 import { useAuth } from "./AuthContext";
 import { doc, getDoc, updateDoc, deleteDoc } from "firebase/firestore";

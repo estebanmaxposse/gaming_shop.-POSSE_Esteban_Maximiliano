@@ -3,7 +3,9 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 import { useUser } from "../contexts/UserContext"
 import AccountModal from "./AccountModal";
-import { ToastContainer, toast } from "react-toastify";
+import OrderList from "./OrderList";
+import { ToastContainer } from "react-toastify";
+import { Row, Col } from "react-bootstrap";
 
 const Account = () => {
   const { logout } = useAuth();
@@ -63,6 +65,7 @@ const Account = () => {
         </div>
         <div className="profile-orders">
           <h2 className="profile-header">My orders</h2>
+          <OrderList />
         </div>
       </div>
       <div className="profile-wishlist">
