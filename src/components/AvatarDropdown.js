@@ -28,8 +28,8 @@ const AvatarDropdown = () => {
 
         <Dropdown.Menu>
           <Dropdown.Header>{user.displayName || user.email}</Dropdown.Header>
-          <Dropdown.Item><Link to={'/account'}>Account</Link></Dropdown.Item>
-          <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
+          <li><Link to={'/account'} className="dropdown-item">Account</Link></li>
+          <li onClick={handleLogout}><a className="dropdown-item" href="#">Logout</a></li>
         </Dropdown.Menu>
       </Dropdown>
     </>

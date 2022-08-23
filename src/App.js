@@ -14,6 +14,7 @@ import CartProvider from "./contexts/CartContext";
 import Login from "./components/Login";
 import SignUp from "./components/SignUp";
 import Account from "./components/Account";
+import ProtectedRoute from "./components/ProtectedRoute";
 import "./App.scss";
 import AuthContext from "./contexts/AuthContext";
 import UserContext from "./contexts/UserContext";
@@ -36,7 +37,14 @@ function App() {
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/signUp" element={<SignUp />} />
-                <Route path="/account" element={<Account />} />
+                <Route
+                  path="/account"
+                  element={
+                    <ProtectedRoute>
+                      <Account />
+                    </ProtectedRoute>
+                  }
+                />
                 <Route path="/category/:categoryID" element={<Categories />} />
                 <Route
                   path="/detail/:itemDetailID"
