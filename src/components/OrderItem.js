@@ -39,6 +39,9 @@ const OrderItem = ({ order, index }) => {
               </Col>
             ))}
             <Col xs={12}>
+              <p className="mt-3 order-price">Taxes: ${order.tax}</p>
+            </Col>
+            <Col xs={12}>
               <h3 className="mt-3 order-price">Total price: ${order.total}</h3>
             </Col>
           </Accordion.Body>
