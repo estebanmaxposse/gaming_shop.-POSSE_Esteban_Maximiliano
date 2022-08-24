@@ -23,6 +23,6 @@ const NoMatch = () => {
       </Row>
     </div>
   );
-}
+};
 
 export default NoMatch;

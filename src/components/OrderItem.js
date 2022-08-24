@@ -2,8 +2,6 @@ import React from "react";
 import { Col, Row, Accordion } from "react-bootstrap";
 
 const OrderItem = ({ order, index }) => {
-  console.log(order);
-  console.log(order.items);
   return (
     <div>
       <Accordion>
@@ -28,8 +26,11 @@ const OrderItem = ({ order, index }) => {
             </Row>
             {order.items.map((item) => (
               <Col className="d-flex order-item" key={item.id} xs={12}>
-                {console.log(item)}
-                <img src={item.pictureURL} alt={item.title} className="order-item-img"/>
+                <img
+                  src={item.pictureURL}
+                  alt={item.title}
+                  className="order-item-img"
+                />
                 <div className="order-item-text">
                   <h5>{item.title}</h5>
                   <p>Quantity: {item.quantity}</p>

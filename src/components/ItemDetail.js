@@ -7,22 +7,22 @@ import { useUser } from "../contexts/UserContext";
 
 const ItemDetail = ({ product }) => {
   const [goToCart, setGoToCart] = useState(false);
-  const {addItem} = useCartContext();
+  const { addItem } = useCartContext();
 
   const { user } = useUser();
   const navigate = useNavigate();
-  
+
   const handlePurchase = () => {
     if (!user) {
-      navigate('/login')
+      navigate("/login");
     } else {
-      navigate('/cart')
+      navigate("/cart");
     }
-  }
+  };
 
   const onAdd = (quantity) => {
     setGoToCart(true);
-    addItem(product, quantity)
+    addItem(product, quantity);
   };
 
   return (
@@ -44,7 +44,7 @@ const ItemDetail = ({ product }) => {
                   {product.description}
                 </p>
                 {goToCart ? (
-                    <Button onClick={handlePurchase}>Finish Purchase</Button>
+                  <Button onClick={handlePurchase}>Finish Purchase</Button>
                 ) : (
                   <ItemCount
                     stock={product.stock}

@@ -5,7 +5,7 @@ import { ToastContainer, toast } from "react-toastify";
 import { useUser } from "../contexts/UserContext";
 import WarningModal from "./WarningModal";
 
-const UpdateProfileForm = ({setShow}) => {
+const UpdateProfileForm = ({ setShow }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmedPassword, setShowConfirmedPassword] = useState(false);
 
@@ -40,13 +40,13 @@ const UpdateProfileForm = ({setShow}) => {
       } else {
         toast.error("Passwords don't match!", {
           position: toast.POSITION.TOP_CENTER,
-          autoClose: 4000
+          autoClose: 4000,
         });
       }
     } else {
       return;
     }
-  }
+  };
 
   const handleConfirmPassword = () => {
     setShowConfirmedPassword(!showConfirmedPassword);
@@ -56,7 +56,13 @@ const UpdateProfileForm = ({setShow}) => {
     e.preventDefault();
     setLoading(true);
     handlePasswordValidation();
-    await updateUser(formDisplayName, formPhoneNumber, formShippingAddress, formEmail, formPassword);
+    await updateUser(
+      formDisplayName,
+      formPhoneNumber,
+      formShippingAddress,
+      formEmail,
+      formPassword
+    );
     fetchUserData(true);
     setLoading(false);
   };

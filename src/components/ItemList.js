@@ -12,28 +12,39 @@ const ItemList = ({ categoryID }) => {
     setIsLoading(true);
 
     const queryDatabase = db;
-    const queryCollection = collection(queryDatabase, 'product');
+    const queryCollection = collection(queryDatabase, "product");
     if (categoryID) {
-      const queryFilter = query(queryCollection, where('category', '==', categoryID))
-      getDocs(queryFilter)
-        .then(res => {
-          setIsLoading(false);
-          setData(res.docs.map(product => ({ id: product.id, ...product.data() })))
-        });
-    } else {
-      getDocs(queryCollection)
-      .then(res => {
+      const queryFilter = query(
+        queryCollection,
+        where("category", "==", categoryID)
+      );
+      getDocs(queryFilter).then((res) => {
         setIsLoading(false);
-        setData(res.docs.map(product => ({ id: product.id, ...product.data() })))
-      })
+        setData(
+          res.docs.map((product) => ({ id: product.id, ...product.data() }))
+        );
+      });
+    } else {
+      getDocs(queryCollection).then((res) => {
+        setIsLoading(false);
+        setData(
+          res.docs.map((product) => ({ id: product.id, ...product.data() }))
+        );
+      });
     }
   }, [categoryID]);
 
   return (
     <>
-      {isLoading ? <LoadingGifWidescreen /> : products.map((product, index) => (<Item key={product.id} product={product} index={index} />))}
+      {isLoading ? (
+        <LoadingGifWidescreen />
+      ) : (
+        products.map((product, index) => (
+          <Item key={product.id} product={product} index={index} />
+        ))
+      )}
     </>
-  )
+  );
 };
 
 export default ItemList;

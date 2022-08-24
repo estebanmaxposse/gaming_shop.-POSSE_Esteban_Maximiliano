@@ -8,7 +8,8 @@ import { useUser } from "../contexts/UserContext";
 import { useNavigate } from "react-router-dom";
 
 const OrderSummary = () => {
-  const { totalPrice, calcTaxes, addTaxes, clearCart, cart, totalProducts } = useCartContext();
+  const { totalPrice, calcTaxes, addTaxes, clearCart, cart, totalProducts } =
+    useCartContext();
 
   const { user } = useUser();
 
@@ -29,7 +30,7 @@ const OrderSummary = () => {
       title: product.title,
       price: product.price,
       quantity: product.quantity,
-      pictureURL: product.pictureUrl
+      pictureURL: product.pictureUrl,
     })),
     totalItems: totalProducts(),
     total: totalPrice(),
@@ -39,22 +40,21 @@ const OrderSummary = () => {
     const database = db;
     const orderCollection = collection(database, "orders");
     const addToCollectionPromise = addDoc(orderCollection, order);
-    console.log("Order no. " + order.id); 
     toast.promise(addToCollectionPromise, {
-      pending: 'Placing order...',
+      pending: "Placing order...",
       success: {
-        render({data: {id}}){
-          return `Successfully placed order ${id}`
+        render({ data: { id } }) {
+          return `Successfully placed order ${id}`;
         },
       },
-      error: 'Something went wrong!',
+      error: "Something went wrong!",
     });
-    toast.onChange(payload => {
+    toast.onChange((payload) => {
       if (payload.status === "removed" && payload.type === toast.TYPE.SUCCESS) {
         clearCart();
-        navigate("/account")
+        navigate("/account");
       }
-    })
+    });
   };
 
   return (

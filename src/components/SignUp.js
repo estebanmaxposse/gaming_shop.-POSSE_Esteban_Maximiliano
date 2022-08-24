@@ -38,20 +38,23 @@ const SignUp = () => {
       await signUp(email, password);
       toast.success("Signed up!", {
         position: toast.POSITION.TOP_CENTER,
-        autoClose: 3000
+        autoClose: 3000,
       });
-      toast.onChange(payload => {
-        if (payload.status === "removed" && payload.type === toast.TYPE.SUCCESS) {
+      toast.onChange((payload) => {
+        if (
+          payload.status === "removed" &&
+          payload.type === toast.TYPE.SUCCESS
+        ) {
           navigate("/account");
         }
       });
     } catch (e) {
       toast.error(e.message, {
         position: toast.POSITION.TOP_CENTER,
-        autoClose: 4000
+        autoClose: 4000,
       });
       console.log(e.message);
-    };
+    }
     setLoading(false);
   };
 
