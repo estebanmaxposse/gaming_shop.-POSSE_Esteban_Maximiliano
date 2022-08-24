@@ -16,7 +16,6 @@ const OrderList = () => {
   const fetchOrders = async () => {
     setIsLoading(true);
     await fetchUserData(true);
-    console.log(user);
 
     const queryDatabase = db;
     const queryCollection = collection(queryDatabase, "orders");
@@ -27,30 +26,26 @@ const OrderList = () => {
     fetchUserData(true).then(
       getDocs(queryFilter).then(
         (res) => {
-          setIsLoading(false);
           setData(res.docs.map((order) => ({ id: order.id, ...order.data() })));
         },
         (error) => {
           console.log("Fetching data error" + error);
         }
       )
-    )
-  }
+    );
+  };
 
   useEffect(() => {
     fetchOrders();
-  }, [])
-  
+    setIsLoading(false);
+  }, []);
 
-  if (orders.length === 0) {
+  if (isLoading && orders.length === 0) {
     return (
       <div className="empty-cart not-found">
         <Row>
           <Col xs={12} md={6} className="not-found-text">
-            <h1
-              className="not-found-header-title"
-              id="cart-headline"
-            >
+            <h1 className="not-found-header-title" id="cart-headline">
               You haven't ordered anything yet!
             </h1>
             <p className="empty-cart-text">

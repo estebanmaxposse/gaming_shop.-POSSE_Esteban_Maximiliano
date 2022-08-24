@@ -36,7 +36,7 @@ const SearchBar = () => {
 
   const handleCloseList = () => {
     setSearchResults([]);
-  }
+  };
 
   return (
     <div className="position-relative">
@@ -57,14 +57,19 @@ const SearchBar = () => {
         <ol className="list-group position-absolute search-results">
           {sortedSearchResults.slice(0, 4).map(({ item }) => {
             return (
-              <li className="list-group-item search-results-item" key={item.title}>
+              <li
+                className="list-group-item search-results-item"
+                key={item.title}
+              >
                 <Link to={`/detail/${item.id}`} onClick={handleCloseList}>
-                    <div className="d-flex w-100 justify-content-between align-items-center search-results-item-container">
-                        <p className="search-results-item-title">
-                            {item.title}
-                        </p>
-                        <img src={item.pictureUrl} alt={item.title} className='search-results-item-image'/>
-                    </div>
+                  <div className="d-flex w-100 justify-content-between align-items-center search-results-item-container">
+                    <p className="search-results-item-title">{item.title}</p>
+                    <img
+                      src={item.pictureUrl}
+                      alt={item.title}
+                      className="search-results-item-image"
+                    />
+                  </div>
                 </Link>
               </li>
             );

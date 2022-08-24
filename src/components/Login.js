@@ -33,10 +33,13 @@ const Login = () => {
       await login(email, password);
       toast.success("Signed In!", {
         position: toast.POSITION.TOP_CENTER,
-        autoClose: 3000
+        autoClose: 3000,
       });
-      toast.onChange(payload => {
-        if (payload.status === "removed" && payload.type === toast.TYPE.SUCCESS) {
+      toast.onChange((payload) => {
+        if (
+          payload.status === "removed" &&
+          payload.type === toast.TYPE.SUCCESS
+        ) {
           navigate("/account");
         }
       });
@@ -44,7 +47,7 @@ const Login = () => {
       setIsAlert(true);
       setError(e.message);
       console.log(e.message);
-    };
+    }
     setLoading(false);
   };
 
@@ -55,10 +58,13 @@ const Login = () => {
       await loginGoogle();
       toast.success("Signed In!", {
         position: toast.POSITION.TOP_CENTER,
-        autoClose: 3000
+        autoClose: 3000,
       });
-      toast.onChange(payload => {
-        if (payload.status === "removed" && payload.type === toast.TYPE.SUCCESS) {
+      toast.onChange((payload) => {
+        if (
+          payload.status === "removed" &&
+          payload.type === toast.TYPE.SUCCESS
+        ) {
           navigate("/account");
         }
       });
@@ -66,16 +72,16 @@ const Login = () => {
       setIsAlert(true);
       setError(e.message);
       console.log(e.message);
-    };
+    }
     setLoading(false);
-  }
+  };
 
   return (
     <div className="sign-in-bg">
       <ToastContainer />
       <div className="sign-in">
         <h1>Welcome back!</h1>
-        {isAlert && <Alerts variant='danger' message={error} /> }
+        {isAlert && <Alerts variant="danger" message={error} />}
         <Form className="sign-in-form mb-3" onSubmit={handleLogin}>
           <Form.Label>Email address</Form.Label>
           <InputGroup className="mb-3 sign-in-input" controlId="formBasicEmail">

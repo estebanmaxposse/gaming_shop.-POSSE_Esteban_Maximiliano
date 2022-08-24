@@ -13,10 +13,7 @@ const Cart = () => {
       <div className="empty-cart not-found">
         <Row>
           <Col xs={12} md={6} className="not-found-text">
-            <h1
-              className="not-found-header-title"
-              id="cart-headline"
-            >
+            <h1 className="not-found-header-title" id="cart-headline">
               Your Cart is empty!
             </h1>
             <p className="empty-cart-text">

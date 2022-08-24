@@ -10,7 +10,7 @@
     &-text {
         text-align: end;
         p {
-            font-family: $font-secundary;
+            font-family: $font-secondary;
         }
     }
 }
@@ -30,7 +30,7 @@
         }
         &-value, &-subtitle {
             padding: 4px 0px;
-            font-family: $font-secundary;
+            font-family: $font-secondary;
             border-bottom: 1px solid gray;
         }
         &-subtitle {

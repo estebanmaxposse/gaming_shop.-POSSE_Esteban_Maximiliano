@@ -15,7 +15,7 @@ import { useUser } from "../contexts/UserContext";
 
 const NavBar = () => {
   const { user } = useUser();
-  
+
   return (
     <header>
       <Navbar variant="dark" expand="lg" sticky="top">

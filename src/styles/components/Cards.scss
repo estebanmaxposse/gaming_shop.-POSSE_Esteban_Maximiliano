@@ -2,7 +2,7 @@
     width: 85%;
     margin: 32px auto;
     p {
-        font-family: $font-secundary;
+        font-family: $font-secondary;
     }
     h1 {
         text-transform: uppercase;
@@ -47,15 +47,13 @@
         transition: 0.3s;
     }
     .card-body {
+        width: 90%;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: space-between;
         .card-title {
             text-transform: uppercase;
-        }
-        .card-text {
-            font-size: .8rem;
         }
         .price-stock {
             padding: 0 16px;

@@ -1,16 +1,28 @@
 import React, { useState } from "react";
 import { Container, Row, Col, Image, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import ItemCount from "./ItemCount";
 import { useCartContext } from "../contexts/CartContext";
+import { useUser } from "../contexts/UserContext";
 
 const ItemDetail = ({ product }) => {
   const [goToCart, setGoToCart] = useState(false);
-  const {addItem} = useCartContext();
+  const { addItem } = useCartContext();
+
+  const { user } = useUser();
+  const navigate = useNavigate();
+
+  const handlePurchase = () => {
+    if (!user) {
+      navigate("/login");
+    } else {
+      navigate("/cart");
+    }
+  };
 
   const onAdd = (quantity) => {
     setGoToCart(true);
-    addItem(product, quantity)
+    addItem(product, quantity);
   };
 
   return (
@@ -32,9 +44,7 @@ const ItemDetail = ({ product }) => {
                   {product.description}
                 </p>
                 {goToCart ? (
-                  <Link to={"/cart"}>
-                    <Button>Finish Purchase</Button>
-                  </Link>
+                  <Button onClick={handlePurchase}>Finish Purchase</Button>
                 ) : (
                   <ItemCount
                     stock={product.stock}

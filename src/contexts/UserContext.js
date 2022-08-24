@@ -1,14 +1,14 @@
-import React, {
-  useState,
-  useContext,
-  createContext,
-  useEffect
-} from "react";
+import React, { useState, useContext, createContext, useEffect } from "react";
 import { useAuth } from "./AuthContext";
 import { doc, getDoc, updateDoc, deleteDoc } from "firebase/firestore";
-import { updateEmail, updateProfile, deleteUser, updatePassword } from "firebase/auth";
+import {
+  updateEmail,
+  updateProfile,
+  deleteUser,
+  updatePassword,
+} from "firebase/auth";
 import { db } from "../firebase/config";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
 const userContext = createContext();
@@ -18,7 +18,8 @@ export const useUser = () => {
 };
 
 const UserContext = ({ children }) => {
-  const { googleUser, userDetails, setUserDetails, logout, setLoading } = useAuth();
+  const { googleUser, userDetails, setUserDetails, logout, setLoading } =
+    useAuth();
 
   const [user, setUser] = useState({});
   const [shippingAddress, setShippingAddress] = useState(
@@ -44,7 +45,6 @@ const UserContext = ({ children }) => {
   }, [googleUser, userDetails]);
 
   const fetchUserData = async (reload) => {
-    console.log("fetch triggered");
     if (googleUser) {
       setUser({
         ...googleUser,
@@ -59,20 +59,23 @@ const UserContext = ({ children }) => {
       const docRef = doc(db, "users", googleUser.uid);
       getDoc(docRef).then((docSnap) => {
         if (docSnap.exists()) {
-          console.log(docSnap.data());
           setUserDetails(docSnap.data());
-          console.log(userDetails);
         }
         setUser({
           ...googleUser,
           ...userDetails,
         });
-        console.log(user);
       });
     }
   };
 
-  const updateUser = async (name, phoneNumber, shippingAddress, email, password) => {
+  const updateUser = async (
+    name,
+    phoneNumber,
+    shippingAddress,
+    email,
+    password
+  ) => {
     let userObj = { displayName: name };
     let userEmail = email;
     let userPassword = password;
@@ -108,7 +111,7 @@ const UserContext = ({ children }) => {
       } else {
         toast.error(error.message, {
           position: toast.POSITION.TOP_CENTER,
-          autoClose: 3000
+          autoClose: 3000,
         });
       }
     }
@@ -122,7 +125,7 @@ const UserContext = ({ children }) => {
     setLoading(true);
     try {
       await deleteUser(googleUser);
-      await deleteDoc(doc(db, "users", googleUser.uid))
+      await deleteDoc(doc(db, "users", googleUser.uid));
       toast.success("Account deleted", {
         position: toast.POSITION.TOP_CENTER,
       });
@@ -137,7 +140,6 @@ const UserContext = ({ children }) => {
     } catch (error) {
       console.log(error);
       if (error.message === "Firebase: Error (auth/requires-recent-login).") {
-        console.log("caught error!");
         toast.error("Connection timed out!", {
           position: toast.POSITION.TOP_CENTER,
         });
@@ -153,7 +155,7 @@ const UserContext = ({ children }) => {
       }
     }
     setLoading(false);
-  }
+  };
 
   const value = {
     user,

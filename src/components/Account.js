@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 import { useUser } from "../contexts/UserContext";
@@ -34,6 +34,7 @@ const Account = () => {
               <img
                 src={user?.photoURL || "https://i.imgur.com/3oHh4La.png"}
                 className="profile-details-pic-img"
+                alt="profile-pic"
               />
             </div>
             <div>

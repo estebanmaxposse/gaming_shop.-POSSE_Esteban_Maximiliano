@@ -13,7 +13,7 @@ const WarningModal = () => {
   const handleDeleteUser = () => {
     deleteUserProfile();
     handleClose();
-  }
+  };
   return (
     <>
       <Button variant="danger" onClick={handleShow}>

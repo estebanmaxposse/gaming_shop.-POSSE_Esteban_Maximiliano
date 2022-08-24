@@ -10,10 +10,9 @@ const Item = ({ product }) => {
             <Card.Img variant="top" src={product.pictureUrl} />
           </div>
           <Card.Body>
-            <Card.Title>{product.title}</Card.Title>
-            <Card.Text>{product.description}</Card.Text>
+            <Card.Title className="mb-3">{product.title}</Card.Title>
             <div className="d-flex w-100 price-stock">
-              <h6>${product.price}.00</h6>
+              <h5>${product.price}.00</h5>
               <p className="text-muted">Stock Available: {product.stock}</p>
             </div>
             <Button className="product-card-button">Add to cart</Button>

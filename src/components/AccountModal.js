@@ -16,7 +16,7 @@ const AccountModal = () => {
           <Modal.Title>Edit profile</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <UpdateProfileForm setShow={setShow}/>
+          <UpdateProfileForm setShow={setShow} />
         </Modal.Body>
       </Modal>
     </>
