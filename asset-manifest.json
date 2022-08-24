@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/css/main.0d9c88a3.css",
-    "main.js": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/js/main.39e9e052.js",
+    "main.css": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/css/main.9c34adcc.css",
+    "main.js": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/js/main.e80b97e0.js",
     "static/media/bootstrap-icons.woff?": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/media/bootstrap-icons.7ff3ca6fa798de3f8ac2.woff",
     "static/media/bootstrap-icons.woff2?": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/media/bootstrap-icons.f2539a501be3a673de05.woff2",
     "static/media/vcr_osd_mono_1.001-webfont.woff": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/media/vcr_osd_mono_1.001-webfont.ac48cb40f97a07eac714.woff",
     "static/media/vcr_osd_mono_1.001-webfont.woff2": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/media/vcr_osd_mono_1.001-webfont.0f763f59b13ceb9a2562.woff2",
     "index.html": "/gaming_shop.-POSSE_Esteban_Maximiliano/index.html",
-    "main.0d9c88a3.css.map": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/css/main.0d9c88a3.css.map",
-    "main.39e9e052.js.map": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/js/main.39e9e052.js.map"
+    "main.9c34adcc.css.map": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/css/main.9c34adcc.css.map",
+    "main.e80b97e0.js.map": "/gaming_shop.-POSSE_Esteban_Maximiliano/static/js/main.e80b97e0.js.map"
   },
   "entrypoints": [
-    "static/css/main.0d9c88a3.css",
-    "static/js/main.39e9e052.js"
+    "static/css/main.9c34adcc.css",
+    "static/js/main.e80b97e0.js"
   ]
 }
