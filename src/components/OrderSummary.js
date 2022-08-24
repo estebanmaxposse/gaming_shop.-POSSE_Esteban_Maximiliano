@@ -21,7 +21,7 @@ const OrderSummary = () => {
     buyer: {
       buyerID: user?.uid,
       name: user?.displayName || user?.email,
-      email: user.email,
+      email: user?.email,
       phone: user?.phoneNumber,
       address: user?.shippingAddress,
     },
