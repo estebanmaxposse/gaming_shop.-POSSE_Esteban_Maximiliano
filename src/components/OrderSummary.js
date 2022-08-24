@@ -33,7 +33,8 @@ const OrderSummary = () => {
       pictureURL: product.pictureUrl,
     })),
     totalItems: totalProducts(),
-    total: totalPrice(),
+    tax: calcTaxes(totalPrice()),
+    total: addTaxes(totalPrice(), calcTaxes(totalPrice())),
   };
 
   const createOrder = () => {
