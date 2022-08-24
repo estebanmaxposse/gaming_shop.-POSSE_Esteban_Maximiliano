@@ -27,8 +27,8 @@ const OrderList = () => {
     fetchUserData(true).then(
       getDocs(queryFilter).then(
         (res) => {
-          setIsLoading(false);
           setData(res.docs.map((order) => ({ id: order.id, ...order.data() })));
+          setIsLoading(false);
         },
         (error) => {
           console.log("Fetching data error" + error);
@@ -42,7 +42,7 @@ const OrderList = () => {
   }, [])
   
 
-  if (orders.length === 0) {
+  if (isLoading && orders.length === 0) {
     return (
       <div className="empty-cart not-found">
         <Row>

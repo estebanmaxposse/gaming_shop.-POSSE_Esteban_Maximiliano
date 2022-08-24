@@ -26,7 +26,7 @@ const ItemCount = ({initial, stock, onAdd}) => {
                 <span>
                     <Button onClick={dec} disabled={count <= 0} className='item-detail-info-button'><i className="bi bi-dash"></i></Button>
                 </span>
-                <FormControl type='text' value={count}></FormControl>
+                <FormControl type='text' value={count} onChange={(e) => setCount(Number(e.target.value))}></FormControl>
                 <span>
                     <Button onClick={inc} disabled={count >= stock} className='item-detail-info-button'><i className="bi bi-plus"></i></Button>
                 </span>
