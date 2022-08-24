@@ -5,7 +5,7 @@
 
 This is a React project made to learn the ins and outs of this specific library. Cartridge Valley is an online gaming shop specialized in retro games, consoles, and more! Here (if the place was real) you can buy a wide range of gaming-related goodies! Such as games, consoles, accessories, and much more!
 
-** You can check it out [here](https://estebanmaxposse.github.io/gaming_shop.-POSSE_Esteban_Maximiliano/) **
+** You can check it out [here](https://ecommerce-cartridge-valley.netlify.app/) **
 
 ## Now working on
 
@@ -44,7 +44,23 @@ One of the best libraries for React navigation, this one allowed me to implement
 
 Just to update the favicon!
 
+### Firebase (Authentication & Firestore)
+
+Used to store data about the users, products and orders! You can sign in using your Google Account, or create an account using your e-mail!
+
+### Material UI
+
+I didn't know how to do a backdrop loading screen. Thankfully, Material UI has a backdrop component that was really easy to use.
+
+### Fuse.js
+
+Thanks to this library I was able to make a functional search-box. It makes fuzzy searches, meaning it disregards positioning, character cases and can even help you sort out your search results!
+
+### React-Toastify
+
+Extremely useful library to handle toasts. It even helped me create some workarounds thanks to the methods the library provided!
+
 ## Demo
 
-[Small Tour Here!](https://i.imgur.com/iiRGnBn.gifv)
+[Small Tour Here!](https://i.imgur.com/kgmQBtV.gifv)
 

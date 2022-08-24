@@ -28,17 +28,17 @@ const OrderList = () => {
       getDocs(queryFilter).then(
         (res) => {
           setData(res.docs.map((order) => ({ id: order.id, ...order.data() })));
-          setIsLoading(false);
         },
         (error) => {
           console.log("Fetching data error" + error);
         }
-      )
-    )
-  }
-
-  useEffect(() => {
-    fetchOrders();
+        )
+        )
+      }
+      
+      useEffect(() => {
+        fetchOrders();
+        setIsLoading(false);
   }, [])
   
 

@@ -5,13 +5,10 @@ import {
   onAuthStateChanged,
   GoogleAuthProvider,
   signInWithPopup,
-  reauthenticateWithCredential,
-  reauthenticateWithPopup,
 } from "firebase/auth";
 import React, { useState, useContext, createContext, useEffect } from "react";
 import { auth, db } from "../firebase/config";
 import { setDoc, doc, getDoc } from "firebase/firestore";
-import { ToastContainer, toast } from "react-toastify";
 
 const authContext = createContext();
 

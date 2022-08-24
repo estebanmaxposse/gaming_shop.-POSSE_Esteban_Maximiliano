@@ -9,7 +9,7 @@ const UpdateProfileForm = ({setShow}) => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmedPassword, setShowConfirmedPassword] = useState(false);
 
-  const { setLoading, logout } = useAuth();
+  const { setLoading } = useAuth();
   const { updateUser, fetchUserData, user } = useUser();
 
   const [formDisplayName, setFormDisplayName] = useState(

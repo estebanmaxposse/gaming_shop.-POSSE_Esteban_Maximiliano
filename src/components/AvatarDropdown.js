@@ -23,13 +23,13 @@ const AvatarDropdown = () => {
     <>
       <Dropdown className="avatar" align='end'>
         <Dropdown.Toggle className="avatar-toggle caret-off">
-          <img src={user?.photoURL || "https://i.imgur.com/3oHh4La.png"} className="avatar-img" referrerPolicy="no-referrer"/>
+          <img src={user?.photoURL || "https://i.imgur.com/3oHh4La.png"} className="avatar-img" referrerPolicy="no-referrer" alt="avatar"/>
         </Dropdown.Toggle>
 
         <Dropdown.Menu>
           <Dropdown.Header>{user.displayName || user.email}</Dropdown.Header>
           <li><Link to={'/account'} className="dropdown-item">Account</Link></li>
-          <li onClick={handleLogout}><a className="dropdown-item" href="#">Logout</a></li>
+          <li onClick={handleLogout}><span className="dropdown-item">Logout</span></li>
         </Dropdown.Menu>
       </Dropdown>
     </>

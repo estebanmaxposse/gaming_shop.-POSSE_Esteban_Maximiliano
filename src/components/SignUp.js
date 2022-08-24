@@ -8,7 +8,6 @@ const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmedPassword, setConfirmedPassword] = useState("");
-  const [error, setError] = useState("");
 
   const navigate = useNavigate();
 
@@ -32,7 +31,6 @@ const SignUp = () => {
   const handleSignUp = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setError("");
     try {
       if (password !== confirmedPassword) {
         throw new Error("Passwords don't match!");
@@ -48,7 +46,6 @@ const SignUp = () => {
         }
       });
     } catch (e) {
-      setError(e.message);
       toast.error(e.message, {
         position: toast.POSITION.TOP_CENTER,
         autoClose: 4000

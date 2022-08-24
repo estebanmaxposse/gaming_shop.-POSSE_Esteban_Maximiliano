@@ -21,6 +21,12 @@
     background-color: $color-hover;
 }
 
+.dropdown-item {
+    &:hover {
+        cursor: pointer;
+    }
+}
+
 .caret-off::before {
     display: none;
 }

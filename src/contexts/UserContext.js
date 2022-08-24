@@ -8,7 +8,7 @@ import { useAuth } from "./AuthContext";
 import { doc, getDoc, updateDoc, deleteDoc } from "firebase/firestore";
 import { updateEmail, updateProfile, deleteUser, updatePassword } from "firebase/auth";
 import { db } from "../firebase/config";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
 const userContext = createContext();

@@ -33,15 +33,15 @@ button, .btn {
 label {
     display: block;
     text-align: start;
-    font-family: $font-secundary;
+    font-family: $font-secondary;
 }
 
 input {
-    font-family: $font-secundary;
+    font-family: $font-secondary;
 }
 
 p {
-    font-family: $font-secundary;
+    font-family: $font-secondary;
 }
 
 .fullwidth-button {
@@ -91,4 +91,8 @@ p {
 #accessories-headline {
     background: url("https://i.imgur.com/9f1DaE7.png") no-repeat;
     background-size: contain;
+}
+
+:root {
+    --toastify-font-family: 'Roboto Mono' ,sans-serif;
 }

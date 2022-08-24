@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Container, Row, Col, Image, Button } from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import ItemCount from "./ItemCount";
 import { useCartContext } from "../contexts/CartContext";
 import { useUser } from "../contexts/UserContext";
