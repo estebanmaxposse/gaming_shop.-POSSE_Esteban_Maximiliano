@@ -20,7 +20,7 @@ const ItemDetailContainer = () => {
       setIsLoading(false);
       setData({ id: res.id, ...res.data() });
     });
-  }, []);
+  }, [itemDetailID]);
 
   return (
     <div>{isLoading ? <LoadingGif /> : <ItemDetail product={product} />}</div>

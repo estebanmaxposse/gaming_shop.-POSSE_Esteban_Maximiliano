@@ -1,14 +1,8 @@
 import React from "react";
-import { Col, Row, Buthrefn } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
-  /* curahrefr-feed-default-feed-layout */
-  (function(){
-    var i,e,d=document,s="script";i=d.createElement("script");i.async=1;i.charset="UTF-8";
-    i.src="https://cdn.curahrefr.io/published/8597cfc5-ed40-4528-bb81-df18f85e351a.js";
-    e=d.getElementsByTagName(s)[0];e.parentNode.insertBefore(i, e);
-    })();
 
   return (
     <div className="footer">
@@ -85,7 +79,6 @@ const Footer = () => {
         <Col xs={12} md={4}>
           <div className="footer-feed">
             <h6>Follow us on YouTube!</h6>
-            <div id="curahrefr-feed-default-feed-layout"><a href="https://curahrefr.io" target="_blank" className="crt-logo crt-tag">Powered by Curahrefr.io</a></div>
           </div>
         </Col>
       </Row>

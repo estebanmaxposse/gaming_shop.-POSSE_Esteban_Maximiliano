@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Item from "./Item";
-import LoadingGif from "./LoadingGif";
+import LoadingGifWidescreen from "./LoadingGifWidescreen";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "../firebase/config";
 
@@ -31,7 +31,7 @@ const ItemList = ({ categoryID }) => {
 
   return (
     <>
-      {isLoading ? <LoadingGif /> : products.map((product, index) => (<Item key={product.id} product={product} index={index} />))}
+      {isLoading ? <LoadingGifWidescreen /> : products.map((product, index) => (<Item key={product.id} product={product} index={index} />))}
     </>
   )
 };

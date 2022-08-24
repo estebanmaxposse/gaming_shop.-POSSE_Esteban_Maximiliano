@@ -3,31 +3,63 @@ import { Col, Row } from "react-bootstrap";
 import { useCartContext } from "../contexts/CartContext";
 import { addDoc, collection, Timestamp } from "firebase/firestore";
 import { db } from "../firebase/config";
+import { toast, ToastContainer } from "react-toastify";
+import { useUser } from "../contexts/UserContext";
+import { useNavigate } from "react-router-dom";
 
 const OrderSummary = () => {
-  const { totalPrice, calcTaxes, addTaxes, clearCart, cart } = useCartContext();
-  
+  const { totalPrice, calcTaxes, addTaxes, clearCart, cart, totalProducts } = useCartContext();
+
+  const { user } = useUser();
+
+  const navigate = useNavigate();
+
   const order = {
     date: Timestamp.now(),
+    status: "Ordered",
     buyer: {
-      name: 'Esteban',
-      email: 'Posse',
-      phone: '3874106249',
-      address: 'my home',
+      buyerID: user?.uid,
+      name: user?.displayName || user?.email,
+      email: user.email,
+      phone: user?.phoneNumber,
+      address: user?.shippingAddress,
     },
-    items: cart.map(product => ({id: product.id, title: product.title, price: product.price, quantity: product.quantity})),
+    items: cart.map((product) => ({
+      id: product.id,
+      title: product.title,
+      price: product.price,
+      quantity: product.quantity,
+      pictureURL: product.pictureUrl
+    })),
+    totalItems: totalProducts(),
     total: totalPrice(),
-  }
+  };
 
   const createOrder = () => {
     const database = db;
-    const orderCollection = collection(database, 'orders');
-    addDoc (orderCollection, order)
-      .then(({ id }) => alert(`The order "${id}" has been created!`))
-  }
+    const orderCollection = collection(database, "orders");
+    const addToCollectionPromise = addDoc(orderCollection, order);
+    console.log("Order no. " + order.id); 
+    toast.promise(addToCollectionPromise, {
+      pending: 'Placing order...',
+      success: {
+        render({data: {id}}){
+          return `Successfully placed order ${id}`
+        },
+      },
+      error: 'Something went wrong!',
+    });
+    toast.onChange(payload => {
+      if (payload.status === "removed" && payload.type === toast.TYPE.SUCCESS) {
+        clearCart();
+        navigate("/account")
+      }
+    })
+  };
 
   return (
     <div className="summary d-flex">
+      <ToastContainer />
       <h2 className="summary-title">Order Summary</h2>
       <Row className="summary-list">
         <Col xs={6} className="summary-list-subtitle">

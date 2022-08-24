@@ -21,6 +21,13 @@
     background-color: $color-hover;
 }
 
+.caret-off::before {
+    display: none;
+}
+.caret-off::after {
+    display: none;
+}
+
 #search-bar {
     padding: 0 8px;
     &-button {
@@ -30,6 +37,25 @@
         margin: 0;
         border-radius: 0;
         border: 3px solid $color-main;
+    }
+}
+
+.search-results {
+    &-item {
+        &:hover {
+            background-color: $color-hover;
+        }
+        &-title {
+            font-size: .75em;
+            text-align: start;
+        }
+        &-image {
+            max-width: 100%;
+            max-height: 80px;
+        }
+        &-container {
+            gap: 10px;
+        }
     }
 }
 
@@ -71,4 +97,21 @@
 
 #offcanvasNavbarDropdown-expand-lg {
     text-align: end;
+}
+
+.avatar {
+    &-toggle {
+        border-radius: 50%;
+        max-width: 42px;
+        max-height: 42px;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    &-img {
+        width: auto;
+        height: 50px;
+        vertical-align: middle;
+    }
 }
