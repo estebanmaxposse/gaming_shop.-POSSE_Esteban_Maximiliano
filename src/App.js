@@ -33,7 +33,7 @@ function App() {
               <LoadingBackdrop />
               <NavBar />
               <Routes>
-                <Route path="/" element={<Homepage />} />
+                <Route path="/" index element={<Homepage />} />
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/signUp" element={<SignUp />} />

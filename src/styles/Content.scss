@@ -48,6 +48,13 @@ p {
     width: 100%;
 }
 
+.loading-widescreen-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: none;
+}
+
 .loading-container {
     display: flex;
     justify-content: center;

@@ -40,6 +40,25 @@
     }
 }
 
+.search-results {
+    &-item {
+        &:hover {
+            background-color: $color-hover;
+        }
+        &-title {
+            font-size: .75em;
+            text-align: start;
+        }
+        &-image {
+            max-width: 100%;
+            max-height: 80px;
+        }
+        &-container {
+            gap: 10px;
+        }
+    }
+}
+
 #cart-widget {
     margin: 0 8px;
     border: 0;
