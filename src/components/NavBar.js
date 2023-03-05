@@ -16,7 +16,7 @@ import AvatarDropdown from "./AvatarDropdown";
 import { useAuth } from "../contexts/AuthContext";
 
 const NavBar = () => {
-  const { user } = useAuth();
+  const { user, isAuthenticated } = useAuth();
 
   return (
     <header>
@@ -86,7 +86,7 @@ const NavBar = () => {
                         placeholder="LOGIN TO SEARCH..."
                         aria-label="Search"
                         id="search-bar-input"
-                        value=''
+                        readOnly
                       />
                       <Button variant="success" id="search-bar-button" disabled>
                         <i className="bi bi-search"></i>
@@ -95,7 +95,7 @@ const NavBar = () => {
                   </div>
                 )}
                 <CartWidget />
-                {user ? (
+                {isAuthenticated ? (
                   <AvatarDropdown />
                 ) : (
                   <Link to={"/login"}>
