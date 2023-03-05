@@ -65,7 +65,7 @@ const SearchBar = () => {
                   <div className="d-flex w-100 justify-content-between align-items-center search-results-item-container">
                     <p className="search-results-item-title">{item.title}</p>
                     <img
-                      src={item.pictureUrl}
+                      src={item.thumbnail}
                       alt={item.title}
                       className="search-results-item-image"
                     />

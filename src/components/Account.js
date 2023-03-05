@@ -8,7 +8,6 @@ import { Row, Col, Button } from "react-bootstrap";
 
 const Account = () => {
   const { logout, user, setUser } = useAuth();
-  console.log(user);
 
   const navigate = useNavigate();
   const handleLogout = async () => {

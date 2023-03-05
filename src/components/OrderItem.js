@@ -27,7 +27,7 @@ const OrderItem = ({ order, index }) => {
             {order.items.map((item) => (
               <Col className="d-flex order-item" key={item.id} xs={12}>
                 <img
-                  src={item.pictureURL}
+                  src={item.thumbnail}
                   alt={item.title}
                   className="order-item-img"
                 />

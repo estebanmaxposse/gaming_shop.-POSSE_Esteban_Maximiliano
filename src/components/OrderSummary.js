@@ -30,7 +30,7 @@ const OrderSummary = () => {
       title: product.title,
       price: product.price,
       quantity: product.quantity,
-      pictureURL: product.pictureUrl,
+      thumbnail: product.thumbnail,
     })),
     totalItems: totalProducts(),
     tax: calcTaxes(totalPrice()),

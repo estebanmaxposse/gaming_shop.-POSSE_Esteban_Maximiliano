@@ -32,7 +32,7 @@ const ItemDetail = ({ product }) => {
           <Row>
             <Col xs={12} md={8} className="item-detail-container">
               <Image
-                src={product.pictureUrl}
+                src={product.thumbnail}
                 className="item-detail-container-image"
               />
             </Col>
