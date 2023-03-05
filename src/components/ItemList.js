@@ -4,15 +4,14 @@ import LoadingGifWidescreen from "./LoadingGifWidescreen";
 import { useProduct } from "../contexts/ProductContext";
 
 const ItemList = ({ categoryID }) => {
+  categoryID = categoryID || "";
   const [isLoading, setIsLoading] = useState(false);
 
   const { products, getProducts } = useProduct();
 
   useEffect(() => {
     setIsLoading(true);
-
-    getProducts()
-
+    getProducts(categoryID)
     setIsLoading(false);
   }, []);
 

@@ -11,8 +11,9 @@ const ProductContext = ({children}) => {
     const [products, setProducts] = useState([])
     const [product, setProduct] = useState({})
 
-    const getProducts = async () => {
-        await fetch(env.API_URL + '/api/products', {
+    const getProducts = async (category) => {
+        category = category || ''
+        await fetch(env.API_URL + '/api/products' + `/${category}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
