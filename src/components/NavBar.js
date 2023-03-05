@@ -6,6 +6,8 @@ import {
   Container,
   NavDropdown,
   Button,
+  Form,
+  FormControl,
 } from "react-bootstrap";
 import { NavLink, Link } from "react-router-dom";
 import CartWidget from "./CartWidget";
@@ -74,7 +76,24 @@ const NavBar = () => {
                     Contact
                   </NavLink>
                 </li>
-                <SearchBar />
+                {user ? (
+                  <SearchBar />
+                ) : (
+                  <div className="position-relative">
+                    <Form className="d-flex" id="search-bar" disabled>
+                      <FormControl
+                        type="search"
+                        placeholder="LOGIN TO SEARCH..."
+                        aria-label="Search"
+                        id="search-bar-input"
+                        value=''
+                      />
+                      <Button variant="success" id="search-bar-button" disabled>
+                        <i className="bi bi-search"></i>
+                      </Button>
+                    </Form>
+                  </div>
+                )}
                 <CartWidget />
                 {user ? (
                   <AvatarDropdown />

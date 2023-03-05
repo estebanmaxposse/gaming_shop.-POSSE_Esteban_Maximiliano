@@ -1,7 +1,7 @@
-import { collection, getDocs } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { Form, FormControl, Button } from "react-bootstrap";
-import { db } from "../firebase/config";
+import { useProduct } from "../contexts/ProductContext";
+import { useAuth } from "../contexts/AuthContext";
 import { Link } from "react-router-dom";
 import Fuse from "fuse.js";
 
@@ -12,15 +12,12 @@ const SearchBar = () => {
     return resultA.score - resultB.score;
   });
 
-  const [products, setData] = useState([]);
+  const { products, getProducts } = useProduct();
+  const { user } = useAuth();
+  console.log('SEARCH BAR: ', user);
 
   useEffect(() => {
-    const queryCollection = collection(db, "product");
-    getDocs(queryCollection).then((res) => {
-      setData(
-        res.docs.map((product) => ({ id: product.id, ...product.data() }))
-      );
-    });
+    getProducts()
   }, []);
 
   const searchIndex = new Fuse(products, {
@@ -41,19 +38,20 @@ const SearchBar = () => {
   return (
     <div className="position-relative">
       <Form className="d-flex" id="search-bar">
-        <FormControl
-          type="search"
-          placeholder="SEARCH..."
-          aria-label="Search"
-          id="search-bar-input"
-          value={searchQuery}
-          onChange={(e) => handleSearch(e.target.value)}
-        />
-        <Button variant="success" id="search-bar-button">
-          <i className="bi bi-search"></i>
-        </Button>
-      </Form>
-      {sortedSearchResults.length > 0 && (
+      <FormControl
+        type="search"
+        placeholder="SEARCH..."
+        aria-label="Search"
+        id="search-bar-input"
+        value={searchQuery}
+        onChange={(e) => handleSearch(e.target.value)}
+      />
+      <Button variant="success" id="search-bar-button">
+        <i className="bi bi-search"></i>
+      </Button>
+    </Form>
+    {
+      sortedSearchResults.length > 0 && (
         <ol className="list-group position-absolute search-results">
           {sortedSearchResults.slice(0, 4).map(({ item }) => {
             return (
@@ -61,7 +59,7 @@ const SearchBar = () => {
                 className="list-group-item search-results-item"
                 key={item.title}
               >
-                <Link to={`/detail/${item.id}`} onClick={handleCloseList}>
+                <Link to={`/detail/${item._id}`} onClick={handleCloseList}>
                   <div className="d-flex w-100 justify-content-between align-items-center search-results-item-container">
                     <p className="search-results-item-title">{item.title}</p>
                     <img
@@ -75,7 +73,8 @@ const SearchBar = () => {
             );
           })}
         </ol>
-      )}
+      )
+    }
     </div>
   );
 };
