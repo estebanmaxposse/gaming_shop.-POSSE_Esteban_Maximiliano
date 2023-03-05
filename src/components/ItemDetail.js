@@ -3,13 +3,13 @@ import { Container, Row, Col, Image, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import ItemCount from "./ItemCount";
 import { useCartContext } from "../contexts/CartContext";
-import { useUser } from "../contexts/UserContext";
+import { useAuth } from "../contexts/AuthContext";
 
 const ItemDetail = ({ product }) => {
   const [goToCart, setGoToCart] = useState(false);
   const { addItem } = useCartContext();
 
-  const { user } = useUser();
+  const { user } = useAuth();
   const navigate = useNavigate();
 
   const handlePurchase = () => {
@@ -32,7 +32,7 @@ const ItemDetail = ({ product }) => {
           <Row>
             <Col xs={12} md={8} className="item-detail-container">
               <Image
-                src={product.pictureUrl}
+                src={product.thumbnail}
                 className="item-detail-container-image"
               />
             </Col>

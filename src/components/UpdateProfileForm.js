@@ -2,28 +2,23 @@ import React, { useState } from "react";
 import { Form, InputGroup, Button } from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
 import { ToastContainer, toast } from "react-toastify";
-import { useUser } from "../contexts/UserContext";
 import WarningModal from "./WarningModal";
 
 const UpdateProfileForm = ({ setShow }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmedPassword, setShowConfirmedPassword] = useState(false);
 
-  const { setLoading } = useAuth();
-  const { updateUser, fetchUserData, user } = useUser();
+  const { setLoading, updateUser, fetchUserData, user } = useAuth();
 
-  const [formDisplayName, setFormDisplayName] = useState(
-    user?.displayName || ""
-  );
+  const [formUserName, setFormUserName] = useState(user?.username || "" );
+  const [formFullName, setFormFullName] = useState(user?.fullName || "");
   const [formEmail, setFormEmail] = useState(user?.email || "");
-  const [formPassword, setFormPassword] = useState("");
-  const [formConfirmPassword, setFormConfirmPassword] = useState("");
-  const [formPhoneNumber, setFormPhoneNumber] = useState(
-    user?.phoneNumber || ""
-  );
-  const [formShippingAddress, setFormShippingAddress] = useState(
-    user?.shippingAddress || ""
-  );
+  // const [formPassword, setFormPassword] = useState("");
+  // const [formConfirmPassword, setFormConfirmPassword] = useState("");
+  const [formPhoneNumber, setFormPhoneNumber] = useState(user?.phoneNumber || "");
+  const [formShippingAddress, setFormShippingAddress] = useState(user?.shippingAddress || "");
+  const [formAge, setFormAge] = useState(user?.age || null);
+  const [formAvatar, setFormAvatar] = useState(user?.avatar || "");
 
   const handleMouseDown = (e) => {
     e.preventDefault();
@@ -33,37 +28,39 @@ const UpdateProfileForm = ({ setShow }) => {
     setShowPassword(!showPassword);
   };
 
-  const handlePasswordValidation = () => {
-    if (formPassword && formConfirmPassword) {
-      if (formPassword === formConfirmPassword) {
-        return formPassword;
-      } else {
-        toast.error("Passwords don't match!", {
-          position: toast.POSITION.TOP_CENTER,
-          autoClose: 4000,
-        });
-      }
-    } else {
-      return;
-    }
-  };
+  // const handlePasswordValidation = () => {
+  //   if (formPassword && formConfirmPassword) {
+  //     if (formPassword === formConfirmPassword) {
+  //       return formPassword;
+  //     } else {
+  //       toast.error("Passwords don't match!", {
+  //         position: toast.POSITION.TOP_CENTER,
+  //         autoClose: 4000,
+  //       });
+  //     }
+  //   } else {
+  //     return;
+  //   }
+  // };
 
-  const handleConfirmPassword = () => {
-    setShowConfirmedPassword(!showConfirmedPassword);
-  };
+  // const handleConfirmPassword = () => {
+  //   setShowConfirmedPassword(!showConfirmedPassword);
+  // };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    handlePasswordValidation();
+    // handlePasswordValidation();
     await updateUser(
-      formDisplayName,
+      formEmail,
+      // formPassword,
+      formUserName,
+      formFullName,
       formPhoneNumber,
       formShippingAddress,
-      formEmail,
-      formPassword
+      formAge,
+      formAvatar
     );
-    fetchUserData(true);
     setLoading(false);
   };
 
@@ -76,8 +73,8 @@ const UpdateProfileForm = ({ setShow }) => {
             type="text"
             placeholder="Enter new username"
             autoFocus
-            value={formDisplayName}
-            onChange={(e) => setFormDisplayName(e.target.value)}
+            value={formUserName}
+            onChange={(e) => setFormUserName(e.target.value)}
           />
         </Form.Group>
 
@@ -111,7 +108,7 @@ const UpdateProfileForm = ({ setShow }) => {
           />
         </Form.Group>
 
-        <Form.Label>Password</Form.Label>
+        {/* <Form.Label>Password</Form.Label>
         <InputGroup
           className="mb-3 sign-in-input"
           controlId="formBasicPassword"
@@ -159,7 +156,37 @@ const UpdateProfileForm = ({ setShow }) => {
               <i className="bi bi-eye-fill"></i>
             )}
           </Button>
-        </InputGroup>
+        </InputGroup> */}
+
+        <Form.Group className="mb-3">
+          <Form.Label>Full Name</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Enter new name"
+            value={formFullName}
+            onChange={(e) => setFormFullName(e.target.value)}
+          />
+        </Form.Group>
+
+        <Form.Group className="mb-3">
+          <Form.Label>Age</Form.Label>
+          <Form.Control
+            type="number"
+            placeholder="Enter new age"
+            value={formAge}
+            onChange={(e) => setFormAge(e.target.value)}
+          />
+        </Form.Group>
+
+        <Form.Group className="mb-3">
+          <Form.Label>avatar</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Enter new avatar"
+            value={formAvatar}
+            onChange={(e) => setFormAvatar(e.target.value)}
+          />
+        </Form.Group>
 
         <Button
           variant="primary"
@@ -169,7 +196,7 @@ const UpdateProfileForm = ({ setShow }) => {
         >
           Save changes
         </Button>
-        <WarningModal />
+        {/* <WarningModal /> */}
       </Form>
       <ToastContainer />
     </>

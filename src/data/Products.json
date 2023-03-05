@@ -5,7 +5,7 @@
     "price": 80,
     "stock": "5",
     "category": "games",
-    "pictureUrl": "https://i.imgur.com/zbjM3Ni.png"
+    "thumbnail": "https://i.imgur.com/zbjM3Ni.png"
   },
   {
     "title": "Elden Ring",
@@ -13,7 +13,7 @@
     "price": 60,
     "stock": "7",
     "category": "games",
-    "pictureUrl": "https://i.imgur.com/5tY20pw.png"
+    "thumbnail": "https://i.imgur.com/5tY20pw.png"
   },
   {
     "title": "Grand Theft Auto V",
@@ -21,7 +21,7 @@
     "price": 60,
     "stock": "5",
     "category": "games",
-    "pictureUrl": "https://i.imgur.com/wHiX52a.png"
+    "thumbnail": "https://i.imgur.com/wHiX52a.png"
   },
   {
     "title": "Super Mario 3D All Stars",
@@ -29,7 +29,7 @@
     "price": 70,
     "stock": "2",
     "category": "games",
-    "pictureUrl": "https://i.imgur.com/WT7ahEp.png"
+    "thumbnail": "https://i.imgur.com/WT7ahEp.png"
   },
   {
     "title": "Super Mario 3D World + Bowser's Fury",
@@ -37,7 +37,7 @@
     "price": 50,
     "stock": "9",
     "category": "games",
-    "pictureUrl": "https://i.imgur.com/6r9fYzL.png"
+    "thumbnail": "https://i.imgur.com/6r9fYzL.png"
   },
   {
     "title": "New Super Mario Bros. U Deluxe",
@@ -45,7 +45,7 @@
     "price": 40,
     "stock": "8",
     "category": "games",
-    "pictureUrl": "https://i.imgur.com/eUIVDSH.png"
+    "thumbnail": "https://i.imgur.com/eUIVDSH.png"
   },
   {
     "title": "Mario Kart 8 Deluxe",
@@ -53,7 +53,7 @@
     "price": 60,
     "stock": "6",
     "category": "games",
-    "pictureUrl": "https://i.imgur.com/gI3kPh3.png"
+    "thumbnail": "https://i.imgur.com/gI3kPh3.png"
   },
   {
     "title": "Super Mario Maker 2",
@@ -61,7 +61,7 @@
     "price": 60,
     "stock": "11",
     "category": "games",
-    "pictureUrl": "https://i.imgur.com/4Q4PAuq.png"
+    "thumbnail": "https://i.imgur.com/4Q4PAuq.png"
   },
   {
     "title": "Marvel's Spider-Man: Miles Morales",
@@ -69,7 +69,7 @@
     "price": 60,
     "stock": "9",
     "category": "games",
-    "pictureUrl": "https://i.imgur.com/PX93nFr.png"
+    "thumbnail": "https://i.imgur.com/PX93nFr.png"
   },
   {
     "title": "Persona 5 Royal",
@@ -77,7 +77,7 @@
     "price": 60,
     "stock": "7",
     "category": "games",
-    "pictureUrl": "https://i.imgur.com/22TVchi.png"
+    "thumbnail": "https://i.imgur.com/22TVchi.png"
   },
   {
     "title": "Super Smash Bros. Ultimate",
@@ -85,7 +85,7 @@
     "price": 70,
     "stock": "12",
     "category": "games",
-    "pictureUrl": "https://i.imgur.com/BGzwnV7.png"
+    "thumbnail": "https://i.imgur.com/BGzwnV7.png"
   },
   {
     "title": "Skullgirls 2nd Encore",
@@ -93,7 +93,7 @@
     "price": 30,
     "stock": "12",
     "category": "games",
-    "pictureUrl": "https://i.imgur.com/DjqzS56.png"
+    "thumbnail": "https://i.imgur.com/DjqzS56.png"
   },
   {
     "title": "PS5 HD Camera",
@@ -101,7 +101,7 @@
     "price": 25,
     "stock": "16",
     "category": "accessories",
-    "pictureUrl": "https://i.imgur.com/GtdsFQE.png"
+    "thumbnail": "https://i.imgur.com/GtdsFQE.png"
   },
   {
     "title": "PULSE 3D Wireless Headset",
@@ -109,7 +109,7 @@
     "price": 50,
     "stock": "11",
     "category": "accessories",
-    "pictureUrl": "https://i.imgur.com/tisXNIH.png"
+    "thumbnail": "https://i.imgur.com/tisXNIH.png"
   },
   {
     "title": "PS5 Dualsense Controller",
@@ -117,7 +117,7 @@
     "price": 70,
     "stock": "15",
     "category": "accessories",
-    "pictureUrl": "https://i.imgur.com/TXD8xOU.png"
+    "thumbnail": "https://i.imgur.com/TXD8xOU.png"
   },
   {
     "title": "PS4 Dualshock Controller",
@@ -125,7 +125,7 @@
     "price": 60,
     "stock": "12",
     "category": "accessories",
-    "pictureUrl": "https://i.imgur.com/PQDH8Sp.png"
+    "thumbnail": "https://i.imgur.com/PQDH8Sp.png"
   },
   {
     "title": "GameCube Controller Adapter",
@@ -133,7 +133,7 @@
     "price": 70,
     "stock": "8",
     "category": "accessories",
-    "pictureUrl": "https://i.imgur.com/4JH804n.png"
+    "thumbnail": "https://i.imgur.com/4JH804n.png"
   },
   {
     "title": "GameCube Controller Smash Edition",
@@ -141,7 +141,7 @@
     "price": 20,
     "stock": "16",
     "category": "accessories",
-    "pictureUrl": "https://i.imgur.com/VLCN6xs.png"
+    "thumbnail": "https://i.imgur.com/VLCN6xs.png"
   },
   {
     "title": "Joy-Con Charging Grip",
@@ -149,7 +149,7 @@
     "price": 20,
     "stock": "14",
     "category": "accessories",
-    "pictureUrl": "https://i.imgur.com/N64rooq.png"
+    "thumbnail": "https://i.imgur.com/N64rooq.png"
   },
   {
     "title": "Nintendo Switch Pro Controller",
@@ -157,7 +157,7 @@
     "price": 60,
     "stock": "20",
     "category": "accessories",
-    "pictureUrl": "https://i.imgur.com/wZUkpR9.png"
+    "thumbnail": "https://i.imgur.com/wZUkpR9.png"
   },
   {
     "title": "Microsoft Kinect for Xbox",
@@ -165,7 +165,7 @@
     "price": 20,
     "stock": "20",
     "category": "accessories",
-    "pictureUrl": "https://i.imgur.com/GtdsFQE.png"
+    "thumbnail": "https://i.imgur.com/GtdsFQE.png"
   },
   {
     "title": "Xbox One Wireless Controller",
@@ -173,7 +173,7 @@
     "price": 60,
     "stock": "20",
     "category": "accessories",
-    "pictureUrl": "https://i.imgur.com/Qp53dTB.png"
+    "thumbnail": "https://i.imgur.com/Qp53dTB.png"
   },
   {
     "title": "Xbox series X Wireless Controller",
@@ -181,7 +181,7 @@
     "price": 70,
     "stock": "20",
     "category": "accessories",
-    "pictureUrl": "https://i.imgur.com/64ks5O0.png"
+    "thumbnail": "https://i.imgur.com/64ks5O0.png"
   },
   {
     "title": "PlayStation 4",
@@ -189,7 +189,7 @@
     "price": 300,
     "stock": "5",
     "category": "consoles",
-    "pictureUrl": "https://i.imgur.com/Y3mQ3XB.png"
+    "thumbnail": "https://i.imgur.com/Y3mQ3XB.png"
   },
   {
     "title": "PlayStation 4 Pro",
@@ -197,7 +197,7 @@
     "price": 400,
     "stock": "6",
     "category": "consoles",
-    "pictureUrl": "https://i.imgur.com/n0eoCfM.png"
+    "thumbnail": "https://i.imgur.com/n0eoCfM.png"
   },
   {
     "title": "PlayStation 5",
@@ -205,7 +205,7 @@
     "price": 500,
     "stock": "0",
     "category": "consoles",
-    "pictureUrl": "https://i.imgur.com/o1ry0kz.png"
+    "thumbnail": "https://i.imgur.com/o1ry0kz.png"
   },
   {
     "title": "Nintendo Switch",
@@ -213,7 +213,7 @@
     "price": 300,
     "stock": "9",
     "category": "consoles",
-    "pictureUrl": "https://i.imgur.com/HykVFyJ.png"
+    "thumbnail": "https://i.imgur.com/HykVFyJ.png"
   },
   {
     "title": "Nintendo Switch Lite",
@@ -221,7 +221,7 @@
     "price": 220,
     "stock": "6",
     "category": "consoles",
-    "pictureUrl": "https://i.imgur.com/eJnvUGM.png"
+    "thumbnail": "https://i.imgur.com/eJnvUGM.png"
   },
   {
     "title": "Nintendo Switch OLED Model",
@@ -229,7 +229,7 @@
     "price": 400,
     "stock": "9",
     "category": "consoles",
-    "pictureUrl": "https://i.imgur.com/Vz3pBBw.png"
+    "thumbnail": "https://i.imgur.com/Vz3pBBw.png"
   },
   {
     "title": "Xbox Series S",
@@ -237,7 +237,7 @@
     "price": 300,
     "stock": "5",
     "category": "consoles",
-    "pictureUrl": "https://i.imgur.com/mblNWdF.png"
+    "thumbnail": "https://i.imgur.com/mblNWdF.png"
   },
   {
     "title": "Xbox Series X",
@@ -245,7 +245,7 @@
     "price": 500,
     "stock": "3",
     "category": "consoles",
-    "pictureUrl": "https://i.imgur.com/nXR98LU.png"
+    "thumbnail": "https://i.imgur.com/nXR98LU.png"
   },
   {
     "title": "Final Fantasy 7 Remake Intergrade",
@@ -253,6 +253,6 @@
     "price": 70,
     "stock": "6",
     "category": "games",
-    "pictureUrl": "https://i.imgur.com/HVIdggZ.png"
+    "thumbnail": "https://i.imgur.com/HVIdggZ.png"
   }
 ]

@@ -17,7 +17,8 @@ import Account from "./components/Account";
 import ProtectedRoute from "./components/ProtectedRoute";
 import "./App.scss";
 import AuthContext from "./contexts/AuthContext";
-import UserContext from "./contexts/UserContext";
+import ProductContext from "./contexts/ProductContext";
+// import UserContext from "./contexts/UserContext";
 import { ToastContainer } from "react-bootstrap";
 import LoadingBackdrop from "./components/LoadingBackdrop";
 
@@ -27,13 +28,22 @@ function App() {
       <Favicon url="https://i.imgur.com/y61iWez.png" />
       <BrowserRouter>
         <AuthContext>
-          <UserContext>
+          <ProductContext>
+            {/* <UserContext> */}
             <CartProvider>
               <ToastContainer />
               <LoadingBackdrop />
               <NavBar />
               <Routes>
-                <Route path="/" index element={<Homepage />} />
+                <Route 
+                  path="/" 
+                  index 
+                  element={
+                    <ProtectedRoute>
+                      <Homepage />
+                    </ProtectedRoute>
+                  } 
+                />
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/signUp" element={<SignUp />} />
@@ -47,14 +57,19 @@ function App() {
                 />
                 <Route path="/category/:categoryID" element={<Categories />} />
                 <Route
-                  path="/detail/:itemDetailID"
-                  element={<ItemDetailContainer />}
+                  path="/detail/:itemID"
+                  element={
+                    <ProtectedRoute>
+                      <ItemDetailContainer />
+                    </ProtectedRoute>
+                  }
                 />
                 <Route path="/*" element={<NoMatch />} />
               </Routes>
               <Footer />
             </CartProvider>
-          </UserContext>
+          </ProductContext>
+          {/* </UserContext> */}
         </AuthContext>
       </BrowserRouter>
     </div>

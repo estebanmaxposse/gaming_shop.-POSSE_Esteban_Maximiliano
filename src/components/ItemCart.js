@@ -8,7 +8,7 @@ const ItemCart = ({ product }) => {
   return (
     <div>
       <Col className="item-cart d-flex" xs={12}>
-        <img src={product.pictureUrl} alt={product.title} />
+        <img src={product.thumbnail} alt={product.title} />
         <div className="item-cart-text">
           <h4>{product.title}</h4>
           <p>Quantity: {product.quantity}</p>

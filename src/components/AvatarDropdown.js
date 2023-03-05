@@ -2,11 +2,9 @@ import React from "react";
 import { Dropdown } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
-import { useUser } from "../contexts/UserContext";
 
 const AvatarDropdown = () => {
-  const { logout } = useAuth();
-  const { user } = useUser();
+  const { logout, user } = useAuth();
 
   const navigate = useNavigate();
   const handleLogout = async () => {

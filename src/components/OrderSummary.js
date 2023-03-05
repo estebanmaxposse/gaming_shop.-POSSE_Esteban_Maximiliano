@@ -4,14 +4,14 @@ import { useCartContext } from "../contexts/CartContext";
 import { addDoc, collection, Timestamp } from "firebase/firestore";
 import { db } from "../firebase/config";
 import { toast, ToastContainer } from "react-toastify";
-import { useUser } from "../contexts/UserContext";
+import { useAuth } from "../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
 
 const OrderSummary = () => {
   const { totalPrice, calcTaxes, addTaxes, clearCart, cart, totalProducts } =
     useCartContext();
 
-  const { user } = useUser();
+  const { user } = useAuth();
 
   const navigate = useNavigate();
 
@@ -30,7 +30,7 @@ const OrderSummary = () => {
       title: product.title,
       price: product.price,
       quantity: product.quantity,
-      pictureURL: product.pictureUrl,
+      thumbnail: product.thumbnail,
     })),
     totalItems: totalProducts(),
     tax: calcTaxes(totalPrice()),
