@@ -17,7 +17,7 @@ import Account from "./components/Account";
 import ProtectedRoute from "./components/ProtectedRoute";
 import "./App.scss";
 import AuthContext from "./contexts/AuthContext";
-import UserContext from "./contexts/UserContext";
+// import UserContext from "./contexts/UserContext";
 import { ToastContainer } from "react-bootstrap";
 import LoadingBackdrop from "./components/LoadingBackdrop";
 
@@ -27,7 +27,7 @@ function App() {
       <Favicon url="https://i.imgur.com/y61iWez.png" />
       <BrowserRouter>
         <AuthContext>
-          <UserContext>
+          {/* <UserContext> */}
             <CartProvider>
               <ToastContainer />
               <LoadingBackdrop />
@@ -54,7 +54,7 @@ function App() {
               </Routes>
               <Footer />
             </CartProvider>
-          </UserContext>
+          {/* </UserContext> */}
         </AuthContext>
       </BrowserRouter>
     </div>

@@ -24,7 +24,7 @@ const Login = () => {
     e.preventDefault();
   };
 
-  const { login, loginGoogle, setLoading } = useAuth();
+  const { login, setLoading } = useAuth();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -51,30 +51,30 @@ const Login = () => {
     setLoading(false);
   };
 
-  const handleGoogleLogin = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    try {
-      await loginGoogle();
-      toast.success("Signed In!", {
-        position: toast.POSITION.TOP_CENTER,
-        autoClose: 3000,
-      });
-      toast.onChange((payload) => {
-        if (
-          payload.status === "removed" &&
-          payload.type === toast.TYPE.SUCCESS
-        ) {
-          navigate("/account");
-        }
-      });
-    } catch (e) {
-      setIsAlert(true);
-      setError(e.message);
-      console.log(e.message);
-    }
-    setLoading(false);
-  };
+  // const handleGoogleLogin = async (e) => {
+  //   e.preventDefault();
+  //   setLoading(true);
+  //   try {
+  //     await loginGoogle();
+  //     toast.success("Signed In!", {
+  //       position: toast.POSITION.TOP_CENTER,
+  //       autoClose: 3000,
+  //     });
+  //     toast.onChange((payload) => {
+  //       if (
+  //         payload.status === "removed" &&
+  //         payload.type === toast.TYPE.SUCCESS
+  //       ) {
+  //         navigate("/account");
+  //       }
+  //     });
+  //   } catch (e) {
+  //     setIsAlert(true);
+  //     setError(e.message);
+  //     console.log(e.message);
+  //   }
+  //   setLoading(false);
+  // };
 
   return (
     <div className="sign-in-bg">
@@ -122,7 +122,7 @@ const Login = () => {
             Login!
           </Button>
 
-          <Button onClick={handleGoogleLogin}>
+          <Button disabled>
             <i className="bi bi-google"></i>
             Sign in with Google!
           </Button>

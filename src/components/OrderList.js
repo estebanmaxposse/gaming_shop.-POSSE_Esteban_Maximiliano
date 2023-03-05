@@ -3,7 +3,7 @@ import { Button, Row, Col, Image } from "react-bootstrap";
 import { collection, query, getDocs, where } from "firebase/firestore";
 import { db } from "../firebase/config";
 import LoadingGif from "./LoadingGif";
-import { useUser } from "../contexts/UserContext";
+import { useAuth } from "../contexts/AuthContext";
 import OrderItem from "./OrderItem";
 import { Link } from "react-router-dom";
 
@@ -11,11 +11,11 @@ const OrderList = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [orders, setData] = useState([]);
 
-  const { user, fetchUserData } = useUser();
+  const { user, fetchUserData } = useAuth();
 
   const fetchOrders = async () => {
     setIsLoading(true);
-    await fetchUserData(true);
+    await fetchUserData();
 
     const queryDatabase = db;
     const queryCollection = collection(queryDatabase, "orders");

@@ -8,6 +8,12 @@ const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmedPassword, setConfirmedPassword] = useState("");
+  const [username, setUsername] = useState("");
+  const [fullName, setFullName] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [shippingAddress, setShippingAddress] = useState("");
+  const [age, setAge] = useState("");
+  const [avatar, setAvatar] = useState("https://i.imgur.com/3oHh4La.png");
 
   const navigate = useNavigate();
 
@@ -35,7 +41,7 @@ const SignUp = () => {
       if (password !== confirmedPassword) {
         throw new Error("Passwords don't match!");
       }
-      await signUp(email, password);
+      await signUp(email, password, username, fullName, phoneNumber, shippingAddress, age, avatar);
       toast.success("Signed up!", {
         position: toast.POSITION.TOP_CENTER,
         autoClose: 3000,
@@ -45,6 +51,7 @@ const SignUp = () => {
           payload.status === "removed" &&
           payload.type === toast.TYPE.SUCCESS
         ) {
+          console.log('navigate');
           navigate("/account");
         }
       });
@@ -122,6 +129,60 @@ const SignUp = () => {
                 <i className="bi bi-eye-fill"></i>
               )}
             </Button>
+          </InputGroup>
+
+          <Form.Label>Username</Form.Label>
+          <InputGroup className="mb-3 sign-in-input" controlId="formBasicUsername">
+            <Form.Control
+              type="text"
+              placeholder="Your username"
+              onChange={(e) => setUsername(e.target.value)}
+            />
+          </InputGroup>
+
+          <Form.Label>Full name</Form.Label>
+          <InputGroup className="mb-3 sign-in-input" controlId="formBasicName">
+            <Form.Control
+              type="text"
+              placeholder="John Johnson"
+              onChange={(e) => setFullName(e.target.value)}
+            />
+          </InputGroup>
+
+          <Form.Label>Phone Number</Form.Label>
+          <InputGroup className="mb-3 sign-in-input" controlId="formBasicPhoneNumber">
+            <Form.Control
+              type="tel"
+              placeholder="+54 123-456-7890"
+              onChange={(e) => setPhoneNumber(e.target.value)}
+            />
+          </InputGroup>
+
+          <Form.Label>Shipping Address</Form.Label>
+          <InputGroup className="mb-3 sign-in-input" controlId="formBasicAddress">
+            <Form.Control
+              type="text"
+              placeholder="1234 Main St"
+              onChange={(e) => setShippingAddress(e.target.value)}
+            />
+          </InputGroup>
+
+          <Form.Label>Age</Form.Label>
+          <InputGroup className="mb-3 sign-in-input" controlId="formBasicAge">
+            <Form.Control
+              type="number"
+              placeholder="18"
+              onChange={(e) => setAge(e.target.value)}
+            />
+          </InputGroup>
+
+          <Form.Label>Avatar</Form.Label>
+          <InputGroup className="mb-3 sign-in-input" controlId="formBasicAvatar">
+            <Form.Control
+              type="text"
+              placeholder="https://i.imgur.com/3oHh4La.png"
+              onChange={(e) => setAvatar(e.target.value)}
+            />
           </InputGroup>
 
           <Button variant="primary" type="submit" className="fullwidth-button">

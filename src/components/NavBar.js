@@ -11,10 +11,10 @@ import { NavLink, Link } from "react-router-dom";
 import CartWidget from "./CartWidget";
 import SearchBar from "./SearchBar";
 import AvatarDropdown from "./AvatarDropdown";
-import { useUser } from "../contexts/UserContext";
+import { useAuth } from "../contexts/AuthContext";
 
 const NavBar = () => {
-  const { user } = useUser();
+  const { user } = useAuth();
 
   return (
     <header>

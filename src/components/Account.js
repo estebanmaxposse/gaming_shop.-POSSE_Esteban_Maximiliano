@@ -1,15 +1,14 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
-import { useUser } from "../contexts/UserContext";
 import AccountModal from "./AccountModal";
 import OrderList from "./OrderList";
 import { ToastContainer } from "react-toastify";
 import { Row, Col, Button } from "react-bootstrap";
 
 const Account = () => {
-  const { logout } = useAuth();
-  const { user, setUser } = useUser();
+  const { logout, user, setUser } = useAuth();
+  console.log(user);
 
   const navigate = useNavigate();
   const handleLogout = async () => {
@@ -32,7 +31,7 @@ const Account = () => {
             <h2 className="profile-header">My details</h2>
             <div className="profile-details-pic">
               <img
-                src={user?.photoURL || "https://i.imgur.com/3oHh4La.png"}
+                src={user?.avatar || "https://i.imgur.com/3oHh4La.png"}
                 className="profile-details-pic-img"
                 alt="profile-pic"
               />
@@ -40,12 +39,22 @@ const Account = () => {
             <div>
               <p className="profile-details-header">Username</p>
               <p className="profile-details-data">
-                {user?.displayName || user?.email}
+                {user?.username || user?.email}
               </p>
             </div>
             <div>
               <p className="profile-details-header">Email</p>
               <p className="profile-details-data">{user?.email}</p>
+            </div>
+            <div>
+              <p className="profile-details-header">Full Name</p>
+              <p
+                className={`profile-details-data ${
+                  !user?.fullName && "text-muted"
+                }`}
+              >
+                {user?.fullName || "Add your full name"}
+              </p>
             </div>
             <div>
               <p className="profile-details-header">Shipping Address</p>
@@ -67,6 +76,16 @@ const Account = () => {
                 {user?.phoneNumber || "Add a phone number"}
               </p>
             </div>
+            <div>
+              <p className="profile-details-header">Age</p>
+              <p
+                className={`profile-details-data ${
+                  !user?.age && "text-muted"
+                }`}
+              >
+                {user?.age || "Add an age"}
+              </p>
+            </div>
             <div className="profile-details-buttons d-flex">
               <AccountModal />
               <Button onClick={handleLogout}>Logout</Button>
@@ -77,7 +96,7 @@ const Account = () => {
           <div>
             <div className="profile-orders">
               <h2 className="profile-header">My orders</h2>
-              <OrderList />
+              {/* <OrderList /> */}
             </div>
           </div>
         </Col>

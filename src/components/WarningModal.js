@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Modal, Button } from "react-bootstrap";
+import { useAuth } from "../contexts/AuthContext";
 import { useUser } from "../contexts/UserContext";
 
 const WarningModal = () => {
