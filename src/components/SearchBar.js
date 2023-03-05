@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Form, FormControl, Button } from "react-bootstrap";
 import { useProduct } from "../contexts/ProductContext";
+import { useAuth } from "../contexts/AuthContext";
 import { Link } from "react-router-dom";
 import Fuse from "fuse.js";
 
@@ -12,6 +13,8 @@ const SearchBar = () => {
   });
 
   const { products, getProducts } = useProduct();
+  const { user } = useAuth();
+  console.log('SEARCH BAR: ', user);
 
   useEffect(() => {
     getProducts()
@@ -35,19 +38,20 @@ const SearchBar = () => {
   return (
     <div className="position-relative">
       <Form className="d-flex" id="search-bar">
-        <FormControl
-          type="search"
-          placeholder="SEARCH..."
-          aria-label="Search"
-          id="search-bar-input"
-          value={searchQuery}
-          onChange={(e) => handleSearch(e.target.value)}
-        />
-        <Button variant="success" id="search-bar-button">
-          <i className="bi bi-search"></i>
-        </Button>
-      </Form>
-      {sortedSearchResults.length > 0 && (
+      <FormControl
+        type="search"
+        placeholder="SEARCH..."
+        aria-label="Search"
+        id="search-bar-input"
+        value={searchQuery}
+        onChange={(e) => handleSearch(e.target.value)}
+      />
+      <Button variant="success" id="search-bar-button">
+        <i className="bi bi-search"></i>
+      </Button>
+    </Form>
+    {
+      sortedSearchResults.length > 0 && (
         <ol className="list-group position-absolute search-results">
           {sortedSearchResults.slice(0, 4).map(({ item }) => {
             return (
@@ -69,7 +73,8 @@ const SearchBar = () => {
             );
           })}
         </ol>
-      )}
+      )
+    }
     </div>
   );
 };
