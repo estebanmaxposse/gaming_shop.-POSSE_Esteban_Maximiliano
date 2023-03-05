@@ -1,7 +1,6 @@
-import { collection, getDocs } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { Form, FormControl, Button } from "react-bootstrap";
-import { db } from "../firebase/config";
+import { useProduct } from "../contexts/ProductContext";
 import { Link } from "react-router-dom";
 import Fuse from "fuse.js";
 
@@ -12,15 +11,10 @@ const SearchBar = () => {
     return resultA.score - resultB.score;
   });
 
-  const [products, setData] = useState([]);
+  const { products, getProducts } = useProduct();
 
   useEffect(() => {
-    const queryCollection = collection(db, "product");
-    getDocs(queryCollection).then((res) => {
-      setData(
-        res.docs.map((product) => ({ id: product.id, ...product.data() }))
-      );
-    });
+    getProducts()
   }, []);
 
   const searchIndex = new Fuse(products, {
@@ -61,7 +55,7 @@ const SearchBar = () => {
                 className="list-group-item search-results-item"
                 key={item.title}
               >
-                <Link to={`/detail/${item.id}`} onClick={handleCloseList}>
+                <Link to={`/detail/${item._id}`} onClick={handleCloseList}>
                   <div className="d-flex w-100 justify-content-between align-items-center search-results-item-container">
                     <p className="search-results-item-title">{item.title}</p>
                     <img
