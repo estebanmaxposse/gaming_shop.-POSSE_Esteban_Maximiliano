@@ -55,31 +55,6 @@ const Login = () => {
     setLoading(false);
   };
 
-  // const handleGoogleLogin = async (e) => {
-  //   e.preventDefault();
-  //   setLoading(true);
-  //   try {
-  //     await loginGoogle();
-  //     toast.success("Signed In!", {
-  //       position: toast.POSITION.TOP_CENTER,
-  //       autoClose: 3000,
-  //     });
-  //     toast.onChange((payload) => {
-  //       if (
-  //         payload.status === "removed" &&
-  //         payload.type === toast.TYPE.SUCCESS
-  //       ) {
-  //         navigate("/account");
-  //       }
-  //     });
-  //   } catch (e) {
-  //     setIsAlert(true);
-  //     setError(e.message);
-  //     console.log(e.message);
-  //   }
-  //   setLoading(false);
-  // };
-
   return (
     <div className="sign-in-bg">
       <ToastContainer />

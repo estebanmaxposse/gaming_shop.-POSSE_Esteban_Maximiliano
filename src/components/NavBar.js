@@ -76,6 +76,11 @@ const NavBar = () => {
                     Contact
                   </NavLink>
                 </li>
+                <li className="nav-item">
+                  <NavLink className="nav-link" to={"/chat"}>
+                    Chat
+                  </NavLink>
+                </li>
                 {user ? (
                   <SearchBar />
                 ) : (

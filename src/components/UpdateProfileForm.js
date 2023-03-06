@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Form, InputGroup, Button } from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
 import { ToastContainer, toast } from "react-toastify";
-import WarningModal from "./WarningModal";
+// import WarningModal from "./WarningModal";
 
 const UpdateProfileForm = ({ setShow }) => {
   const [showPassword, setShowPassword] = useState(false);
