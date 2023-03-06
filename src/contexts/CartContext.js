@@ -8,10 +8,17 @@ export const useCartContext = () => useContext(CartContext);
 const CartProvider = ({ children }) => {
 
   const formatProducts = (productObject) => {
-    console.log('PRODUCT OBJECT: ', productObject);
     const { count, ...product } = productObject;
     const formattedProducts = Array(count).fill(product);
     return formattedProducts;
+  }
+
+  const reformatProductsFromDB = (cartObject) => {
+    const productsWithCount = cartObject.products.map((item) => {
+      const { quantity, product } = item;
+      return { ...product, count: quantity };
+    });
+    return productsWithCount;
   }
 
   const { user } = useAuth();
@@ -41,7 +48,6 @@ const CartProvider = ({ children }) => {
   }
 
   const addProductsDB = async (arrayOfProducts, cartIDToAddProducts) => {
-    console.log('PRODUCTS TO ADD TO DB: ', arrayOfProducts);
     try {
       const response = await fetch(`http://localhost:8080/api/cart/${cartIDToAddProducts}/products`, {
         method: 'POST',
@@ -59,15 +65,10 @@ const CartProvider = ({ children }) => {
   }
 
   const getCartProductsDB = async (cartIDParameter) => {
-    console.log('CART ID PARAMETER: ', cartIDParameter);
     if (cartID === '' && !cartIDParameter) {
-      console.log('CART ID IS EMPTY');
       return false
     }
-
     let cartIDForBack = cartIDParameter || cartID;
-    console.log('CART ID FOR BACK: ', cartIDForBack);
-
     try {
       const response = await fetch(`http://localhost:8080/api/cart/${cartIDForBack}/products`, {
         method: 'GET',
@@ -77,7 +78,6 @@ const CartProvider = ({ children }) => {
         },
       });
       const data = await response.json();
-      console.log('PRODUCTS FROM DB: ', data);
       return data
     } catch (error) {
       console.log(error);
@@ -87,9 +87,7 @@ const CartProvider = ({ children }) => {
 
   const getCartByUserID = async (userToken) => {
     let token = userToken || localStorage.getItem('token');
-    console.log('TOKEN: ', token);
     let userID = jwt_decode(token).user._id;
-    console.log('USER ID: ', userID);
     try {
       const response = await fetch(`http://localhost:8080/api/cart/user/${userID}`, {
         method: 'GET',
@@ -182,12 +180,11 @@ const CartProvider = ({ children }) => {
 
   const initialCart = async (userToken) => {
     const userCartDB = await getCartByUserID(userToken);
-    console.log('USER CART DB: ', userCartDB._id);
     const productsDB = await getCartProductsDB(userCartDB._id);
-    console.log('PRODUCTS DB: ', productsDB);
+    let reformattedProducts = reformatProductsFromDB(productsDB);
     if (userCartDB) {
       setCartID(userCartDB._id);
-      setCart(productsDB);
+      setCart(reformattedProducts);
     } else {
       console.log('NO CART IN DB');
       const newCartID = await createCartDB();
@@ -222,9 +219,7 @@ const CartProvider = ({ children }) => {
       newItem = { ...item, count };
       setCart([...cart, newItem]);
     }
-    console.log('NEW ITEM: ', newItem);
     let formattedProducts = formatProducts(newItem)
-    console.log('FORMATTED PRODUCTS: ', formattedProducts);
     await addProductsDB(formattedProducts, myNewCartId);
   };
 

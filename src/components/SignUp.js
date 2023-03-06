@@ -51,7 +51,6 @@ const SignUp = () => {
           payload.status === "removed" &&
           payload.type === toast.TYPE.SUCCESS
         ) {
-          console.log('navigate');
           navigate("/account");
         }
       });

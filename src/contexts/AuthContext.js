@@ -66,9 +66,7 @@ const AuthContext = ({ children }) => {
         localStorage.setItem('token', token);
         setUserToken(token);
         let decoded = (jwt_decode(token));
-        console.log(decoded);
         setUser(decoded.user);
-        console.log(`SIGN UP`, user);
       })
       .catch(error => {
         console.error(error);
@@ -93,7 +91,6 @@ const AuthContext = ({ children }) => {
       setUserToken(token)
       let decoded = (jwt_decode(token));
       setUser(decoded.user);
-      console.log(`login token`, token);
       return token
       })
     .catch(error => {
