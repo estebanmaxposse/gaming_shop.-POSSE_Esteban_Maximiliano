@@ -32,8 +32,9 @@ const Login = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      await login(email, password);
-      await initialCart();
+      let token = await login(email, password);
+      console.log('LOGIN TOKEN', token);
+      await initialCart(token);
       toast.success("Signed In!", {
         position: toast.POSITION.TOP_CENTER,
         autoClose: 3000,

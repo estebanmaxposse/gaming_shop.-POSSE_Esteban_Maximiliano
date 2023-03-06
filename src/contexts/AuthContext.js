@@ -84,8 +84,8 @@ const AuthContext = ({ children }) => {
       },
       body: JSON.stringify({ email: email, password: password })
     })
-    .then(async response => {
-      let data = await response.json();
+    .then(response => {
+      let data = response.json();
       return data
     })
     .then(token => {
@@ -93,7 +93,8 @@ const AuthContext = ({ children }) => {
       setUserToken(token)
       let decoded = (jwt_decode(token));
       setUser(decoded.user);
-      console.log(`LOGIN`, user);
+      console.log(`login token`, token);
+      return token
       })
     .catch(error => {
       console.error(error);

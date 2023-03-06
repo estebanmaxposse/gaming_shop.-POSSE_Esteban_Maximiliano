@@ -1,5 +1,6 @@
 import React, { useState, useContext, useMemo } from "react";
 import { useAuth } from "./AuthContext";
+import jwt_decode from "jwt-decode";
 const CartContext = React.createContext([]);
 
 export const useCartContext = () => useContext(CartContext);
@@ -57,12 +58,18 @@ const CartProvider = ({ children }) => {
     }
   }
 
-  const getCartProductsDB = async () => {
-    if (cartID === '') {
+  const getCartProductsDB = async (cartIDParameter) => {
+    console.log('CART ID PARAMETER: ', cartIDParameter);
+    if (cartID === '' && !cartIDParameter) {
+      console.log('CART ID IS EMPTY');
       return false
     }
+
+    let cartIDForBack = cartIDParameter || cartID;
+    console.log('CART ID FOR BACK: ', cartIDForBack);
+
     try {
-      const response = await fetch(`http://localhost:8080/api/cart/${cartID}/products`, {
+      const response = await fetch(`http://localhost:8080/api/cart/${cartIDForBack}/products`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -71,6 +78,31 @@ const CartProvider = ({ children }) => {
       });
       const data = await response.json();
       console.log('PRODUCTS FROM DB: ', data);
+      return data
+    } catch (error) {
+      console.log(error);
+      return false
+    }
+  }
+
+  const getCartByUserID = async (userToken) => {
+    let token = userToken || localStorage.getItem('token');
+    console.log('TOKEN: ', token);
+    let userID = jwt_decode(token).user._id;
+    console.log('USER ID: ', userID);
+    try {
+      const response = await fetch(`http://localhost:8080/api/cart/user/${userID}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + localStorage.getItem('token')
+        },
+      });
+      if (response.status === 404) {
+        return false
+      }
+      const data = await response.json();
+      console.log('CART BY USER FROM DB: ', data);
       return data
     } catch (error) {
       console.log(error);
@@ -148,13 +180,16 @@ const CartProvider = ({ children }) => {
     }
   }
 
-  const initialCart = async () => {
-    const cartDB = await getCartDB();
-    const productsDB = await getCartProductsDB();
-    if (cartDB) {
-      setCartID(cartDB._id);
+  const initialCart = async (userToken) => {
+    const userCartDB = await getCartByUserID(userToken);
+    console.log('USER CART DB: ', userCartDB._id);
+    const productsDB = await getCartProductsDB(userCartDB._id);
+    console.log('PRODUCTS DB: ', productsDB);
+    if (userCartDB) {
+      setCartID(userCartDB._id);
       setCart(productsDB);
     } else {
+      console.log('NO CART IN DB');
       const newCartID = await createCartDB();
       setCartID(newCartID);
     }
