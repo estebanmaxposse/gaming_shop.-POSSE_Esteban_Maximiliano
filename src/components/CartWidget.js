@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useCartContext } from "../contexts/CartContext";
 
 const CartWidget = () => {
-  const { totalProducts } = useCartContext();
+  const { getTotalProducts } = useCartContext();
 
   return (
     <>
@@ -12,7 +12,7 @@ const CartWidget = () => {
         <Button variant="link" className="position-relative" id="cart-widget">
           <i className="bi bi-cart"></i>
           <Badge className="position-absolute rounded-pill bg-danger">
-            {totalProducts() || ""}
+            {getTotalProducts() || ""}
           </Badge>
         </Button>
       </Link>

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Button, Form, InputGroup } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
+import { useCartContext } from "../contexts/CartContext";
 import Alerts from "./Alerts";
 import { ToastContainer, toast } from "react-toastify";
 
@@ -25,12 +26,14 @@ const Login = () => {
   };
 
   const { login, setLoading } = useAuth();
+  const { initialCart } = useCartContext();
 
   const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true);
     try {
       await login(email, password);
+      await initialCart();
       toast.success("Signed In!", {
         position: toast.POSITION.TOP_CENTER,
         autoClose: 3000,

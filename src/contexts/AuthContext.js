@@ -106,6 +106,7 @@ const AuthContext = ({ children }) => {
     setUser(null);
     console.log(`LOGOUT`, user);
     navigate('/login');
+    window.location.reload();
   }
   
   const updateUser = async (email, username, fullName, phoneNumber, shippingAddress, age, avatar) => {

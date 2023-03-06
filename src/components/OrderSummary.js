@@ -8,7 +8,7 @@ import { useAuth } from "../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
 
 const OrderSummary = () => {
-  const { totalPrice, calcTaxes, addTaxes, clearCart, cart, totalProducts } =
+  const { totalPrice, calcTaxes, addTaxes, clearCart, cart, getTotalProducts } =
     useCartContext();
 
   const { user } = useAuth();
@@ -32,7 +32,7 @@ const OrderSummary = () => {
       quantity: product.quantity,
       thumbnail: product.thumbnail,
     })),
-    totalItems: totalProducts(),
+    totalItems: getTotalProducts(),
     tax: calcTaxes(totalPrice()),
     total: addTaxes(totalPrice(), calcTaxes(totalPrice())),
   };

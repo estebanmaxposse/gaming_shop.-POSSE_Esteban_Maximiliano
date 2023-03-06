@@ -44,7 +44,11 @@ function App() {
                     </ProtectedRoute>
                   } 
                 />
-                <Route path="/cart" element={<Cart />} />
+                <Route path="/cart" element={
+                  <ProtectedRoute>
+                    <Cart />
+                  </ProtectedRoute>
+                } />
                 <Route path="/login" element={<Login />} />
                 <Route path="/signUp" element={<SignUp />} />
                 <Route
@@ -55,7 +59,11 @@ function App() {
                     </ProtectedRoute>
                   }
                 />
-                <Route path="/category/:categoryID" element={<Categories />} />
+                <Route path="/category/:categoryID" element={
+                  <ProtectedRoute>
+                    <Categories />
+                  </ProtectedRoute>
+                } />
                 <Route
                   path="/detail/:itemID"
                   element={
