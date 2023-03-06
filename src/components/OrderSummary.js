@@ -1,51 +1,21 @@
 import React from "react";
 import { Col, Row } from "react-bootstrap";
 import { useCartContext } from "../contexts/CartContext";
-import { addDoc, collection, Timestamp } from "firebase/firestore";
-import { db } from "../firebase/config";
 import { toast, ToastContainer } from "react-toastify";
-import { useAuth } from "../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
 
 const OrderSummary = () => {
-  const { totalPrice, calcTaxes, addTaxes, clearCart, cart, getTotalProducts } =
-    useCartContext();
-
-  const { user } = useAuth();
+  const { totalPrice, clearCart, createOrder, } = useCartContext();
 
   const navigate = useNavigate();
 
-  const order = {
-    date: Timestamp.now(),
-    status: "Ordered",
-    buyer: {
-      buyerID: user?.uid,
-      name: user?.displayName || user?.email,
-      email: user?.email,
-      phone: user?.phoneNumber,
-      address: user?.shippingAddress,
-    },
-    items: cart.map((product) => ({
-      id: product.id,
-      title: product.title,
-      price: product.price,
-      quantity: product.quantity,
-      thumbnail: product.thumbnail,
-    })),
-    totalItems: getTotalProducts(),
-    tax: calcTaxes(totalPrice()),
-    total: addTaxes(totalPrice(), calcTaxes(totalPrice())),
-  };
-
-  const createOrder = () => {
-    const database = db;
-    const orderCollection = collection(database, "orders");
-    const addToCollectionPromise = addDoc(orderCollection, order);
-    toast.promise(addToCollectionPromise, {
+  const sendOrder = () => {
+    const order =  createOrder()
+    toast.promise(order, {
       pending: "Placing order...",
       success: {
-        render({ data: { id } }) {
-          return `Successfully placed order ${id}`;
+        render() {
+          return `Successfully placed order!`;
         },
       },
       error: "Something went wrong!",
@@ -70,12 +40,6 @@ const OrderSummary = () => {
           ${totalPrice()}
         </Col>
         <Col xs={6} className="summary-list-subtitle">
-          Taxes:
-        </Col>
-        <Col xs={6} className="summary-list-value">
-          ${calcTaxes(totalPrice())}
-        </Col>
-        <Col xs={6} className="summary-list-subtitle">
           Shipping:
         </Col>
         <Col xs={6} className="summary-list-value">
@@ -85,10 +49,10 @@ const OrderSummary = () => {
           Total:
         </Col>
         <Col xs={6} className="summary-list-value total-value">
-          ${addTaxes(totalPrice(), calcTaxes(totalPrice()))}
+          ${totalPrice()}
         </Col>
       </Row>
-      <button onClick={createOrder}>Go to checkout!</button>
+      <button onClick={sendOrder}>Go to checkout!</button>
       <button onClick={() => clearCart()}>Clear Cart</button>
     </div>
   );

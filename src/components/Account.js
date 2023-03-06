@@ -95,7 +95,7 @@ const Account = () => {
           <div>
             <div className="profile-orders">
               <h2 className="profile-header">My orders</h2>
-              {/* <OrderList /> */}
+              <OrderList />
             </div>
           </div>
         </Col>

@@ -7,6 +7,7 @@ export const useCartContext = () => useContext(CartContext);
 
 const CartProvider = ({ children }) => {
 
+  //PRODUCT FORMATTING
   const formatProducts = (productObject) => {
     const { count, ...product } = productObject;
     const formattedProducts = Array(count).fill(product);
@@ -178,10 +179,52 @@ const CartProvider = ({ children }) => {
     }
   }
 
+  const getOrders = async () => {
+    let token = localStorage.getItem('token');
+    let userID = user._id || jwt_decode(token).user._id;
+    console.log('USER ID: ', userID);
+    try {
+      const response = await fetch(`http://localhost:8080/api/order/user/${userID}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + localStorage.getItem('token')
+        }
+      })
+      const data = await response.json();
+      console.log('ORDERS FETCHED: ', data);
+      return data
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const createOrder = async () => {
+    try {
+      const response = await fetch(`http://localhost:8080/api/order/${cartID}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + localStorage.getItem('token')
+        }
+      })
+      const data = await response.json();
+      console.log('ORDER CREATED: ', data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  //CART METHODS
   const initialCart = async (userToken) => {
     const userCartDB = await getCartByUserID(userToken);
     const productsDB = await getCartProductsDB(userCartDB._id);
-    let reformattedProducts = reformatProductsFromDB(productsDB);
+    let reformattedProducts
+    if (Array.isArray(productsDB) && productsDB.length !==0) {
+      reformattedProducts = reformatProductsFromDB(productsDB);
+    } else {
+      reformattedProducts = []
+    }
     if (userCartDB) {
       setCartID(userCartDB._id);
       setCart(reformattedProducts);
@@ -270,6 +313,8 @@ const CartProvider = ({ children }) => {
         getCartProductsDB,
         deleteCartDB,
         initialCart,
+        createOrder,
+        getOrders,
       }}
     >
       {children}
