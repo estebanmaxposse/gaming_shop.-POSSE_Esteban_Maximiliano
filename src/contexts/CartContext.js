@@ -1,45 +1,281 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useMemo } from "react";
+import { useAuth } from "./AuthContext";
+import jwt_decode from "jwt-decode";
 const CartContext = React.createContext([]);
 
 export const useCartContext = () => useContext(CartContext);
 
 const CartProvider = ({ children }) => {
-  const [cart, setCart] = useState([]);
 
-  const clearCart = () => setCart([]);
+  //PRODUCT FORMATTING
+  const formatProducts = (productObject) => {
+    const { count, ...product } = productObject;
+    const formattedProducts = Array(count).fill(product);
+    return formattedProducts;
+  }
+
+  const reformatProductsFromDB = (cartObject) => {
+    const productsWithCount = cartObject.products.map((item) => {
+      const { quantity, product } = item;
+      return { ...product, count: quantity };
+    });
+    return productsWithCount;
+  }
+
+  const { user } = useAuth();
+  const [cart, setCart] = useState([]);
+  const [cartID, setCartID] = useState('');
+
+  //API CALLS
+  const createCartDB = async () => {
+    try {
+      const response = await fetch('http://localhost:8080/api/cart', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + localStorage.getItem('token')
+        },
+        body: JSON.stringify({
+          user: user,
+        }),
+      });
+      const data = await response.json();
+      setCartID(data);
+      return data
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const addProductsDB = async (arrayOfProducts, cartIDToAddProducts) => {
+    try {
+      const response = await fetch(`http://localhost:8080/api/cart/${cartIDToAddProducts}/products`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + localStorage.getItem('token')
+        },
+        body: JSON.stringify(arrayOfProducts),
+      });
+      const data = await response.json();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const getCartProductsDB = async (cartIDParameter) => {
+    if (cartID === '' && !cartIDParameter) {
+      return false
+    }
+    let cartIDForBack = cartIDParameter || cartID;
+    try {
+      const response = await fetch(`http://localhost:8080/api/cart/${cartIDForBack}/products`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + localStorage.getItem('token')
+        },
+      });
+      const data = await response.json();
+      return data
+    } catch (error) {
+      console.log(error);
+      return false
+    }
+  }
+
+  const getCartByUserID = async (userToken) => {
+    let token = userToken || localStorage.getItem('token');
+    let userID = jwt_decode(token).user._id;
+    try {
+      const response = await fetch(`http://localhost:8080/api/cart/user/${userID}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + localStorage.getItem('token')
+        },
+      });
+      if (response.status === 404) {
+        return false
+      }
+      const data = await response.json();
+      return data
+    } catch (error) {
+      console.log(error);
+      return false
+    }
+  }
+
+  const getCartDB = async () => {
+    if (cartID === '') {
+      return false
+    }
+    try {
+      const response = await fetch(`http://localhost:8080/api/cart/${cartID}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + localStorage.getItem('token')
+        },
+      });
+      const data = await response.json();
+      return data
+    } catch (error) {
+      console.log(error);
+      return false
+    }
+  }
+
+  const clearCartDB = async () => {
+    try {
+      const response = await fetch(`http://localhost:8080/api/cart/${cartID}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + localStorage.getItem('token')
+        },
+      });
+      const data = await response.json();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const removeProductDB = async (id) => {
+    try {
+      const response = await fetch(`http://localhost:8080/api/cart/${cartID}/products/${id}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + localStorage.getItem('token')
+        },
+      });
+      const data = await response.json();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const deleteCartDB = async () => {
+    try {
+      const response = await fetch(`http://localhost:8080/api/cart/${cartID}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + localStorage.getItem('token')
+        },
+      });
+      const data = await response.json();
+      setCartID('');
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const getOrders = async () => {
+    let token = localStorage.getItem('token');
+    let userID = jwt_decode(token).user._id;
+    try {
+      const response = await fetch(`http://localhost:8080/api/order/user/${userID}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + localStorage.getItem('token')
+        }
+      })
+      const data = await response.json();
+      console.log('ORDERS FETCHED: ', data);
+      return data
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const createOrder = async () => {
+    try {
+      const response = await fetch(`http://localhost:8080/api/order/${cartID}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + localStorage.getItem('token')
+        }
+      })
+      const data = await response.json();
+      console.log('ORDER CREATED: ', data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  //CART METHODS
+  const initialCart = async (userToken) => {
+    const userCartDB = await getCartByUserID(userToken);
+    const productsDB = await getCartProductsDB(userCartDB._id);
+    let reformattedProducts
+    if (Array.isArray(productsDB) && productsDB.length !==0) {
+      reformattedProducts = reformatProductsFromDB(productsDB);
+    } else {
+      reformattedProducts = []
+    }
+    if (userCartDB) {
+      setCartID(userCartDB._id);
+      setCart(reformattedProducts);
+    } else {
+      console.log('NO CART IN DB');
+      const newCartID = await createCartDB();
+    }
+  }
 
   const isInCart = (id) =>
-    cart.find((product) => product.id === id) ? true : false;
+    cart.find((product) => product._id === id) ? true : false;
 
-  const removeProduct = (id) =>
-    setCart(cart.filter((product) => product.id !== id));
+  const removeProduct = async (id) => {
+    const productToBeRemoved = cart.find((product) => product._id === id);
+    setCart(cart.filter((product) => product._id !== id));
+    await removeProductDB(productToBeRemoved._id);
+  }
 
-  const addItem = (item, quantity) => {
-    if (isInCart(item.id)) {
+  const addItem = async (item, count) => {
+    let newItem = null
+    let myNewCartId = cartID;
+    if (isInCart(item._id)) {
       setCart(
         cart.map((product) => {
-          return product.id === item.id
-            ? { ...product, quantity: product.quantity + quantity }
-            : product;
+          if (product._id === item._id) {
+            newItem = { ...product, count: product.count + count };
+            return newItem;
+          } else {
+            return product;
+          }
         })
       );
     } else {
-      setCart([...cart, { ...item, quantity }]);
+      newItem = { ...item, count };
+      setCart([...cart, newItem]);
     }
+    let formattedProducts = formatProducts(newItem)
+    await addProductsDB(formattedProducts, myNewCartId);
   };
 
-  const totalProducts = () => {
-    return cart.reduce(
+  const clearCart = async () => {
+    setCart([])
+    await clearCartDB();
+  };
+
+
+  const getTotalProducts = () => {
+    let totalProducts = cart.reduce(
       (accumulatedProducts, addedProduct) =>
-        accumulatedProducts + addedProduct.quantity,
+        accumulatedProducts + addedProduct.count,
       0
     );
+    return totalProducts;
   };
 
   const totalPrice = () => {
     return cart.reduce(
       (accumulatedValue, addedValue) =>
-        accumulatedValue + addedValue.quantity * addedValue.price,
+        accumulatedValue + addedValue.count * addedValue.price,
       0
     );
   };
@@ -60,11 +296,16 @@ const CartProvider = ({ children }) => {
         isInCart,
         removeProduct,
         addItem,
-        totalProducts,
+        getTotalProducts,
         totalPrice,
         calcTaxes,
         addTaxes,
         cart,
+        getCartProductsDB,
+        deleteCartDB,
+        initialCart,
+        createOrder,
+        getOrders,
       }}
     >
       {children}

@@ -11,10 +11,10 @@ const ItemCart = ({ product }) => {
         <img src={product.thumbnail} alt={product.title} />
         <div className="item-cart-text">
           <h4>{product.title}</h4>
-          <p>Quantity: {product.quantity}</p>
+          <p>Quantity: {product.count}</p>
           <p>Cost per unit: ${product.price}</p>
-          <p>Item total: ${product.quantity * product.price}</p>
-          <button onClick={() => removeProduct(product.id)}>
+          <p>Item total: ${product.count * product.price}</p>
+          <button onClick={() => removeProduct(product._id)}>
             <i className="bi bi-trash-fill"></i>
           </button>
         </div>

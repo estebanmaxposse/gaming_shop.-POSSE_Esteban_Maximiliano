@@ -14,7 +14,6 @@ const SearchBar = () => {
 
   const { products, getProducts } = useProduct();
   const { user } = useAuth();
-  console.log('SEARCH BAR: ', user);
 
   useEffect(() => {
     getProducts()

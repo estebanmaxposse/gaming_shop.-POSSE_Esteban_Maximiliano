@@ -6,7 +6,7 @@ import ItemCart from "./ItemCart";
 import OrderSummary from "./OrderSummary";
 
 const Cart = () => {
-  const { cart, totalProducts } = useCartContext();
+  const { cart, getTotalProducts } = useCartContext();
 
   if (cart.length === 0) {
     return (
@@ -37,12 +37,12 @@ const Cart = () => {
       <h1 className="cart-list-header category-headline" id="cart-headline">
         Your Cart:
       </h1>
-      <h4 className="category-headline">{totalProducts()} Items</h4>
+      <h4 className="category-headline">{getTotalProducts()} Items</h4>
       <div className="cart-list-container d-flex">
         <div className="cart-list-box d-flex">
           <Row className="cart-list">
             {cart.map((product) => (
-              <ItemCart key={product.id} product={product} />
+              <ItemCart key={product._id} product={product} />
             ))}
           </Row>
           <OrderSummary />

@@ -1,18 +1,8 @@
-// import {
-//   createUserWithEmailAndPassword,
-//   signOut,
-//   signInWithEmailAndPassword,
-//   onAuthStateChanged,
-//   GoogleAuthProvider,
-//   signInWithPopup,
-// } from "firebase/auth";
-import React, { useState, useContext, createContext } from "react";
+import React, { useEffect, useState, useContext, createContext, useMemo } from "react";
 import jwt_decode from "jwt-decode";
 import env from "react-dotenv";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-// import { auth, db } from "../firebase/config";
-// import { setDoc, doc, getDoc } from "firebase/firestore";
 
 const authContext = createContext();
 
@@ -21,13 +11,48 @@ export const useAuth = () => {
 };
 
 const AuthContext = ({ children }) => {
-  // const [googleUser, setGoogleUser] = useState(null);
   const navigate = useNavigate();
-  const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(false);
 
+  //SESSION MANAGER
+  const [userToken, setUserToken] = useState(null); // string or nil
+  const userDecodedToken = useMemo(() => userToken && jwt_decode(userToken), [userToken]); // user object or nil
+  const isAuthenticated = useMemo(() => !!userToken, [userToken]); // boolean
+  const [user, setUser] = useState(null);
+
+  const [, setTokenIntervalPromise] = useState();
+  
+  useEffect(() => {
+    if (!userDecodedToken) {
+      return;
+    }
+
+    const expirationTime = userDecodedToken.exp * 1000; // convert expiration time to milliseconds
+    const timeout = expirationTime - Date.now();  // Calculate in how many milliseconds will the token expire
+
+    setTokenIntervalPromise(
+      prev => {
+        prev && clearInterval(prev);  // Stop previous interval from running
+
+        const newInterval = setInterval(
+          () => {
+            clearInterval(newInterval);
+            if (!isAuthenticated) {
+              return;
+            }
+            logout();
+          }, 
+          timeout
+        );
+
+        return newInterval;
+      }
+    )
+  }, [userDecodedToken])
+
+  //METHODS
   const signUp = async (email, password, username, fullName, phoneNumber, shippingAddress, age, avatar) => {
-    fetch(env.API_URL + '/api/auth/signup', {
+    return fetch(env.API_URL + '/api/auth/signup', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -38,12 +63,11 @@ const AuthContext = ({ children }) => {
         return response.json();
       })
       .then(token => {
-        console.log(token);
         localStorage.setItem('token', token);
+        setUserToken(token);
         let decoded = (jwt_decode(token));
-        console.log(decoded);
         setUser(decoded.user);
-        console.log(user);
+        return token
       })
       .catch(error => {
         console.error(error);
@@ -52,22 +76,23 @@ const AuthContext = ({ children }) => {
 
   
   const login = async (email, password) => {
-    // console.log('LOGIN');
-    await fetch(env.API_URL + '/api/auth/login', {
+    return await fetch(env.API_URL + '/api/auth/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({ email: email, password: password })
     })
-    .then(async response => {
-      let data = await response.json();
+    .then(response => {
+      let data = response.json();
       return data
     })
     .then(token => {
       localStorage.setItem('token', token);
+      setUserToken(token)
       let decoded = (jwt_decode(token));
       setUser(decoded.user);
+      return token
       })
     .catch(error => {
       console.error(error);
@@ -76,32 +101,15 @@ const AuthContext = ({ children }) => {
   
   const logout = async () => {
     localStorage.removeItem('token');
+    setUserToken(null);
     setUser(null);
     navigate('/login');
-  }
-  
-  const fetchUserData = async () => {
-    await fetch(env.API_URL + '/api/auth/user', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'authorization': 'Bearer ' + localStorage.getItem('token'),
-      }
-    })
-    .then(async response => {
-      return await response.json()
-    })
-    .then(data => {
-      console.log('FETCH ', data);
-      setUser(data.user);
-      return data.user;
-    })
+    window.location.reload();
   }
   
   const updateUser = async (email, username, fullName, phoneNumber, shippingAddress, age, avatar) => {
     let userPayload = {
       email: email,
-      // password: password,
       username: username,
       fullName: fullName,
       phoneNumber: phoneNumber,
@@ -115,15 +123,8 @@ const AuthContext = ({ children }) => {
       }
       return acc;
     }, {});
-
     const newUser = {...user, ...filteredUser};
-
     setUser({...user, ...filteredUser});
-
-
-    console.log('FRONTEND USER: ', newUser);
-    console.log(JSON.stringify({ user: newUser }));
-    
     setUser(newUser);
     await fetch(env.API_URL + '/api/auth/update', {
       method: 'PUT',
@@ -152,64 +153,15 @@ const AuthContext = ({ children }) => {
   
     const value = {
       user,
-      // googleUser,
-      // userDetails,
-      // setUserDetails,
       signUp,
       logout,
       login,
       updateUser,
-      fetchUserData,
-      // loginGoogle,
       loading,
       setLoading,
+      isAuthenticated,
     };
     return <authContext.Provider {...{ value }}>{children}</authContext.Provider>;
   };
   
   export default AuthContext;
-  
-  // return signInWithEmailAndPassword(auth, email, password).then(
-    //   (userCredential) => {
-      //     postUserDetails(userCredential.user);
-      //   }
-      // );
-
-      // const loginGoogle = async () => {
-        //   const provider = new GoogleAuthProvider();
-        //   return signInWithPopup(auth, provider).then((userCredential) => {
-          //     postUserDetails(userCredential.user);
-          //   });
-          // };
-          
-          // useEffect(() => {
-            //   const unsubscribe = onAuthStateChanged(auth, (googleUser) => {
-              //     setGoogleUser(googleUser);
-              //   });
-              //   return () => {
-                //     unsubscribe();
-                //   };
-                // }, []);
-                
-                // const logout = () => {
-                //   return signOut(auth);
-                // };
-              
-                // const [userDetails, setUserDetails] = useState();
-              
-                // const postUserDetails = (userInfo) => {
-                //   const docRef = doc(db, "users", userInfo.uid);
-                //   getDoc(docRef).then((docSnap) => {
-                //     if (docSnap.exists()) {
-                //       setUserDetails(docSnap.data());
-                //     } else {
-                //       setUserDetails({
-                //         id: userInfo.uid,
-                //         displayName: userInfo.displayName,
-                //         email: userInfo.email,
-                //       });
-                //       const database = db;
-                //       setDoc(doc(database, "users", userInfo.uid), userDetails);
-                //     }
-                //   });
-                // };

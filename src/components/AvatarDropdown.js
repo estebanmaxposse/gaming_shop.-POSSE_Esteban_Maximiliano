@@ -21,7 +21,7 @@ const AvatarDropdown = () => {
       <Dropdown className="avatar" align="end">
         <Dropdown.Toggle className="avatar-toggle caret-off">
           <img
-            src={user?.photoURL || "https://i.imgur.com/3oHh4La.png"}
+            src={user?.avatar || "https://i.imgur.com/3oHh4La.png"}
             className="avatar-img"
             referrerPolicy="no-referrer"
             alt="avatar"
@@ -29,7 +29,7 @@ const AvatarDropdown = () => {
         </Dropdown.Toggle>
 
         <Dropdown.Menu>
-          <Dropdown.Header>{user.displayName || user.email}</Dropdown.Header>
+          <Dropdown.Header>{user.username || user.email}</Dropdown.Header>
           <li>
             <Link to={"/account"} className="dropdown-item">
               Account

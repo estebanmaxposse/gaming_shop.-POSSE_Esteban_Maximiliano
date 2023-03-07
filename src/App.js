@@ -8,6 +8,7 @@ import Homepage from "./components/Homepage";
 import Categories from "./components/Categories";
 import ItemDetailContainer from "./components/ItemDetailContainer";
 import Cart from "./components/Cart";
+import Chat from "./components/Chat";
 import Favicon from "react-favicon";
 import NoMatch from "./components/NoMatch";
 import CartProvider from "./contexts/CartContext";
@@ -35,16 +36,20 @@ function App() {
               <LoadingBackdrop />
               <NavBar />
               <Routes>
-                <Route 
-                  path="/" 
-                  index 
+                <Route
+                  path="/"
+                  index
                   element={
                     <ProtectedRoute>
                       <Homepage />
                     </ProtectedRoute>
-                  } 
+                  }
                 />
-                <Route path="/cart" element={<Cart />} />
+                <Route path="/cart" element={
+                  <ProtectedRoute>
+                    <Cart />
+                  </ProtectedRoute>
+                } />
                 <Route path="/login" element={<Login />} />
                 <Route path="/signUp" element={<SignUp />} />
                 <Route
@@ -55,7 +60,19 @@ function App() {
                     </ProtectedRoute>
                   }
                 />
-                <Route path="/category/:categoryID" element={<Categories />} />
+                <Route
+                  path="/chat"
+                  element={
+                    <ProtectedRoute>
+                      <Chat />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route path="/category/:categoryID" element={
+                  <ProtectedRoute>
+                    <Categories />
+                  </ProtectedRoute>
+                } />
                 <Route
                   path="/detail/:itemID"
                   element={

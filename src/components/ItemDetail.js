@@ -20,9 +20,9 @@ const ItemDetail = ({ product }) => {
     }
   };
 
-  const onAdd = (quantity) => {
+  const onAdd = (count) => {
     setGoToCart(true);
-    addItem(product, quantity);
+    addItem(product, count);
   };
 
   return (
