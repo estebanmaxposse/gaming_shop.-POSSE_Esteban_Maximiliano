@@ -37,10 +37,10 @@ const Chat = () => {
             const messageObject = {
                 author: {
                     name: user.username || user.email,
-                    email: user.email,
                     avatar: user.avatar || '',
                 },
                 senderID: user._id || jwt_decode(token).user._id,
+                senderEmail: user.email,
                 text: messageInput,
             };
             socket.emit('new-message', messageObject);

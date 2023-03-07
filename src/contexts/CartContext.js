@@ -1,6 +1,7 @@
-import React, { useState, useContext, useMemo } from "react";
+import React, { useState, useContext } from "react";
 import { useAuth } from "./AuthContext";
 import jwt_decode from "jwt-decode";
+import env from "react-dotenv";
 const CartContext = React.createContext([]);
 
 export const useCartContext = () => useContext(CartContext);
@@ -29,7 +30,7 @@ const CartProvider = ({ children }) => {
   //API CALLS
   const createCartDB = async () => {
     try {
-      const response = await fetch('http://localhost:8080/api/cart', {
+      const response = await fetch(env.API_URL + '/api/cart', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -49,7 +50,7 @@ const CartProvider = ({ children }) => {
 
   const addProductsDB = async (arrayOfProducts, cartIDToAddProducts) => {
     try {
-      const response = await fetch(`http://localhost:8080/api/cart/${cartIDToAddProducts}/products`, {
+      const response = await fetch(`${env.API_URL}/api/cart/${cartIDToAddProducts}/products`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -69,7 +70,7 @@ const CartProvider = ({ children }) => {
     }
     let cartIDForBack = cartIDParameter || cartID;
     try {
-      const response = await fetch(`http://localhost:8080/api/cart/${cartIDForBack}/products`, {
+      const response = await fetch(`${env.API_URL}/api/cart/${cartIDForBack}/products`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -88,7 +89,7 @@ const CartProvider = ({ children }) => {
     let token = userToken || localStorage.getItem('token');
     let userID = jwt_decode(token).user._id;
     try {
-      const response = await fetch(`http://localhost:8080/api/cart/user/${userID}`, {
+      const response = await fetch(`${env.API_URL}/api/cart/user/${userID}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -111,7 +112,7 @@ const CartProvider = ({ children }) => {
       return false
     }
     try {
-      const response = await fetch(`http://localhost:8080/api/cart/${cartID}`, {
+      const response = await fetch(`${env.API_URL}/api/cart/${cartID}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -128,7 +129,7 @@ const CartProvider = ({ children }) => {
 
   const clearCartDB = async () => {
     try {
-      const response = await fetch(`http://localhost:8080/api/cart/${cartID}`, {
+      const response = await fetch(`${env.API_URL}/api/cart/${cartID}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -143,7 +144,7 @@ const CartProvider = ({ children }) => {
 
   const removeProductDB = async (id) => {
     try {
-      const response = await fetch(`http://localhost:8080/api/cart/${cartID}/products/${id}`, {
+      const response = await fetch(`${env.API_URL}/cart/${cartID}/products/${id}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
@@ -158,7 +159,7 @@ const CartProvider = ({ children }) => {
 
   const deleteCartDB = async () => {
     try {
-      const response = await fetch(`http://localhost:8080/api/cart/${cartID}`, {
+      const response = await fetch(`${env.API_URL}/api/cart/${cartID}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
@@ -176,7 +177,7 @@ const CartProvider = ({ children }) => {
     let token = localStorage.getItem('token');
     let userID = jwt_decode(token).user._id;
     try {
-      const response = await fetch(`http://localhost:8080/api/order/user/${userID}`, {
+      const response = await fetch(`${env.API_URL}/api/order/user/${userID}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -193,7 +194,7 @@ const CartProvider = ({ children }) => {
 
   const createOrder = async () => {
     try {
-      const response = await fetch(`http://localhost:8080/api/order/${cartID}`, {
+      const response = await fetch(`${env.API_URL}/api/order/${cartID}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
