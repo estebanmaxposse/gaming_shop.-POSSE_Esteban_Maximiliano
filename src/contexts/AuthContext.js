@@ -104,7 +104,6 @@ const AuthContext = ({ children }) => {
     setUserToken(null);
     setUser(null);
     navigate('/login');
-    window.location.reload();
   }
   
   const updateUser = async (email, username, fullName, phoneNumber, shippingAddress, age, avatar) => {
