@@ -33,7 +33,6 @@ const Login = () => {
     setLoading(true);
     try {
       let token = await login(email, password);
-      console.log('LOGIN TOKEN', token);
       await initialCart(token);
       toast.success("Signed In!", {
         position: toast.POSITION.TOP_CENTER,
@@ -48,8 +47,10 @@ const Login = () => {
         }
       });
     } catch (e) {
-      setIsAlert(true);
-      setError(e.message);
+      toast.error(e.message, {
+        position: toast.POSITION.TOP_CENTER,
+        autoClose: 4000,
+      });
       console.log(e.message);
     }
     setLoading(false);
@@ -60,7 +61,6 @@ const Login = () => {
       <ToastContainer />
       <div className="sign-in">
         <h1>Welcome back!</h1>
-        {isAlert && <Alerts variant="danger" message={error} />}
         <Form className="sign-in-form mb-3" onSubmit={handleLogin}>
           <Form.Label>Email address</Form.Label>
           <InputGroup className="mb-3 sign-in-input" controlId="formBasicEmail">

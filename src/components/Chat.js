@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import env from 'react-dotenv';
 import io from 'socket.io-client';
 import { useAuth } from '../contexts/AuthContext';
+import jwt_decode from 'jwt-decode';
 
 const Chat = () => {
     const [messages, setMessages] = useState([]);
@@ -10,10 +11,10 @@ const Chat = () => {
     const socket = useMemo(() => io.connect(env.API_URL, { transports: ['websocket', 'polling'], withCredentials: true }), []);
 
     const { user } = useAuth();
+    let token = localStorage.getItem('token');
 
     useEffect(() => {
         socket.on('load-messages', (messages) => {
-            console.log('messages received', messages);
             setMessages(messages);
         });
     }, []);
@@ -27,7 +28,6 @@ const Chat = () => {
         setIsConnected(false);
     });
     socket.on('messages', (message) => {
-        console.log('message received', message);
         setMessages(message);
     });
     
@@ -40,7 +40,7 @@ const Chat = () => {
                     email: user.email,
                     avatar: user.avatar || '',
                 },
-                senderID: user._id,
+                senderID: user._id || jwt_decode(token).user._id,
                 text: messageInput,
             };
             socket.emit('new-message', messageObject);
@@ -73,7 +73,6 @@ const Chat = () => {
                     </div>
                     <div>
                         <ul>
-                            {console.log(messages)}
                             {Array.isArray(messages) && messages.length === 0 && <li>No messages</li>}
                             {messages.map((message, index) => (
                                 <li key={index}>

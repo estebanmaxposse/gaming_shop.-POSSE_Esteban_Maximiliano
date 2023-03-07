@@ -3,6 +3,7 @@ import { Button, Form, InputGroup } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 import { ToastContainer, toast } from "react-toastify";
+import { useCartContext } from "../contexts/CartContext";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
@@ -18,6 +19,7 @@ const SignUp = () => {
   const navigate = useNavigate();
 
   const { signUp, setLoading } = useAuth();
+  const { initialCart } = useCartContext();
 
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmedPassword, setShowConfirmedPassword] = useState(false);
@@ -41,7 +43,8 @@ const SignUp = () => {
       if (password !== confirmedPassword) {
         throw new Error("Passwords don't match!");
       }
-      await signUp(email, password, username, fullName, phoneNumber, shippingAddress, age, avatar);
+      let token = await signUp(email, password, username, fullName, phoneNumber, shippingAddress, age, avatar);
+      await initialCart(token);
       toast.success("Signed up!", {
         position: toast.POSITION.TOP_CENTER,
         autoClose: 3000,

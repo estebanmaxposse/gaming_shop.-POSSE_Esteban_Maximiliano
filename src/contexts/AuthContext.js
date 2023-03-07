@@ -52,7 +52,7 @@ const AuthContext = ({ children }) => {
 
   //METHODS
   const signUp = async (email, password, username, fullName, phoneNumber, shippingAddress, age, avatar) => {
-    fetch(env.API_URL + '/api/auth/signup', {
+    return fetch(env.API_URL + '/api/auth/signup', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -67,6 +67,7 @@ const AuthContext = ({ children }) => {
         setUserToken(token);
         let decoded = (jwt_decode(token));
         setUser(decoded.user);
+        return token
       })
       .catch(error => {
         console.error(error);
@@ -75,7 +76,7 @@ const AuthContext = ({ children }) => {
 
   
   const login = async (email, password) => {
-    await fetch(env.API_URL + '/api/auth/login', {
+    return await fetch(env.API_URL + '/api/auth/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -102,7 +103,6 @@ const AuthContext = ({ children }) => {
     localStorage.removeItem('token');
     setUserToken(null);
     setUser(null);
-    console.log(`LOGOUT`, user);
     navigate('/login');
     window.location.reload();
   }

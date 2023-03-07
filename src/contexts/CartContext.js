@@ -40,7 +40,6 @@ const CartProvider = ({ children }) => {
         }),
       });
       const data = await response.json();
-      console.log('CREATE CART DB: ', data);
       setCartID(data);
       return data
     } catch (error) {
@@ -59,7 +58,6 @@ const CartProvider = ({ children }) => {
         body: JSON.stringify(arrayOfProducts),
       });
       const data = await response.json();
-      console.log('ADDED PRODUCTS DB: ', data);
     } catch (error) {
       console.log(error);
     }
@@ -101,7 +99,6 @@ const CartProvider = ({ children }) => {
         return false
       }
       const data = await response.json();
-      console.log('CART BY USER FROM DB: ', data);
       return data
     } catch (error) {
       console.log(error);
@@ -122,7 +119,6 @@ const CartProvider = ({ children }) => {
         },
       });
       const data = await response.json();
-      console.log('CART FROM DB: ', data);
       return data
     } catch (error) {
       console.log(error);
@@ -132,7 +128,7 @@ const CartProvider = ({ children }) => {
 
   const clearCartDB = async () => {
     try {
-      const response = await fetch(`http://localhost:8080/api/cart/${cartID}/products`, {
+      const response = await fetch(`http://localhost:8080/api/cart/${cartID}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -140,7 +136,6 @@ const CartProvider = ({ children }) => {
         },
       });
       const data = await response.json();
-      console.log('CART CLEARED DB: ', data);
     } catch (error) {
       console.log(error);
     }
@@ -156,7 +151,6 @@ const CartProvider = ({ children }) => {
         },
       });
       const data = await response.json();
-      console.log('DELETED PRODUCT DB: ', data);
     } catch (error) {
       console.log(error);
     }
@@ -173,7 +167,6 @@ const CartProvider = ({ children }) => {
       });
       const data = await response.json();
       setCartID('');
-      console.log('DELETED CART DB: ', data);
     } catch (error) {
       console.log(error);
     }
@@ -181,8 +174,7 @@ const CartProvider = ({ children }) => {
 
   const getOrders = async () => {
     let token = localStorage.getItem('token');
-    let userID = user._id || jwt_decode(token).user._id;
-    console.log('USER ID: ', userID);
+    let userID = jwt_decode(token).user._id;
     try {
       const response = await fetch(`http://localhost:8080/api/order/user/${userID}`, {
         method: 'GET',
@@ -231,7 +223,6 @@ const CartProvider = ({ children }) => {
     } else {
       console.log('NO CART IN DB');
       const newCartID = await createCartDB();
-      setCartID(newCartID);
     }
   }
 

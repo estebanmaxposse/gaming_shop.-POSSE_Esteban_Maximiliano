@@ -22,13 +22,17 @@ const OrderList = () => {
   const fetchOrders = async () => {
     setIsLoading(true);
     let ordersDB = await getOrders()
-    const formattedOrder = ordersDB.map((order) => {
-      return {
-        ...order,
-        products: formatOrder(order.products),
-      };
-    })
-    setData(formattedOrder);
+    if (!ordersDB) {
+      return
+    } else {
+      const formattedOrder = ordersDB.map((order) => {
+        return {
+          ...order,
+          products: formatOrder(order.products),
+        };
+      })
+      setData(formattedOrder);
+    }
   };
 
   useEffect(() => {
